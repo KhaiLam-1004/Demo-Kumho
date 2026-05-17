@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Xác nhận đơn hàng DH00128 · Kumho NPP</title>
+<title>Xác nhận đơn hàng · Kumho NPP</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="../assets/theme-config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -12,14 +12,14 @@
 </head>
 <body class="bg-background text-on-surface">
 
-<div data-shell data-role="npp" data-active="don-hang-xac-nhan" data-breadcrumb="Đơn hàng cần xác nhận|DH00128"></div>
+<div data-shell data-role="npp" data-active="don-hang-xac-nhan" data-breadcrumb="Đơn hàng cần xác nhận|—"></div>
 
 <main class="ml-[240px] pt-[60px] pb-[100px] p-margin-desktop min-h-screen">
   <div class="max-w-[1200px] mx-auto">
 
     <div class="flex items-center gap-md mb-lg">
       <a href="don-hang-xac-nhan.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
-      <h1 class="text-h1 font-bold">Xác nhận đơn hàng DH00128</h1>
+      <h1 class="text-h1 font-bold">Xác nhận đơn hàng <span id="page-order-id">—</span></h1>
       <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">Chờ xác nhận</span>
     </div>
 
@@ -35,14 +35,14 @@
           </div>
           <div class="grid grid-cols-2 gap-lg">
             <div class="space-y-md">
-              <div><label class="text-label-sm text-outline">Tên đại lý</label><p class="font-body-lg font-bold mt-1">Đại lý Lốp Tân Bình</p></div>
-              <div><label class="text-label-sm text-outline">Số điện thoại</label><p class="font-body-lg mt-1">0941 111 111</p></div>
-              <div><label class="text-label-sm text-outline">Khu vực</label><p class="font-body-lg mt-1">Đông Nam Bộ — TP.HCM</p></div>
+              <div><label class="text-label-sm text-outline">Tên đại lý</label><p id="info-dealer-name" class="font-body-lg font-bold mt-1">—</p></div>
+              <div><label class="text-label-sm text-outline">Số điện thoại</label><p id="info-dealer-phone" class="font-body-lg mt-1">—</p></div>
+              <div><label class="text-label-sm text-outline">Khu vực</label><p id="info-dealer-region" class="font-body-lg mt-1">—</p></div>
             </div>
             <div class="space-y-md">
-              <div><label class="text-label-sm text-outline">Mã đơn</label><p class="font-body-lg font-bold text-primary mt-1">DH00128</p></div>
-              <div><label class="text-label-sm text-outline">Ngày đặt (đại lý nhập)</label><p class="font-body-lg mt-1">07/05/2026</p></div>
-              <div><label class="text-label-sm text-outline">Ngày gửi qua Miniapp</label><p class="font-body-lg mt-1">07/05/2026 09:30</p></div>
+              <div><label class="text-label-sm text-outline">Mã đơn</label><p id="info-order-id" class="font-body-lg font-bold text-primary mt-1">—</p></div>
+              <div><label class="text-label-sm text-outline">Ngày đặt (đại lý nhập)</label><p id="info-order-date" class="font-body-lg mt-1">—</p></div>
+              <div><label class="text-label-sm text-outline">Ngày gửi qua Miniapp</label><p id="info-order-sent" class="font-body-lg mt-1">—</p></div>
             </div>
           </div>
         </section>
@@ -62,12 +62,10 @@
                 <th class="px-md py-sm text-right font-label-md text-on-surface-variant w-40">Đại lý nhập</th>
                 <th class="px-md py-sm text-right font-label-md text-on-surface-variant w-40">Xác nhận</th>
               </tr></thead>
-              <tbody class="divide-y divide-outline-variant">
-                <tr><td class="px-md py-md">1</td><td class="px-md py-md font-medium">Kumho KR201 215/55R17</td><td class="px-md py-md text-right">30 lốp</td><td class="px-md py-md"><input type="number" value="30" class="w-24 text-right rounded border border-outline-variant px-2 py-1 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"></td></tr>
-                <tr><td class="px-md py-md">2</td><td class="px-md py-md font-medium">Kumho Crugen HP71 235/60R18</td><td class="px-md py-md text-right">15 lốp</td><td class="px-md py-md"><input type="number" value="15" class="w-24 text-right rounded border border-outline-variant px-2 py-1 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"></td></tr>
-                <tr><td class="px-md py-md">3</td><td class="px-md py-md font-medium">Kumho KH27 195/65R15</td><td class="px-md py-md text-right">5 lốp</td><td class="px-md py-md"><input type="number" value="5" class="w-24 text-right rounded border border-outline-variant px-2 py-1 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"></td></tr>
-                <tr class="bg-primary/5"><td class="px-md py-md font-bold text-primary" colspan="2">TỔNG SỐ LỐP</td><td class="px-md py-md text-right font-bold text-primary">50 lốp</td><td class="px-md py-md text-right font-bold text-primary">50 lốp</td></tr>
-              </tbody>
+              <tbody class="divide-y divide-outline-variant" id="items-tbody"></tbody>
+              <tfoot>
+                <tr class="bg-primary/5"><td class="px-md py-md font-bold text-primary" colspan="2">TỔNG SỐ LỐP</td><td class="px-md py-md text-right font-bold text-primary"><span id="total-original">—</span> lốp</td><td class="px-md py-md text-right font-bold text-primary"><span id="total-confirmed">—</span> lốp</td></tr>
+              </tfoot>
             </table>
           </div>
         </section>
@@ -79,14 +77,14 @@
 
         <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
           <h3 class="font-h3 mb-md">Tác động đến scheme</h3>
-          <p class="text-label-sm text-on-surface-variant mb-md">Sau xác nhận, 50 lốp được cộng vào scheme Q2/2026 của đại lý.</p>
+          <p class="text-label-sm text-on-surface-variant mb-md">Sau xác nhận, <b id="scheme-add">—</b> lốp được cộng vào scheme Q2/2026 của đại lý.</p>
           <div class="bg-surface-container border border-outline-variant rounded-lg p-md">
             <div class="flex items-end justify-between mb-xs">
               <span class="text-label-sm text-on-surface-variant uppercase">Sau xác nhận</span>
-              <span class="text-h3 font-bold text-primary">178/500</span>
+              <span id="scheme-after" class="text-h3 font-bold text-primary">—/500</span>
             </div>
-            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary" style="width:35%"></div></div>
-            <p class="text-label-sm text-on-surface-variant mt-2">Còn <b>322 lốp</b> nữa để đạt scheme.</p>
+            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div id="scheme-bar" class="h-full bg-primary" style="width:0%"></div></div>
+            <p id="scheme-remaining" class="text-label-sm text-on-surface-variant mt-2">—</p>
           </div>
         </div>
 
@@ -120,13 +118,13 @@
   <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
   <div class="relative bg-surface-container-lowest w-full max-w-[480px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
     <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
-      <h4 class="font-h3">Xác nhận duyệt đơn DH00128</h4>
+      <h4 class="font-h3">Xác nhận duyệt đơn <span id="approve-order-id">—</span></h4>
       <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
     </div>
     <div class="p-lg flex items-start gap-md">
       <div class="w-12 h-12 rounded-full bg-secondary/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined fill text-secondary">check_circle</span></div>
       <div>
-        <p class="text-body-lg mb-2">Duyệt đơn 50 lốp cho <b>Đại lý Lốp Tân Bình</b>?</p>
+        <p class="text-body-lg mb-2">Duyệt đơn <b><span id="approve-total">—</span> lốp</b> cho <b id="approve-dealer-name">—</b>?</p>
         <p class="text-body-md text-on-surface-variant">ZNS chúc mừng tích luỹ sẽ gửi đến đại lý. Scheme Q2/2026 sẽ được cập nhật.</p>
       </div>
     </div>
@@ -142,7 +140,7 @@
   <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
   <div class="relative bg-surface-container-lowest w-full max-w-[520px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
     <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
-      <h4 class="font-h3">Từ chối đơn DH00128</h4>
+      <h4 class="font-h3">Từ chối đơn <span id="reject-order-id">—</span></h4>
       <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
     </div>
     <div class="p-lg space-y-md">
@@ -166,18 +164,122 @@
 <script src="../assets/app.js"></script>
 <script>
 (function () {
-  // Order ID from query (?id=DH00131); fallback DH00128.
+  // Mock orders matching the rows in don-hang-xac-nhan.html (cùng tổng số lốp).
+  var orders = {
+    'DH00128': {
+      dealer: { name: 'Đại lý Lốp Tân Bình', phone: '0941 111 111', region: 'Đông Nam Bộ — TP.HCM' },
+      date: '07/05/2026', sent: '07/05/2026 09:30',
+      schemeCurrent: 128,
+      items: [
+        { sku: 'Kumho KR201 215/55R17',        qty: 30 },
+        { sku: 'Kumho Crugen HP71 235/60R18',  qty: 15 },
+        { sku: 'Kumho KH27 195/65R15',         qty: 5  }
+      ]
+    },
+    'DH00131': {
+      dealer: { name: 'Auto Zone Quận 7', phone: '0902 123 456', region: 'Đông Nam Bộ — TP.HCM' },
+      date: '15/05/2026', sent: '15/05/2026 14:12',
+      schemeCurrent: 472,
+      items: [
+        { sku: 'Kumho Ecsta PS31 225/45R17',   qty: 18 },
+        { sku: 'Kumho KH27 195/65R15',         qty: 10 }
+      ]
+    },
+    'DH00132': {
+      dealer: { name: 'Vỏ Xe Bình Dương', phone: '0908 123 456', region: 'Đông Nam Bộ — Bình Dương' },
+      date: '16/05/2026', sent: '16/05/2026 10:45',
+      schemeCurrent: 200,
+      items: [
+        { sku: 'Kumho KR201 215/55R17',        qty: 20 },
+        { sku: 'Kumho Crugen HP71 235/60R18',  qty: 22 },
+        { sku: 'Kumho KH27 195/65R15',         qty: 15 },
+        { sku: 'Kumho Ecsta PS31 225/45R17',   qty: 15 }
+      ]
+    }
+  };
+
   var params = new URLSearchParams(location.search);
   var orderId = params.get('id') || 'DH00128';
+  var o = orders[orderId] || orders['DH00128'];
+  var orderTotal = o.items.reduce(function (s, it) { return s + it.qty; }, 0);
 
-  // If already processed: show banner + disable action footer.
+  // Page chrome
+  document.title = 'Xác nhận đơn hàng ' + orderId + ' · Kumho NPP';
+  var shell = document.querySelector('[data-shell]');
+  if (shell) shell.setAttribute('data-breadcrumb', 'Đơn hàng cần xác nhận|' + orderId);
+  document.getElementById('page-order-id').textContent = orderId;
+
+  // Info cards
+  document.getElementById('info-dealer-name').textContent = o.dealer.name;
+  document.getElementById('info-dealer-phone').textContent = o.dealer.phone;
+  document.getElementById('info-dealer-region').textContent = o.dealer.region;
+  document.getElementById('info-order-id').textContent = orderId;
+  document.getElementById('info-order-date').textContent = o.date;
+  document.getElementById('info-order-sent').textContent = o.sent;
+
+  // Items table
+  var tbody = document.getElementById('items-tbody');
+  o.items.forEach(function (it, idx) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = ''
+      + '<td class="px-md py-md">' + (idx + 1) + '</td>'
+      + '<td class="px-md py-md font-medium">' + it.sku + '</td>'
+      + '<td class="px-md py-md text-right">' + it.qty + ' lốp</td>'
+      + '<td class="px-md py-md"><input data-confirm-qty type="number" value="' + it.qty + '" min="0" class="w-24 text-right rounded border border-outline-variant px-2 py-1 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"></td>';
+    tbody.appendChild(tr);
+  });
+  document.getElementById('total-original').textContent = orderTotal;
+  document.getElementById('total-confirmed').textContent = orderTotal;
+
+  function recomputeTotal() {
+    var sum = 0;
+    document.querySelectorAll('[data-confirm-qty]').forEach(function (inp) {
+      sum += Math.max(0, parseInt(inp.value, 10) || 0);
+    });
+    document.getElementById('total-confirmed').textContent = sum;
+    paintScheme(sum);
+    document.getElementById('approve-total').textContent = sum;
+    return sum;
+  }
+  document.querySelectorAll('[data-confirm-qty]').forEach(function (inp) {
+    inp.addEventListener('input', recomputeTotal);
+  });
+
+  // Scheme card
+  function paintScheme(add) {
+    var current = o.schemeCurrent || 0;
+    var after = current + add;
+    var pct = Math.min(100, Math.round(after / 500 * 100));
+    document.getElementById('scheme-add').textContent = add;
+    document.getElementById('scheme-after').textContent = after + '/500';
+    document.getElementById('scheme-bar').style.width = pct + '%';
+    if (after >= 500) {
+      document.getElementById('scheme-remaining').innerHTML = '<span class="text-secondary font-bold">✓ Đại lý sẽ đạt scheme — Kumho sẽ giao quà</span>';
+      document.getElementById('scheme-bar').classList.remove('bg-primary');
+      document.getElementById('scheme-bar').classList.add('bg-secondary');
+    } else {
+      document.getElementById('scheme-remaining').innerHTML = 'Còn <b>' + (500 - after) + ' lốp</b> nữa để đạt scheme.';
+      document.getElementById('scheme-bar').classList.add('bg-primary');
+      document.getElementById('scheme-bar').classList.remove('bg-secondary');
+    }
+  }
+  paintScheme(orderTotal);
+
+  // Modal text
+  document.getElementById('approve-order-id').textContent = orderId;
+  document.getElementById('reject-order-id').textContent = orderId;
+  document.getElementById('approve-total').textContent = orderTotal;
+  document.getElementById('approve-dealer-name').textContent = o.dealer.name;
+
+  // Already processed banner.
   var existing = State.getOrder(orderId);
   if (existing) {
     var bar = document.createElement('div');
     var ok = existing.status === 'approved';
     bar.className = 'max-w-[1200px] mx-auto mb-md p-md rounded-lg border ' + (ok ? 'bg-secondary-container/30 border-secondary/30 text-secondary' : 'bg-error-container border-error/30 text-on-error-container');
     bar.innerHTML = '<div class="flex items-center gap-2"><span class="material-symbols-outlined fill">' + (ok ? 'check_circle' : 'cancel') + '</span><b>' + (ok ? 'Đơn đã được xác nhận' : 'Đơn đã bị từ chối') + '</b>' + (existing.reason ? ' — Lý do: ' + existing.reason : '') + '</div>';
-    document.querySelector('main .max-w-\\[1200px\\]').insertBefore(bar, document.querySelector('main .max-w-\\[1200px\\]').firstChild);
+    var container = document.querySelector('main .max-w-\\[1200px\\]');
+    container.insertBefore(bar, container.firstChild);
     document.querySelectorAll('footer button').forEach(function (b) {
       b.disabled = true;
       b.classList.add('opacity-40', 'cursor-not-allowed');
