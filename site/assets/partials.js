@@ -3,7 +3,7 @@
 (function () {
   var navItems = {
     kumho: [
-      { key: 'duyet-dai-ly',       icon: 'how_to_reg',      label: 'Duyệt đại lý',     href: 'duyet-dai-ly.html',     badge: 5 },
+      { key: 'duyet-dai-ly',       icon: 'how_to_reg',      label: 'Duyệt đại lý',     href: 'duyet-dai-ly.html',     badge: 10 },
       { key: 'quan-ly-npp',        icon: 'corporate_fare',  label: 'Quản lý NPP',      href: 'quan-ly-npp.html' },
       { key: 'quan-ly-dai-ly',     icon: 'groups',          label: 'Quản lý đại lý',   href: 'quan-ly-dai-ly.html' },
       { key: 'quan-ly-don-hang',   icon: 'shopping_cart',   label: 'Quản lý đơn hàng', href: 'quan-ly-don-hang.html' },
