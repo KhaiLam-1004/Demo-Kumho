@@ -171,32 +171,10 @@
     }
   });
 
-  // If already logged in, show a banner offering to continue — don't auto-redirect.
-  var existing = Auth.getSession();
-  if (existing) {
-    var portalUrl = existing.firstLogin
-      ? 'doi-mat-khau-lan-dau.html'
-      : (existing.role === 'kumho' ? 'kumho/duyet-dai-ly.html' : 'npp/quan-ly-dai-ly.html');
-    var roleLabel = existing.role === 'kumho' ? 'Kumho Admin' : 'NPP';
-    var banner = document.createElement('div');
-    banner.className = 'mb-md p-md rounded-lg border border-primary/30 bg-primary/5 flex items-center gap-md fade-in';
-    banner.innerHTML = ''
-      + '<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold text-label-sm shrink-0">' + (existing.initials || '?') + '</div>'
-      + '<div class="flex-1 min-w-0">'
-      + '  <p class="font-label-md text-on-surface truncate">Bạn đang đăng nhập với vai trò <b>' + roleLabel + '</b></p>'
-      + '  <p class="text-label-sm text-on-surface-variant truncate">' + (existing.identifier || '') + '</p>'
-      + '</div>'
-      + '<button data-continue class="px-3 py-1.5 bg-primary text-on-primary rounded-lg text-label-sm font-bold hover:bg-primary-container whitespace-nowrap">Tiếp tục</button>'
-      + '<button data-switch class="px-3 py-1.5 border border-outline-variant text-on-surface-variant rounded-lg text-label-sm font-bold hover:bg-surface-container-low whitespace-nowrap">Đăng nhập tài khoản khác</button>';
-    var main = document.querySelector('main');
-    main.insertBefore(banner, main.firstChild);
-    banner.querySelector('[data-continue]').addEventListener('click', function () { location.href = portalUrl; });
-    banner.querySelector('[data-switch]').addEventListener('click', function () {
-      Auth.clear();
-      banner.remove();
-      idEl.focus();
-    });
-  }
+  // Always start the login page with a clean slate — don't carry over a
+  // cached session from a previous role, otherwise the user can accidentally
+  // continue as the wrong role.
+  Auth.clear();
 })();
 </script>
 
