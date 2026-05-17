@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Import đại lý · Kumho NPP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="npp" data-active="quan-ly-dai-ly" data-breadcrumb="Quản lý đại lý|Import hàng loạt"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+  <div class="max-w-4xl mx-auto">
+
+    <div class="mb-lg">
+      <h1 class="text-h1 font-bold">Import đại lý hàng loạt</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Tải file Excel theo template để gửi nhiều đại lý lên Kumho cùng lúc.</p>
+    </div>
+
+    <!-- Stepper -->
+    <div class="flex items-center gap-md mb-xl">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">1</div>
+        <span class="font-label-md font-bold">Tải template</span>
+      </div>
+      <div class="flex-1 h-px bg-outline-variant"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold">2</div>
+        <span class="font-label-md font-bold">Upload file</span>
+      </div>
+      <div class="flex-1 h-px bg-outline-variant"></div>
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-bold">3</div>
+        <span class="font-label-md text-on-surface-variant">Kiểm tra & gửi duyệt</span>
+      </div>
+    </div>
+
+    <!-- Step 1 + 2 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-lg">
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+        <div class="flex items-center gap-3 mb-md">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">description</span></div>
+          <h3 class="font-h3">1. Tải template Excel</h3>
+        </div>
+        <p class="text-body-md text-on-surface-variant mb-md">Sử dụng đúng template để tránh lỗi mapping cột.</p>
+        <button onclick="toast('Đã tải template','info')" class="w-full px-lg py-2.5 border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-[20px]">download</span> Tải template_dai_ly.xlsx
+        </button>
+      </div>
+
+      <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+        <div class="flex items-center gap-3 mb-md">
+          <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary"><span class="material-symbols-outlined">upload_file</span></div>
+          <h3 class="font-h3">2. Tải file đã điền</h3>
+        </div>
+        <div class="border-2 border-dashed border-outline-variant rounded-lg p-md text-center hover:border-primary hover:bg-primary/5 cursor-pointer">
+          <span class="material-symbols-outlined text-primary text-[36px]">cloud_upload</span>
+          <p class="text-body-md mt-1">Kéo thả hoặc <span class="text-primary font-bold">chọn file</span></p>
+          <p class="text-label-sm text-on-surface-variant">.xlsx, tối đa 5MB</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview table (step 3) -->
+    <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+      <div class="p-lg border-b border-outline-variant flex items-center justify-between bg-surface-container-low/40">
+        <div>
+          <h3 class="font-h3">3. Kiểm tra dữ liệu</h3>
+          <p class="text-label-sm text-on-surface-variant mt-1">5 dòng hợp lệ · <span class="text-error font-bold">1 dòng có lỗi</span></p>
+        </div>
+        <div class="flex items-center gap-md">
+          <span class="text-label-sm text-on-surface-variant">File: <b>dai_ly_thang_05.xlsx</b></span>
+          <button class="px-3 py-1.5 border border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-high text-label-md">Tải lại</button>
+        </div>
+      </div>
+
+      <table class="w-full text-left">
+        <thead><tr class="bg-surface-container-low/40">
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">#</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">SĐT</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Tên đại lý</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Khu vực</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Địa chỉ</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Validate</th>
+        </tr></thead>
+        <tbody class="divide-y divide-outline-variant">
+          <tr><td class="px-md py-3 text-body-md">1</td><td class="px-md py-3 text-body-md">0901 111 222</td><td class="px-md py-3 text-body-md font-bold">Lốp Tân Phú</td><td class="px-md py-3 text-body-md">Tân Phú, TP.HCM</td><td class="px-md py-3 text-body-md">123 Lê Trọng Tấn</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+          <tr><td class="px-md py-3 text-body-md">2</td><td class="px-md py-3 text-body-md">0908 333 444</td><td class="px-md py-3 text-body-md font-bold">Auto Bình Tân</td><td class="px-md py-3 text-body-md">Bình Tân, TP.HCM</td><td class="px-md py-3 text-body-md">Khu B, Tên Lửa</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+          <tr class="bg-error-container/30"><td class="px-md py-3 text-body-md">3</td><td class="px-md py-3 text-body-md text-error font-bold">097_invalid</td><td class="px-md py-3 text-body-md">Vỏ xe Ngoại Thành</td><td class="px-md py-3 text-body-md">Quận 12</td><td class="px-md py-3 text-body-md">—</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold"><span class="material-symbols-outlined text-[14px]">error</span> SĐT sai định dạng</span></td></tr>
+          <tr><td class="px-md py-3 text-body-md">4</td><td class="px-md py-3 text-body-md">0931 555 666</td><td class="px-md py-3 text-body-md font-bold">Lốp Củ Chi</td><td class="px-md py-3 text-body-md">Củ Chi, TP.HCM</td><td class="px-md py-3 text-body-md">Tỉnh lộ 8</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+          <tr><td class="px-md py-3 text-body-md">5</td><td class="px-md py-3 text-body-md">0939 777 888</td><td class="px-md py-3 text-body-md font-bold">Garage Mỹ Tho</td><td class="px-md py-3 text-body-md">Tiền Giang</td><td class="px-md py-3 text-body-md">Lê Văn Phẩm</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+          <tr><td class="px-md py-3 text-body-md">6</td><td class="px-md py-3 text-body-md">0913 999 000</td><td class="px-md py-3 text-body-md font-bold">Lốp Đồng Nai</td><td class="px-md py-3 text-body-md">Biên Hoà</td><td class="px-md py-3 text-body-md">KCN Amata</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+        </tbody>
+      </table>
+
+      <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-between items-center">
+        <p class="text-label-sm text-on-surface-variant">Chỉ các dòng hợp lệ sẽ được gửi duyệt. Dòng lỗi có thể sửa và import lại.</p>
+        <div class="flex gap-md">
+          <a href="quan-ly-dai-ly.html" class="px-lg py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-bold">Hủy</a>
+          <button onclick="toast('Đã gửi 5 đại lý hợp lệ lên Kumho duyệt','success'); setTimeout(()=>location.href='quan-ly-dai-ly.html', 900);" class="px-lg py-2 rounded-lg bg-primary text-on-primary font-bold shadow-sm hover:bg-primary-container">Gửi 5 đại lý hợp lệ</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

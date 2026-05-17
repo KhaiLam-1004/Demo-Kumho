@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Import Đại Lý - Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#6ffbbe",
+                        "inverse-on-surface": "#f2effb",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "secondary-container": "#6cf8bb",
+                        "primary-container": "#6063ee",
+                        "on-surface-variant": "#464554",
+                        "on-surface": "#1b1b23",
+                        "secondary": "#006c49",
+                        "tertiary": "#904900",
+                        "tertiary-fixed": "#ffdcc5",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#301400",
+                        "on-tertiary-container": "#fffbff",
+                        "error-container": "#ffdad6",
+                        "primary": "#4648d4",
+                        "on-secondary": "#ffffff",
+                        "inverse-primary": "#c0c1ff",
+                        "background": "#fcf8ff",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-error": "#ffffff",
+                        "on-background": "#1b1b23",
+                        "on-primary-container": "#fffbff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#303038",
+                        "surface-container-highest": "#e4e1ed",
+                        "surface-container-high": "#e9e6f3",
+                        "on-tertiary": "#ffffff",
+                        "surface-container": "#efecf8",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary-fixed-variant": "#005236",
+                        "outline": "#767586",
+                        "surface-bright": "#fcf8ff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "surface-variant": "#e4e1ed",
+                        "secondary-fixed-dim": "#4edea3",
+                        "surface-dim": "#dbd8e4",
+                        "surface": "#fcf8ff",
+                        "on-secondary-container": "#00714d",
+                        "surface-container-low": "#f5f2fe",
+                        "outline-variant": "#c7c4d7",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#002113",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "surface-tint": "#494bd6",
+                        "tertiary-container": "#b55d00",
+                        "primary-fixed": "#e1e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "unit": "4px",
+                        "margin-mobile": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "margin-desktop": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "h3": ["Inter"],
+                        "h2": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8ff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col z-40">
+<div class="px-6 py-8">
+<h1 class="text-h2 font-h2 text-primary tracking-tight">Kumho NPP</h1>
+<p class="text-label-sm text-on-surface-variant">Portal Management</p>
+</div>
+<nav class="flex-1 px-2 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="font-label-md text-label-md">Duyệt đại lý</span>
+</a>
+<!-- ACTIVE TAB -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-bold border-l-4 border-primary" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-md text-label-md">Quản lý đại lý</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-md text-label-md">Quản lý đơn hàng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">redeem</span>
+<span class="font-label-md text-label-md">Lịch sử trả quà</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-low transition-colors duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-label-md text-label-md">Nhật ký hoạt động</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 left-[240px] h-[60px] bg-surface-container-lowest border-b border-outline-variant flex items-center justify-end px-margin-desktop gap-lg z-30">
+<span class="text-label-md font-label-md text-on-surface-variant mr-auto">Kumho NPP Portal</span>
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-all">
+<span class="material-symbols-outlined text-primary">help</span>
+</button>
+<div class="flex items-center gap-3 border-l pl-lg border-outline-variant">
+<div class="text-right">
+<p class="text-label-md font-bold text-on-surface">Admin User</p>
+<p class="text-label-sm text-on-surface-variant">Manager</p>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-all">
+<span class="material-symbols-outlined text-error">logout</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[240px] pt-[60px] min-h-screen">
+<div class="p-margin-desktop space-y-lg">
+<!-- Header & Breadcrumbs -->
+<div class="flex items-center justify-between">
+<div>
+<nav class="flex items-center gap-2 text-label-sm text-on-surface-variant mb-xs">
+<a class="hover:text-primary" href="#">Quản lý đại lý</a>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-on-surface">Import đại lý</span>
+</nav>
+<h2 class="text-h1 font-h1 text-on-surface">Import đại lý</h2>
+</div>
+<button class="flex items-center gap-2 px-lg py-sm bg-surface-container border border-primary text-primary font-label-md rounded-lg hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined">download</span>
+                    Tải file mẫu
+                </button>
+</div>
+<!-- Single Main Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<!-- Section 1: Upload Area -->
+<div class="p-lg">
+<h3 class="text-h3 font-h3 text-on-surface mb-md">Bước 1: Tải lên danh sách</h3>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-xl flex flex-col items-center justify-center bg-surface-container-low/30">
+<!-- Uploaded State -->
+<div class="flex items-center gap-4 bg-white p-md rounded-lg border border-primary/20 shadow-sm">
+<span class="material-symbols-outlined text-[48px] text-primary">description</span>
+<div>
+<p class="text-label-md font-bold text-on-surface">danh-sach-dai-ly.xlsx</p>
+<p class="text-label-sm text-on-surface-variant">42.5 KB • Hoàn tất</p>
+</div>
+<button class="ml-xl text-error hover:bg-error-container/20 p-2 rounded-full">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<p class="mt-md text-label-sm text-on-surface-variant">Nhấp để thay đổi hoặc kéo thả file khác vào đây</p>
+</div>
+</div>
+<div class="h-px bg-outline-variant mx-lg"></div>
+<!-- Section 2: Preview Table -->
+<div class="p-lg">
+<div class="flex items-center justify-between mb-md">
+<h3 class="text-h3 font-h3 text-on-surface">Bước 2: Xem trước dữ liệu</h3>
+<div class="flex gap-md">
+<div class="flex items-center gap-2 px-md py-xs bg-secondary-container/20 text-secondary text-label-sm rounded-full">
+<span class="w-2 h-2 rounded-full bg-secondary"></span> 3 Hợp lệ
+                            </div>
+<div class="flex items-center gap-2 px-md py-xs bg-error-container/20 text-error text-label-sm rounded-full">
+<span class="w-2 h-2 rounded-full bg-error"></span> 2 Lỗi
+                            </div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant border-b border-outline-variant">
+<th class="px-md py-3 text-label-sm uppercase tracking-wider">STT</th>
+<th class="px-md py-3 text-label-sm uppercase tracking-wider">Tên đại lý</th>
+<th class="px-md py-3 text-label-sm uppercase tracking-wider">Số điện thoại</th>
+<th class="px-md py-3 text-label-sm uppercase tracking-wider">Khu vực</th>
+<th class="px-md py-3 text-label-sm uppercase tracking-wider">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-4 text-body-md">1</td>
+<td class="px-md py-4 text-body-md font-medium">Đại lý Minh Chiến</td>
+<td class="px-md py-4 text-body-md">0901234567</td>
+<td class="px-md py-4 text-body-md">Hà Nội</td>
+<td class="px-md py-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm rounded-full">[Hợp lệ]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-4 text-body-md">2</td>
+<td class="px-md py-4 text-body-md font-medium">Lốp Xe Thành Công</td>
+<td class="px-md py-4 text-error font-medium">0901234567</td>
+<td class="px-md py-4 text-body-md">TP. Hồ Chí Minh</td>
+<td class="px-md py-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-label-sm rounded-full">[SĐT đã tồn tại]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-4 text-body-md">3</td>
+<td class="px-md py-4 text-body-md font-medium">Garage Auto Plus</td>
+<td class="px-md py-4 text-body-md">0988777666</td>
+<td class="px-md py-4 text-body-md">Đà Nẵng</td>
+<td class="px-md py-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm rounded-full">[Hợp lệ]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-4 text-body-md">4</td>
+<td class="px-md py-4 text-body-md font-medium">Cửa hàng Hoàng Long</td>
+<td class="px-md py-4 text-body-md">0911222333</td>
+<td class="px-md py-4 text-error font-medium">Quận 12</td>
+<td class="px-md py-4">
+<span class="px-3 py-1 bg-error-container text-on-error-container text-label-sm rounded-full">[Sai khu vực]</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-md py-4 text-body-md">5</td>
+<td class="px-md py-4 text-body-md font-medium">Đại lý Tiến Phát</td>
+<td class="px-md py-4 text-body-md">0977888999</td>
+<td class="px-md py-4 text-body-md">Bình Dương</td>
+<td class="px-md py-4">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-label-sm rounded-full">[Hợp lệ]</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom Summary / Action Footer -->
+<div class="bg-surface-container-low p-lg flex items-center justify-between">
+<div class="text-on-surface-variant text-label-md">
+                        Hiển thị <span class="font-bold">5</span> trên tổng số <span class="font-bold">5</span> dòng từ file.
+                        <span class="ml-md text-error italic">* Vui lòng sửa lỗi trước khi tiếp tục.</span>
+</div>
+<div class="flex gap-md">
+<button class="px-xl py-sm bg-white border border-outline text-on-surface font-label-md rounded-lg hover:bg-surface-container transition-colors">
+                            Hủy bỏ
+                        </button>
+<button class="px-xl py-sm bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-all shadow-md">
+                            Xác nhận Import
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Modal "Xác nhận import" -->
+<div class="fixed inset-0 bg-inverse-surface/60 backdrop-blur-sm z-50 flex items-center justify-center p-margin-mobile">
+<div class="bg-surface-container-lowest w-full max-w-[480px] rounded-xl shadow-xl overflow-hidden border border-outline-variant">
+<div class="p-lg border-b border-outline-variant flex items-center justify-between bg-primary-container/5">
+<h2 class="text-h2 font-h2 text-on-surface">Xác nhận import</h2>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-error transition-colors">close</button>
+</div>
+<div class="p-xl text-center space-y-md">
+<div class="w-16 h-16 bg-primary-container/20 text-primary rounded-full flex items-center justify-center mx-auto mb-lg">
+<span class="material-symbols-outlined text-[32px]">cloud_upload</span>
+</div>
+<p class="text-body-lg text-on-surface">Bạn có chắc chắn muốn nhập <span class="font-bold">3 đại lý hợp lệ</span> vào hệ thống không?</p>
+<div class="bg-error-container/10 border border-error/20 p-md rounded-lg">
+<p class="text-label-sm text-error font-medium">Lưu ý: 2 dòng dữ liệu bị lỗi sẽ bị bỏ qua và không được lưu vào hệ thống.</p>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low flex gap-md">
+<button class="flex-1 px-lg py-3 bg-white border border-outline text-on-surface font-label-md rounded-lg hover:bg-surface-container transition-colors">
+                    Kiểm tra lại
+                </button>
+<button class="flex-1 px-lg py-3 bg-primary text-on-primary font-label-md rounded-lg hover:opacity-90 transition-all shadow-md">
+                    Đồng ý Import
+                </button>
+</div>
+</div>
+</div>
+</body></html>

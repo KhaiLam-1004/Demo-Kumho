@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đổi mật khẩu lần đầu · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-surface-container-low min-h-screen flex flex-col">
+
+<header class="bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center w-full px-lg py-sm sticky top-0 z-50">
+  <div class="flex items-center gap-md">
+    <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+      <span class="material-symbols-outlined">tire_repair</span>
+    </div>
+    <span class="font-h3 text-primary font-bold">Kumho NPP Portal</span>
+  </div>
+  <button data-logout class="text-label-md text-on-surface-variant hover:bg-surface-container-low transition-colors px-md py-sm rounded-lg flex items-center gap-2">
+    <span class="material-symbols-outlined text-[18px]">logout</span> Đăng xuất
+  </button>
+</header>
+
+<main class="flex-grow flex items-center justify-center p-margin-mobile md:p-margin-desktop">
+
+  <div class="w-full max-w-[480px] bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+    <div class="p-xl space-y-xl">
+
+      <div class="flex flex-col items-center text-center gap-md">
+        <div class="w-16 h-16 bg-primary-fixed rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined fill text-primary text-[32px]">lock_reset</span>
+        </div>
+        <h1 class="font-h2 text-h2 text-on-surface">Đổi mật khẩu lần đầu</h1>
+        <p class="text-body-md text-on-surface-variant max-w-[340px]">Vì lý do bảo mật, bạn cần đổi mật khẩu mặc định đã được Kumho gửi qua ZNS trước khi sử dụng portal.</p>
+      </div>
+
+      <form id="change-pw-form" class="space-y-lg" onsubmit="return false;">
+        <div class="space-y-xs">
+          <label class="font-label-md text-on-surface-variant" for="curpw">Mật khẩu hiện tại (từ ZNS)</label>
+          <div class="relative">
+            <input id="curpw" type="password" value="npp@default" placeholder="••••••••" class="w-full bg-white border border-outline-variant rounded-lg px-md py-2.5 pr-10 text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+            <button type="button" data-toggle="curpw" class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">visibility</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-xs">
+          <label class="font-label-md text-on-surface-variant" for="newpw">Mật khẩu mới</label>
+          <div class="relative">
+            <input id="newpw" type="password" placeholder="••••••••" class="w-full bg-white border border-outline-variant rounded-lg px-md py-2.5 pr-10 text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+            <button type="button" data-toggle="newpw" class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">visibility</span>
+            </button>
+          </div>
+          <p class="text-label-sm text-outline flex items-start gap-xs mt-xs">
+            <span class="material-symbols-outlined text-[14px] mt-[1px]">info</span>
+            Tối thiểu 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.
+          </p>
+          <!-- Strength meter -->
+          <div class="flex gap-1 mt-1">
+            <span id="bar1" class="flex-1 h-1.5 rounded-full bg-outline-variant"></span>
+            <span id="bar2" class="flex-1 h-1.5 rounded-full bg-outline-variant"></span>
+            <span id="bar3" class="flex-1 h-1.5 rounded-full bg-outline-variant"></span>
+            <span id="bar4" class="flex-1 h-1.5 rounded-full bg-outline-variant"></span>
+          </div>
+        </div>
+
+        <div class="space-y-xs">
+          <label class="font-label-md text-on-surface-variant" for="confirmpw">Xác nhận mật khẩu mới</label>
+          <div class="relative">
+            <input id="confirmpw" type="password" placeholder="••••••••" class="w-full bg-white border border-outline-variant rounded-lg px-md py-2.5 pr-10 text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+            <button type="button" data-toggle="confirmpw" class="absolute right-md top-1/2 -translate-y-1/2 text-outline hover:text-primary">
+              <span class="material-symbols-outlined text-[20px]">visibility</span>
+            </button>
+          </div>
+          <p id="match-hint" class="text-label-sm min-h-[16px]"></p>
+        </div>
+
+        <button type="submit" class="w-full bg-primary text-on-primary font-bold px-lg py-2.5 rounded-lg shadow-sm hover:bg-primary-container active:scale-[0.99] transition-all flex justify-center items-center gap-sm">
+          Cập nhật mật khẩu
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+        </button>
+      </form>
+
+      <div class="pt-lg border-t border-outline-variant">
+        <div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg">
+          <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined fill">support_agent</span>
+          </div>
+          <div>
+            <p class="text-label-sm text-on-surface">Cần hỗ trợ?</p>
+            <p class="text-body-md text-primary font-bold">Hotline: 1800-KUMHO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="w-full py-lg text-center">
+  <p class="text-label-sm text-outline">© 2026 Kumho Tires NPP Portal. All rights reserved.</p>
+</footer>
+
+<script src="assets/auth.js"></script>
+<script>
+(function () {
+  // Only NPP first-login may access this page. Kumho or unauthenticated → bounce.
+  var s = Auth.getSession();
+  if (!s) { location.href = 'index.html'; return; }
+  if (!s.firstLogin) {
+    // Already changed pw earlier — go straight to their portal.
+    location.href = (s.role === 'kumho') ? 'kumho/duyet-dai-ly.html' : 'npp/quan-ly-dai-ly.html';
+    return;
+  }
+
+  document.querySelector('[data-logout]').addEventListener('click', function () {
+    if (confirm('Bỏ đổi mật khẩu và đăng xuất khỏi Kumho NPP Portal?')) Auth.logout();
+  });
+
+  document.querySelectorAll('[data-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.toggle);
+      el.type = el.type === 'password' ? 'text' : 'password';
+    });
+  });
+
+  var newPw = document.getElementById('newpw');
+  var confirmPw = document.getElementById('confirmpw');
+  var matchHint = document.getElementById('match-hint');
+  var bars = [document.getElementById('bar1'), document.getElementById('bar2'), document.getElementById('bar3'), document.getElementById('bar4')];
+
+  function strength(p) {
+    var n = 0;
+    if (p.length >= 8) n++;
+    if (/[A-Z]/.test(p) && /[a-z]/.test(p)) n++;
+    if (/\d/.test(p)) n++;
+    if (/[^A-Za-z0-9]/.test(p)) n++;
+    return n;
+  }
+  function updateMeter() {
+    var n = strength(newPw.value);
+    var colors = ['bg-error', 'bg-tertiary-container', 'bg-primary', 'bg-secondary'];
+    bars.forEach(function (b, i) {
+      b.className = 'flex-1 h-1.5 rounded-full ' + (i < n ? colors[n - 1] : 'bg-outline-variant');
+    });
+  }
+  function updateMatch() {
+    if (!confirmPw.value) { matchHint.textContent = ''; matchHint.className = 'text-label-sm min-h-[16px]'; return; }
+    if (confirmPw.value === newPw.value) {
+      matchHint.innerHTML = '<span class="material-symbols-outlined text-[14px] align-middle">check_circle</span> Mật khẩu khớp';
+      matchHint.className = 'text-label-sm text-secondary min-h-[16px] flex items-center gap-1';
+    } else {
+      matchHint.innerHTML = '<span class="material-symbols-outlined text-[14px] align-middle">error</span> Mật khẩu không khớp';
+      matchHint.className = 'text-label-sm text-error min-h-[16px] flex items-center gap-1';
+    }
+  }
+  newPw.addEventListener('input', function () { updateMeter(); updateMatch(); });
+  confirmPw.addEventListener('input', updateMatch);
+
+  document.getElementById('change-pw-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (newPw.value.length < 8) { newPw.focus(); return; }
+    if (newPw.value !== confirmPw.value) { confirmPw.focus(); return; }
+    // Clear firstLogin flag and proceed.
+    s.firstLogin = false;
+    Auth.setSession(s);
+    location.href = 'npp/quan-ly-dai-ly.html';
+  });
+})();
+</script>
+
+</body>
+</html>

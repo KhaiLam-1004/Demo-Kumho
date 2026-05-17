@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lịch sử đơn hàng · Kumho NPP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="npp" data-active="lich-su-don-hang"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+    <div>
+      <h1 class="text-h1 font-bold">Lịch sử đơn hàng</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Tất cả đơn đại lý đã nhập qua Miniapp, kể cả đã duyệt và từ chối.</p>
+    </div>
+    <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container flex items-center gap-2">
+      <span class="material-symbols-outlined text-[20px]">download</span> Xuất Excel
+    </button>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="bg-surface-container-lowest border border-outline-variant rounded-xl mb-md p-2 flex gap-2 w-fit">
+    <button class="px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md font-bold">Tất cả (155)</button>
+    <button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg font-label-md">Đã duyệt (142)</button>
+    <button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg font-label-md">Từ chối (5)</button>
+    <button class="px-4 py-2 text-on-surface-variant hover:bg-surface-container-low rounded-lg font-label-md">Chờ xác nhận (8)</button>
+  </div>
+
+  <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
+      <div class="relative w-full md:w-80">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm mã đơn, đại lý...">
+      </div>
+      <div class="flex gap-md">
+        <input type="date" class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+        <span class="self-center text-on-surface-variant">→</span>
+        <input type="date" class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+      </div>
+    </div>
+    <table class="w-full text-left">
+      <thead><tr class="bg-surface-container-low/40">
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Mã đơn</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Số SKU</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Số lốp</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đặt</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày xử lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+      </tr></thead>
+      <tbody class="divide-y divide-outline-variant">
+        <tr class="hover:bg-surface-container-low/30"><td class="px-lg py-md text-primary font-bold">DH00130</td><td class="px-lg py-md">Auto Zone Quận 7</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">28</td><td class="px-lg py-md text-on-surface-variant">14/05/2026</td><td class="px-lg py-md text-on-surface-variant">14/05/2026 16:00</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+        <tr class="hover:bg-surface-container-low/30"><td class="px-lg py-md text-primary font-bold">DH00129</td><td class="px-lg py-md">Vỏ Xe Bình Dương</td><td class="px-lg py-md">4</td><td class="px-lg py-md text-right font-bold">70</td><td class="px-lg py-md text-on-surface-variant">12/05/2026</td><td class="px-lg py-md text-on-surface-variant">12/05/2026 11:20</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+        <tr class="hover:bg-surface-container-low/30"><td class="px-lg py-md text-primary font-bold">DH00127</td><td class="px-lg py-md">Đại lý Long An S1</td><td class="px-lg py-md">1</td><td class="px-lg py-md text-right font-bold">15</td><td class="px-lg py-md text-on-surface-variant">11/05/2026</td><td class="px-lg py-md text-on-surface-variant">11/05/2026 09:00</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold">Từ chối</span></td></tr>
+        <tr class="hover:bg-surface-container-low/30"><td class="px-lg py-md text-primary font-bold">DH00124</td><td class="px-lg py-md">Auto Zone Quận 7</td><td class="px-lg py-md">3</td><td class="px-lg py-md text-right font-bold">42</td><td class="px-lg py-md text-on-surface-variant">07/05/2026</td><td class="px-lg py-md text-on-surface-variant">07/05/2026 15:30</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+        <tr class="hover:bg-surface-container-low/30"><td class="px-lg py-md text-primary font-bold">DH00118</td><td class="px-lg py-md">Lốp Xe Tân Bình</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">30</td><td class="px-lg py-md text-on-surface-variant">28/04/2026</td><td class="px-lg py-md text-on-surface-variant">28/04/2026 14:00</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+      </tbody>
+    </table>
+    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant">
+      <span class="text-label-sm text-on-surface-variant">Hiển thị 5 trên 155 đơn</span>
+      <div class="flex items-center gap-xs">
+        <button class="w-8 h-8 rounded bg-primary text-on-primary text-label-md">1</button>
+        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">2</button>
+        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">3</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

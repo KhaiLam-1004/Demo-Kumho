@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-md">
+
+<main class="w-full max-w-[440px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-lg md:p-xl relative z-10">
+
+  <!-- Logo -->
+  <div class="flex flex-col items-center mb-xl">
+    <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-sm">
+      <span class="material-symbols-outlined text-primary text-[32px]">tire_repair</span>
+    </div>
+    <h1 class="font-h2 text-h2 text-primary">Kumho NPP Portal</h1>
+  </div>
+
+  <div class="mb-lg">
+    <h2 class="text-h1 font-bold text-on-surface">Đăng nhập</h2>
+  </div>
+
+  <!-- Hướng dẫn -->
+  <div class="bg-primary/5 border border-primary/20 rounded-lg p-md mb-lg">
+    <div class="flex items-center gap-sm mb-xs">
+      <span class="material-symbols-outlined text-primary text-[20px]">info</span>
+      <span class="font-label-md text-primary font-bold">Hướng dẫn đăng nhập</span>
+    </div>
+    <ul class="space-y-xs">
+      <li class="text-body-md text-on-surface-variant flex items-center gap-xs">👤 NPP: dùng <b>số điện thoại</b> + mật khẩu</li>
+      <li class="text-body-md text-on-surface-variant flex items-center gap-xs">✉️ Kumho / Admin: dùng <b>email</b> + mật khẩu</li>
+    </ul>
+  </div>
+
+  <form id="login-form" class="space-y-lg" onsubmit="return false;">
+    <div class="space-y-xs">
+      <label class="font-label-md text-on-surface" for="identifier">Email hoặc Số điện thoại</label>
+      <div class="relative">
+        <input id="identifier" name="identifier" type="text" autocomplete="username" required
+               placeholder="VD: admin@kumho.vn hoặc 0912345678"
+               class="w-full px-md py-2.5 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-body-md placeholder:text-on-surface-variant/50">
+      </div>
+      <p id="role-hint" class="text-label-sm text-on-surface-variant mt-1 min-h-[16px]"></p>
+    </div>
+
+    <div class="space-y-xs">
+      <div class="flex justify-between items-center">
+        <label class="font-label-md text-on-surface" for="password">Mật khẩu</label>
+        <a href="#" class="text-label-sm text-primary hover:underline">Quên mật khẩu?</a>
+      </div>
+      <div class="relative">
+        <input id="password" name="password" type="password" required value="kumho2026"
+               placeholder="••••••••"
+               class="w-full px-md py-2.5 pr-10 bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all text-body-md placeholder:text-on-surface-variant/50">
+        <button type="button" id="toggle-pw" class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors">
+          <span class="material-symbols-outlined text-[20px]">visibility</span>
+        </button>
+      </div>
+    </div>
+
+    <label class="flex items-center gap-xs text-label-sm text-on-surface-variant">
+      <input id="first-login" type="checkbox" class="rounded border-outline-variant text-primary focus:ring-primary">
+      Lần đầu đăng nhập (NPP cần đổi mật khẩu mặc định)
+    </label>
+
+    <button type="submit" class="w-full py-2.5 bg-primary text-on-primary font-bold text-label-md rounded-lg hover:bg-primary-container active:opacity-90 transition-all shadow-md">
+      Đăng nhập
+    </button>
+  </form>
+
+  <div class="mt-xl pt-lg border-t border-outline-variant">
+    <p class="text-body-md text-on-surface-variant text-center">
+      Tài khoản do Admin hệ thống cấp.<br>
+      <span class="text-primary font-bold cursor-pointer hover:underline">Liên hệ Admin</span> nếu chưa có tài khoản.
+    </p>
+  </div>
+
+  <!-- Demo accounts (read-only reference) -->
+  <details class="mt-md group" open>
+    <summary class="cursor-pointer flex items-center justify-between text-label-md font-bold text-primary hover:bg-primary/5 rounded-lg px-3 py-2 transition-all">
+      <span class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[18px]">key</span> Tài khoản demo
+      </span>
+      <span class="material-symbols-outlined text-[18px] transition-transform group-open:rotate-180">expand_more</span>
+    </summary>
+
+    <div class="mt-sm space-y-md">
+      <div>
+        <p class="text-label-sm font-bold uppercase tracking-widest text-primary mb-xs flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">admin_panel_settings</span> Kumho — đăng nhập bằng email
+        </p>
+        <table class="w-full text-label-sm border border-outline-variant rounded-lg overflow-hidden">
+          <thead class="bg-surface-container-low/40 text-on-surface-variant"><tr><th class="px-3 py-1.5 text-left">Email</th><th class="px-3 py-1.5 text-left">Mật khẩu</th><th class="px-3 py-1.5 text-left">Mô tả</th></tr></thead>
+          <tbody class="divide-y divide-outline-variant font-mono">
+            <tr><td class="px-3 py-1.5">admin@kumho.vn</td><td class="px-3 py-1.5">kumho2026</td><td class="px-3 py-1.5 font-sans">Quản trị viên</td></tr>
+            <tr><td class="px-3 py-1.5">ops@kumho.vn</td><td class="px-3 py-1.5">kumho2026</td><td class="px-3 py-1.5 font-sans">Vận hành</td></tr>
+            <tr><td class="px-3 py-1.5">marketing@kumho.vn</td><td class="px-3 py-1.5">kumho2026</td><td class="px-3 py-1.5 font-sans">Marketing</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <p class="text-label-sm font-bold uppercase tracking-widest text-secondary mb-xs flex items-center gap-1">
+          <span class="material-symbols-outlined text-[14px]">corporate_fare</span> NPP — đăng nhập bằng số điện thoại
+        </p>
+        <table class="w-full text-label-sm border border-outline-variant rounded-lg overflow-hidden">
+          <thead class="bg-surface-container-low/40 text-on-surface-variant"><tr><th class="px-3 py-1.5 text-left">SĐT</th><th class="px-3 py-1.5 text-left">Mật khẩu</th><th class="px-3 py-1.5 text-left">Mô tả</th></tr></thead>
+          <tbody class="divide-y divide-outline-variant font-mono">
+            <tr><td class="px-3 py-1.5">0912345678</td><td class="px-3 py-1.5">npp@default</td><td class="px-3 py-1.5 font-sans text-tertiary font-bold">Lần đầu (đổi mật khẩu)</td></tr>
+            <tr><td class="px-3 py-1.5">0901234567</td><td class="px-3 py-1.5">npp2026</td><td class="px-3 py-1.5 font-sans">NPP Miền Tây</td></tr>
+            <tr><td class="px-3 py-1.5">0987654321</td><td class="px-3 py-1.5">npp2026</td><td class="px-3 py-1.5 font-sans">NPP Miền Bắc</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-label-sm text-on-surface-variant italic">Demo không validate mật khẩu — chỉ dùng để mô phỏng UX.</p>
+    </div>
+  </details>
+</main>
+
+<!-- Decorative blur -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+  <div class="absolute -top-[10%] -left-[5%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+  <div class="absolute -bottom-[10%] -right-[5%] w-[30%] h-[30%] bg-secondary/5 blur-[100px] rounded-full"></div>
+</div>
+
+<script src="assets/auth.js"></script>
+<script>
+(function () {
+  var idEl = document.getElementById('identifier');
+  var hintEl = document.getElementById('role-hint');
+  var pwEl = document.getElementById('password');
+  var firstLoginEl = document.getElementById('first-login');
+  var form = document.getElementById('login-form');
+
+  // Live role hint as user types.
+  function updateHint() {
+    var role = Auth.detectRole(idEl.value);
+    if (!idEl.value) { hintEl.textContent = ''; hintEl.className = 'text-label-sm text-on-surface-variant mt-1 min-h-[16px]'; return; }
+    if (role === 'kumho') {
+      hintEl.innerHTML = '<span class="material-symbols-outlined text-[14px] align-middle">admin_panel_settings</span> Đăng nhập với vai trò <b>Kumho Admin</b>';
+      hintEl.className = 'text-label-sm text-primary mt-1 min-h-[16px] flex items-center gap-1';
+    } else {
+      hintEl.innerHTML = '<span class="material-symbols-outlined text-[14px] align-middle">corporate_fare</span> Đăng nhập với vai trò <b>NPP</b>';
+      hintEl.className = 'text-label-sm text-secondary mt-1 min-h-[16px] flex items-center gap-1';
+    }
+  }
+  idEl.addEventListener('input', updateHint);
+
+  // Show/hide password.
+  document.getElementById('toggle-pw').addEventListener('click', function () {
+    pwEl.type = pwEl.type === 'password' ? 'text' : 'password';
+  });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!idEl.value.trim()) { idEl.focus(); return; }
+    var session = Auth.login(idEl.value.trim(), { firstLogin: firstLoginEl.checked });
+    if (session.firstLogin) {
+      location.href = 'doi-mat-khau-lan-dau.html';
+    } else if (session.role === 'kumho') {
+      location.href = 'kumho/duyet-dai-ly.html';
+    } else {
+      location.href = 'npp/quan-ly-dai-ly.html';
+    }
+  });
+
+  // If already logged in, jump straight to portal.
+  var existing = Auth.getSession();
+  if (existing) {
+    if (existing.firstLogin) location.href = 'doi-mat-khau-lan-dau.html';
+    else location.href = (existing.role === 'kumho' ? 'kumho/duyet-dai-ly.html' : 'npp/quan-ly-dai-ly.html');
+  }
+})();
+</script>
+
+</body>
+</html>

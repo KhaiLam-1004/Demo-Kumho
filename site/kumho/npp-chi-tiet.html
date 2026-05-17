@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết NPP · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="quan-ly-npp" data-breadcrumb="Quản lý NPP|DV Lốp Miền Đông"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+  <div class="max-w-[1200px] mx-auto">
+
+    <div class="flex items-center justify-between mb-lg">
+      <div class="flex items-center gap-md">
+        <a href="quan-ly-npp.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
+        <div>
+          <h1 class="text-h1 font-bold">Công ty TNHH DV Lốp Miền Đông</h1>
+          <p class="text-body-md text-on-surface-variant mt-xs">Mã NPP: <b>NPP-BD-0012</b> · <span class="text-secondary font-bold">Đang hoạt động</span></p>
+        </div>
+      </div>
+      <div class="flex gap-sm">
+        <button class="px-lg py-sm border border-error text-error font-bold rounded-lg hover:bg-error/5">Tạm khoá</button>
+        <button class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5">Reset mật khẩu</button>
+        <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container">Chỉnh sửa</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-gutter">
+      <section class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+        <h3 class="font-h3 text-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-primary">business</span> Thông tin doanh nghiệp</h3>
+        <div class="grid grid-cols-2 gap-lg">
+          <div><label class="text-label-sm text-outline uppercase">Tên đầy đủ</label><p class="font-body-lg mt-1">Công ty TNHH Dịch vụ Lốp Miền Đông</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Mã số thuế</label><p class="font-body-lg mt-1">3700123456</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Người đại diện</label><p class="font-body-lg mt-1">Bà Trần Thị Minh</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Số điện thoại</label><p class="font-body-lg mt-1">0901 234 567</p></div>
+          <div class="col-span-2"><label class="text-label-sm text-outline uppercase">Email công ty</label><p class="font-body-lg mt-1">contact@miendongtire.vn</p></div>
+          <div class="col-span-2"><label class="text-label-sm text-outline uppercase">Địa chỉ kho chính</label><p class="font-body-lg mt-1">Lô 45, KCN Sóng Thần 2, Thủ Dầu Một, Bình Dương</p></div>
+        </div>
+      </section>
+
+      <section class="col-span-12 lg:col-span-4 bg-surface-container-low border border-outline-variant rounded-xl p-lg">
+        <h3 class="font-h3 text-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-outline">analytics</span> Tổng quan</h3>
+        <div class="space-y-md">
+          <div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/60 flex items-center justify-between">
+            <div><p class="text-label-sm text-on-surface-variant">Tổng đại lý</p><p class="text-h2 font-bold">18</p></div>
+            <span class="material-symbols-outlined text-primary text-[32px]">groups</span>
+          </div>
+          <div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/60 flex items-center justify-between">
+            <div><p class="text-label-sm text-on-surface-variant">Doanh số tháng</p><p class="text-h2 font-bold text-secondary">412 lốp</p></div>
+            <span class="material-symbols-outlined text-secondary text-[32px]">trending_up</span>
+          </div>
+          <div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/60 flex items-center justify-between">
+            <div><p class="text-label-sm text-on-surface-variant">Đại lý đạt scheme</p><p class="text-h2 font-bold">7</p></div>
+            <span class="material-symbols-outlined text-tertiary text-[32px]">redeem</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+        <div class="p-lg border-b border-outline-variant flex items-center justify-between">
+          <h3 class="font-h3 text-h3 flex items-center gap-2"><span class="material-symbols-outlined text-primary">groups</span> Đại lý do NPP này quản lý</h3>
+          <a href="quan-ly-dai-ly.html" class="text-primary text-label-md font-bold hover:underline">Xem tất cả →</a>
+        </div>
+        <table class="w-full text-left">
+          <thead><tr class="bg-surface-container-low/40">
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Mã ĐL</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Tên đại lý</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Tích luỹ scheme</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+          </tr></thead>
+          <tbody class="divide-y divide-outline-variant">
+            <tr><td class="px-lg py-md text-primary font-bold">DL-TB-001</td><td class="px-lg py-md">Lốp Xe Tân Bình</td><td class="px-lg py-md"><div class="flex items-center gap-2"><div class="w-24 h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-secondary" style="width:90%"></div></div><span class="text-label-sm font-bold">450/500</span></div></td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Hoạt động</span></td></tr>
+            <tr><td class="px-lg py-md text-primary font-bold">DL-Q7-042</td><td class="px-lg py-md">Auto Zone Quận 7</td><td class="px-lg py-md"><div class="flex items-center gap-2"><div class="w-24 h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-secondary" style="width:100%"></div></div><span class="text-label-sm font-bold text-secondary">500/500 ✓</span></div></td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đạt scheme</span></td></tr>
+            <tr><td class="px-lg py-md text-primary font-bold">DL-BD-098</td><td class="px-lg py-md">Vỏ Xe Bình Dương</td><td class="px-lg py-md"><div class="flex items-center gap-2"><div class="w-24 h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary" style="width:40%"></div></div><span class="text-label-sm">200/500</span></div></td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Hoạt động</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

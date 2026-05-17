@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi" style="width: 1280px; height: 1024px; overflow: hidden; position: relative;"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5; /* Subtle background for the centered container */
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .app-container {
+            width: 1280px;
+            height: 1024px;
+            position: relative;
+            background-color: #fcf8ff;
+            overflow: hidden;
+            display: flex;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#b55d00",
+                        "tertiary": "#904900",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#fcf8ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed": "#002113",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#6063ee",
+                        "surface-dim": "#dbd8e4",
+                        "outline-variant": "#c7c4d7",
+                        "primary": "#4648d4",
+                        "on-tertiary-fixed": "#301400",
+                        "inverse-primary": "#c0c1ff",
+                        "secondary": "#006c49",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-surface-variant": "#464554",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "background": "#fcf8ff",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-container": "#efecf8",
+                        "secondary-fixed": "#6ffbbe",
+                        "surface-variant": "#e4e1ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-tertiary-container": "#fffbff",
+                        "on-surface": "#1b1b23",
+                        "surface-container-high": "#e9e6f3",
+                        "on-background": "#1b1b23",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-low": "#f5f2fe",
+                        "on-primary-container": "#fffbff",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "inverse-on-surface": "#f2effb",
+                        "secondary-container": "#6cf8bb",
+                        "outline": "#767586",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#e4e1ed",
+                        "surface-bright": "#fcf8ff",
+                        "primary-fixed": "#e1e0ff",
+                        "surface-tint": "#494bd6",
+                        "inverse-surface": "#303038"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "unit": "4px",
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h3": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body>
+<div class="app-container">
+<!-- SideNavBar -->
+<aside class="w-64 bg-surface-container-lowest border-r border-outline-variant flex flex-col py-lg flex-shrink-0">
+<div class="px-md mb-lg">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 bg-primary-container rounded-lg flex items-center justify-center text-on-primary-container">
+<span class="material-symbols-outlined">tire_repair</span>
+</div>
+<div>
+<h2 class="font-h2 text-h2 font-bold text-primary">Kumho NPP</h2>
+<p class="text-on-surface-variant font-label-sm text-[10px] tracking-wider uppercase">Distributor Portal</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1"><a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-body-md text-body-md font-medium">Quản lý đại lý</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-primary-container/10 text-primary border-l-4 border-primary transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions" style="font-variation-settings: 'FILL' 1;">pending_actions</span>
+<span class="font-body-md text-body-md font-medium">Đơn hàng cần xác nhận</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-body-md text-body-md font-medium">Lịch sử đơn hàng</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-body-md text-body-md font-medium">Lịch sử trả thưởng</span>
+</a></nav>
+<div class="px-md pt-lg border-t border-outline-variant mt-auto">
+<div class="flex items-center gap-sm p-sm rounded-xl hover:bg-surface-container-low cursor-pointer transition-colors">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">
+                        S
+                    </div>
+<div class="overflow-hidden">
+<p class="text-body-md font-semibold truncate">Admin Distributor</p>
+<p class="text-label-sm text-on-surface-variant">Thoát</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-on-surface-variant" data-icon="logout">logout</span>
+</div>
+</div>
+</aside>
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="h-[60px] bg-surface-container-lowest border-b border-outline-variant flex justify-between items-center px-gutter flex-shrink-0">
+<h3 class="font-h3 text-h3 font-bold text-primary">Kumho NPP Portal</h3>
+<div class="flex items-center gap-lg">
+<button class="flex items-center gap-xs text-on-surface-variant hover:bg-surface-container-low p-sm rounded-xl transition-all active:opacity-80">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md">Hỗ trợ</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-sm cursor-pointer group">
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden">
+<img alt="Distributor Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7PDxZwxJWJgXlZ9UaLNmDspeMyCN7otITuMNwVGn0YlZo2_Ae_h3QI27mR_BOrOWIjr1xMdiROv9aQ3uiWQtMnHCAXAKLBnqoPLwq6UeBnfywXmvWiRWDmj8pEtiHPYEJlgEOqI_ruEAvbvGgrJZLhePoMJvd2Y0gu3iv1NGZuK6C11LquxYJ4xr8jLkiZpOipub1li0bHgm_iiZ3h70bE_4zpBMll3k_FsF213GPEMNm7C3gmHVtcZv_ajMeKpJKI2lfB9OUKMuJ"/>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-y-0.5 transition-transform">expand_more</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-gutter bg-background">
+<div class="max-w-7xl mx-auto space-y-lg">
+<!-- Page Title -->
+<div class="flex items-center justify-between">
+<h1 class="font-h1 text-h1 text-on-surface">Đơn hàng cần xác nhận (3)</h1>
+</div>
+<!-- Stats Bento Grid -->
+<div class="grid grid-cols-3 gap-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-start gap-lg">
+<div class="w-14 h-14 rounded-2xl bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[32px]" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant tracking-wider uppercase mb-xs">CHỜ XÁC NHẬN</p>
+<p class="font-h1 text-h1 text-tertiary">3</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-start gap-lg">
+<div class="w-14 h-14 rounded-2xl bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[32px]" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant tracking-wider uppercase mb-xs">ĐÃ XÁC NHẬN THÁNG NÀY</p>
+<p class="font-h1 text-h1 text-secondary">28</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex items-start gap-lg">
+<div class="w-14 h-14 rounded-2xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[32px]" data-icon="tire">tire_repair</span>
+</div>
+<div>
+<p class="font-label-sm text-on-surface-variant tracking-wider uppercase mb-xs">TỔNG LỐP THÁNG NÀY</p>
+<p class="font-h1 text-h1 text-primary">1,245</p>
+</div>
+</div>
+</div>
+<!-- Main Data Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+<!-- Filter Header -->
+<div class="p-lg border-b border-outline-variant flex gap-md items-center justify-between">
+<div class="relative flex-1 max-w-md">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-sm bg-surface-container-low border border-outline rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-body-md transition-all" placeholder="Tìm mã đơn / đại lý..." type="text"/>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative w-64">
+<select class="w-full pl-md pr-xl py-sm bg-surface-container-low border border-outline rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary text-body-md appearance-none">
+<option>Tất cả Đại lý</option>
+<option>Đại lý Lốp Tân Bình</option>
+<option>Đại lý Lốp Quận 7</option>
+<option>Đại lý Lốp Thủ Đức</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant">Mã đơn</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant">Đại lý</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant">Ngày đặt</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant">Loại lốp</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant">Tổng SL</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant border-b border-outline-variant text-right">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-body-md font-bold text-primary">DH00128</td>
+<td class="px-lg py-lg font-body-md font-medium">Đại lý Lốp Tân Bình</td>
+<td class="px-lg py-lg font-body-md text-on-surface-variant">07/05/2026</td>
+<td class="px-lg py-lg font-body-md">3 loại</td>
+<td class="px-lg py-lg font-body-md font-semibold">50 lốp</td>
+<td class="px-lg py-lg text-right">
+<button class="px-md py-sm border border-primary text-primary font-label-md rounded-lg hover:bg-primary-container/10 transition-colors">Xem chi tiết</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-body-md font-bold text-primary">DH00127</td>
+<td class="px-lg py-lg font-body-md font-medium">Đại lý Lốp Quận 7</td>
+<td class="px-lg py-lg font-body-md text-on-surface-variant">07/05/2026</td>
+<td class="px-lg py-lg font-body-md">1 loại</td>
+<td class="px-lg py-lg font-body-md font-semibold">30 lốp</td>
+<td class="px-lg py-lg text-right">
+<button class="px-md py-sm border border-primary text-primary font-label-md rounded-lg hover:bg-primary-container/10 transition-colors">Xem chi tiết</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-lg py-lg font-body-md font-bold text-primary">DH00126</td>
+<td class="px-lg py-lg font-body-md font-medium">Đại lý Lốp Thủ Đức</td>
+<td class="px-lg py-lg font-body-md text-on-surface-variant">06/05/2026</td>
+<td class="px-lg py-lg font-body-md">2 loại</td>
+<td class="px-lg py-lg font-body-md font-semibold">40 lốp</td>
+<td class="px-lg py-lg text-right">
+<button class="px-md py-sm border border-primary text-primary font-label-md rounded-lg hover:bg-primary-container/10 transition-colors">Xem chi tiết</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination Footer -->
+<div class="px-lg py-md bg-surface-container-lowest border-t border-outline-variant flex items-center justify-between">
+<p class="text-label-sm text-on-surface-variant">Hiển thị 3 trên tổng số 3 đơn hàng</p>
+<div class="flex items-center gap-xs">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary text-on-primary font-label-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded-lg border border-outline-variant text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Contextual Banner -->
+</div>
+</main>
+</div>
+</div>
+<div aria-hidden="true" data-snapdom-sandbox="true" id="snapdom-sandbox" style="position: absolute; left: -9999px; top: -9999px; width: 0px; height: 0px; overflow: hidden;"></div></body></html>

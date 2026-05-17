@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lịch sử trả quà · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="lich-su-tra-qua"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+    <div>
+      <h1 class="text-h1 font-bold">Lịch sử trả quà</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Đại lý đạt scheme tích luỹ (500 lốp / 3 tháng). Kumho liên hệ giao quà.</p>
+    </div>
+    <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container flex items-center gap-2">
+      <span class="material-symbols-outlined text-[20px]">download</span> Xuất Excel
+    </button>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
+      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã giao quà</p><p class="text-[36px] font-bold mt-2 leading-none">38</p></div>
+      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">redeem</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary-container flex items-center justify-between">
+      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Đang chờ giao</p><p class="text-[36px] font-bold mt-2 leading-none">7</p></div>
+      <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">local_shipping</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
+      <div><p class="text-label-sm text-primary uppercase tracking-wider">Tổng giá trị quà</p><p class="text-[28px] font-bold mt-2 leading-none">312 tr.đ</p></div>
+      <span class="material-symbols-outlined text-primary text-[40px] opacity-40">paid</span>
+    </div>
+  </div>
+
+  <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
+      <div class="relative w-full md:w-80">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm đại lý...">
+      </div>
+      <div class="flex gap-md">
+        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"><option>Tất cả scheme</option><option>Q1/2026 — 500 lốp</option><option>Q4/2025 — 500 lốp</option></select>
+        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"><option>Tất cả trạng thái</option><option>Đã giao</option><option>Đang chờ</option></select>
+      </div>
+    </div>
+    <table class="w-full text-left">
+      <thead><tr class="bg-surface-container-low/40">
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">NPP</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Scheme</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Tích luỹ</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Quà thưởng</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đạt</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái giao</th>
+      </tr></thead>
+      <tbody class="divide-y divide-outline-variant">
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">Q7</div><div><div class="font-label-md font-bold">Auto Zone Quận 7</div><div class="text-label-sm text-on-surface-variant">DL-Q7-042</div></div></div></td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Đông</td>
+          <td class="px-lg py-md text-body-md">Q1/2026 — 500 lốp</td>
+          <td class="px-lg py-md text-right font-bold text-secondary">500</td>
+          <td class="px-lg py-md text-body-md">Smart TV 55"</td>
+          <td class="px-lg py-md text-on-surface-variant">22/03/2026</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">TB</div><div><div class="font-label-md font-bold">Lốp Xe Tân Bình</div><div class="text-label-sm text-on-surface-variant">DL-TB-001</div></div></div></td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Đông</td>
+          <td class="px-lg py-md text-body-md">Q1/2026 — 500 lốp</td>
+          <td class="px-lg py-md text-right font-bold text-secondary">512</td>
+          <td class="px-lg py-md text-body-md">Tablet 11"</td>
+          <td class="px-lg py-md text-on-surface-variant">12/04/2026</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang chờ giao</span></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">LA</div><div><div class="font-label-md font-bold">Đại lý Long An S1</div><div class="text-label-sm text-on-surface-variant">DL-LA-022</div></div></div></td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Tây</td>
+          <td class="px-lg py-md text-body-md">Q4/2025 — 500 lốp</td>
+          <td class="px-lg py-md text-right font-bold text-secondary">501</td>
+          <td class="px-lg py-md text-body-md">Máy lạnh inverter</td>
+          <td class="px-lg py-md text-on-surface-variant">20/12/2025</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant">
+      <span class="text-label-sm text-on-surface-variant">Hiển thị 3 trên 45 lần trả quà</span>
+      <div class="flex items-center gap-xs">
+        <button class="w-8 h-8 rounded bg-primary text-on-primary text-label-md">1</button>
+        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">2</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

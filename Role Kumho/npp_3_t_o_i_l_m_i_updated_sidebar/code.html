@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#303038",
+                    "tertiary-fixed": "#ffdcc5",
+                    "secondary-container": "#6cf8bb",
+                    "on-tertiary": "#ffffff",
+                    "on-surface": "#1b1b23",
+                    "primary": "#4648d4",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "primary-fixed": "#e1e0ff",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#e9e6f3",
+                    "on-tertiary-container": "#fffbff",
+                    "surface-variant": "#e4e1ed",
+                    "outline-variant": "#c7c4d7",
+                    "secondary": "#006c49",
+                    "on-secondary-fixed": "#002113",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "surface-container-low": "#f5f2fe",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "inverse-on-surface": "#f2effb",
+                    "surface-container": "#efecf8",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-tertiary-fixed": "#301400",
+                    "on-secondary-container": "#00714d",
+                    "primary-container": "#6063ee",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#07006c",
+                    "surface": "#fcf8ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "surface-dim": "#dbd8e4",
+                    "on-primary-container": "#fffbff",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#fcf8ff",
+                    "inverse-primary": "#c0c1ff",
+                    "surface-tint": "#494bd6",
+                    "tertiary": "#904900",
+                    "tertiary-container": "#b55d00",
+                    "outline": "#767586",
+                    "on-surface-variant": "#464554",
+                    "on-background": "#1b1b23",
+                    "background": "#fcf8ff",
+                    "surface-container-highest": "#e4e1ed"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xl": "32px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "md": "16px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "40px"
+            },
+            "fontFamily": {
+                    "h3": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "h2": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "h1": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fcf8ff; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[256px] bg-surface border-r border-outline-variant flex flex-col overflow-y-auto">
+<div class="p-lg">
+<h2 class="font-h2 text-h2 font-bold text-primary">Kumho NPP Portal</h2>
+<p class="font-label-md text-label-md text-on-surface-variant mt-xs">QUẢN LÝ</p>
+</div>
+<nav class="flex-1 px-sm">
+<!-- 1. Quản lý đại lý (Active) -->
+<a class="flex items-center gap-3 px-4 py-3 text-primary bg-primary/10 border-l-4 border-primary transition-colors rounded-r-lg mb-1 scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Quản lý đại lý</span>
+</a>
+<!-- 2. Đơn hàng cần xác nhận -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mb-1" href="#">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+<span class="font-label-md text-label-md">Đơn hàng cần xác nhận</span>
+</a>
+<!-- 3. Lịch sử đơn hàng -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mb-1" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-label-md text-label-md">Lịch sử đơn hàng</span>
+</a>
+<!-- 4. Lịch sử trả thưởng -->
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high transition-colors rounded-lg mb-1" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Lịch sử trả thưởng</span>
+</a>
+</nav>
+<div class="mt-auto p-lg border-t border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-bold">K</div>
+<div>
+<p class="font-label-md text-label-md font-bold">NPP Kumho</p>
+<p class="text-xs text-on-surface-variant">Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] h-16 bg-surface border-b border-outline-variant shadow-sm flex justify-end items-center px-lg gap-md z-10">
+<button class="hover:bg-surface-container rounded-full p-2 transition-opacity active:opacity-80">
+<span class="material-symbols-outlined text-primary" data-icon="help">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">S</div>
+<button class="font-label-md text-label-md text-primary hover:bg-surface-container rounded-lg px-4 py-2 transition-opacity active:opacity-80">Đăng xuất</button>
+</header>
+<!-- Main Content -->
+<main class="ml-[256px] pt-16 min-h-screen">
+<div class="p-xl max-w-5xl mx-auto">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-2 mb-md text-on-surface-variant">
+<span class="font-label-md text-label-md">Quản lý đại lý</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="font-label-md text-label-md text-primary font-bold">Tạo mới</span>
+</nav>
+<!-- Page Title -->
+<div class="mb-lg">
+<h1 class="font-h1 text-h1 text-on-surface">Tạo đại lý mới</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Cung cấp thông tin chi tiết để đăng ký đại lý mới trong hệ thống.</p>
+</div>
+<!-- Content Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+<div class="p-lg border-b border-outline-variant bg-surface-container-low/30">
+<h3 class="font-h3 text-h3">Thông tin đại lý</h3>
+</div>
+<div class="p-lg space-y-lg">
+<!-- Form Row: SDT & Tên -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md block">Số điện thoại</label>
+<input class="w-full h-12 px-md rounded-lg border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md" placeholder="Nhập số điện thoại" type="text" value="0987654321"/>
+<p class="text-secondary flex items-center gap-1 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                Số điện thoại hợp lệ
+                            </p>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md block">Tên đại lý</label>
+<input class="w-full h-12 px-md rounded-lg border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md" placeholder="Ví dụ: Đại lý Kumho Tân Bình" type="text"/>
+</div>
+</div>
+<!-- Form Row: Khu vực -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md block">Khu vực</label>
+<div class="relative">
+<select class="w-full h-12 px-md pr-xl appearance-none rounded-lg border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md bg-transparent">
+<option>Miền Nam</option>
+<option>Miền Trung</option>
+<option>Miền Bắc</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Form Row: Địa chỉ -->
+<div class="space-y-sm">
+<label class="font-label-md text-label-md block">Địa chỉ</label>
+<textarea class="w-full min-h-[100px] p-md rounded-lg border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all font-body-md text-body-md" placeholder="Nhập địa chỉ chi tiết (Số nhà, đường, phường/xã...)"></textarea>
+</div>
+<!-- Note Box -->
+<div class="flex gap-md p-md bg-surface-container-low rounded-lg border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary" data-icon="info">info</span>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Đại lý sẽ được Kumho duyệt trước khi kích hoạt. Bạn có thể theo dõi trạng thái tại mục Lịch sử quản lý.
+                        </p>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="p-lg bg-surface-container-high/20 border-t border-outline-variant flex justify-end items-center gap-md">
+<button class="px-xl py-3 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Hủy</button>
+<button class="px-xl py-3 rounded-lg font-label-md text-label-md bg-primary text-on-primary hover:opacity-90 active:scale-95 transition-all shadow-md">Gửi duyệt</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

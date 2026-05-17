@@ -1,0 +1,330 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f5f2fe",
+                        "inverse-on-surface": "#f2effb",
+                        "background": "#fcf8ff",
+                        "tertiary": "#904900",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "primary": "#4648d4",
+                        "on-surface-variant": "#464554",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-primary-container": "#fffbff",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#dbd8e4",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#e1e0ff",
+                        "secondary-fixed": "#6ffbbe",
+                        "on-background": "#1b1b23",
+                        "tertiary-container": "#b55d00",
+                        "on-primary-fixed": "#07006c",
+                        "surface-variant": "#e4e1ed",
+                        "inverse-primary": "#c0c1ff",
+                        "surface-container-high": "#e9e6f3",
+                        "surface-container": "#efecf8",
+                        "on-tertiary-fixed": "#301400",
+                        "primary-container": "#6063ee",
+                        "outline-variant": "#c7c4d7",
+                        "surface": "#fcf8ff",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#4edea3",
+                        "on-surface": "#1b1b23",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-container": "#00714d",
+                        "tertiary-fixed": "#ffdcc5",
+                        "secondary-container": "#6cf8bb",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e4e1ed",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "inverse-surface": "#303038",
+                        "outline": "#767586",
+                        "on-tertiary-container": "#fffbff",
+                        "on-secondary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "surface-tint": "#494bd6",
+                        "secondary": "#006c49",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#fcf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "margin-desktop": "40px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "lg": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h1": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h2": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col z-50">
+<div class="p-lg flex flex-col gap-xs">
+<h1 class="text-h2 font-h2 text-primary dark:text-primary-fixed-dim tracking-tight">Kumho Management</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Portal Management</p>
+</div>
+<nav class="mt-md flex-1 overflow-y-auto"><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="how_to_reg">how_to_reg</span>
+    <span class="font-label-md text-label-md">Duyệt đại lý</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+    <span class="font-label-md text-label-md">Quản lý NPP</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-bold border-l-4 border-primary transition-all" href="#">
+    <span class="material-symbols-outlined" data-icon="groups" style="font-variation-settings: 'FILL' 1;">groups</span>
+    <span class="font-label-md text-label-md">Quản lý đại lý</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+    <span class="font-label-md text-label-md">Quản lý đơn hàng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200" href="#">
+    <span class="material-symbols-outlined" data-icon="redeem">redeem</span>
+    <span class="font-label-md text-label-md">Lịch sử trả quà</span>
+</a></nav>
+<div class="p-md mt-auto">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container">
+<div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-[12px] font-bold">KV</div>
+<div class="overflow-hidden">
+<p class="text-label-sm font-bold truncate">Kumho Violet Admin</p>
+<p class="text-[10px] text-on-surface-variant truncate">admin@kumhoviolet.com</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-[240px] h-[60px] bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex items-center justify-end px-margin-desktop gap-lg z-40">
+<div class="flex items-center gap-sm">
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<button class="hover:bg-surface-container-low p-2 rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User Profile Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate manager wearing a crisp white shirt against a neutral studio background. The lighting is soft and even, highlighting a friendly yet professional expression. The overall style is clean and high-key, fitting for an enterprise user profile within a modern digital dashboard interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaXAlE3nLqHmeKHq9D2U0cd0iWdIpYDCVRRYcPX-DK0NSH0r_U90d9wli3eCHz86qT4to3itbl3_oHLGgZpoPuVCfkw_jTY6osXyMRPLnccINtba95ZIE6fZ1ZW3LzvfcuLmMm52C3RDAwOFaj4bXmpCHpsQwsoX58GP4xTJM_fJkLfiuXF47dGlAfY_uzsXQ8jR517Pv2G2hRFj-coOWn4TL1_nHNiPwn8tc9FrP8qpceHStR1__a5ydMq5HkYgGIdZKIQmuyi7xY">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+<div class="max-w-[1200px] mx-auto flex flex-col gap-lg">
+<!-- Page Header Section -->
+<section class="flex items-end justify-between">
+<div class="flex flex-col gap-unit">
+<h2 class="font-h1 text-h1 text-on-surface">Quản lý đại lý</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Danh sách tất cả các đại lý trong hệ thống toàn quốc.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-2 bg-primary text-on-primary px-lg py-sm rounded-lg font-label-md transition-all hover:bg-primary/90 active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="download">download</span>
+                        Xuất Excel
+                    </button>
+</div>
+</section>
+<!-- Stats/Summary Grid (Bento Style) -->
+<!-- Filter & Table Section -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-[0px_4px_6px_-1px_rgba(0,0,0,0.05)] overflow-hidden">
+<!-- Inner Toolbar -->
+<div class="p-md border-b border-outline-variant flex flex-wrap gap-md items-center justify-between bg-surface-container-low/30">
+<div class="relative w-full max-w-[320px]">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg font-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Tìm tên đại lý, SĐT..." type="text">
+</div>
+<div class="flex items-center gap-sm">
+<select class="bg-white border border-outline-variant rounded-lg font-body-md py-2 px-4 focus:ring-2 focus:ring-primary/20 outline-none">
+<option>Tất cả Khu vực</option>
+<option>Miền Bắc</option>
+<option>Miền Trung</option>
+<option>Miền Nam</option>
+</select>
+<select class="bg-white border border-outline-variant rounded-lg font-body-md py-2 px-4 focus:ring-2 focus:ring-primary/20 outline-none">
+<option>Tất cả Trạng thái</option>
+<option>Hoạt động</option>
+<option>Đã khoá</option>
+</select>
+</div>
+</div>
+<!-- Main Data Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50 border-b border-outline-variant">
+<th class="px-lg py-md font-label-md text-on-surface-variant">Tên đại lý</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">SĐT</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">Khu vực</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant">NPP</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-center">Trạng thái</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-right">Tổng số lốp</th>
+<th class="px-lg py-md font-label-md text-on-surface-variant text-center">Thao tác</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Sample 1 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<span class="font-label-md text-on-surface">Kumho Tân Bình</span>
+</td>
+<td class="px-lg py-md text-body-md">0901 234 567</td>
+<td class="px-lg py-md text-body-md">TP. Hồ Chí Minh</td>
+<td class="px-lg py-md text-body-md">NPP Miền Nam</td>
+<td class="px-lg py-md text-center">
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-secondary text-[12px] font-bold">Hoạt động</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-primary">12,450</td>
+<td class="px-lg py-md text-center">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Sample 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<span class="font-label-md text-on-surface">Kumho Quận 7</span>
+</td>
+<td class="px-lg py-md text-body-md">0902 345 678</td>
+<td class="px-lg py-md text-body-md">TP. Hồ Chí Minh</td>
+<td class="px-lg py-md text-body-md">NPP Miền Nam</td>
+<td class="px-lg py-md text-center">
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-secondary text-[12px] font-bold">Hoạt động</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-primary">8,920</td>
+<td class="px-lg py-md text-center">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Sample 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<span class="font-label-md text-on-surface">Kumho Thủ Đức</span>
+</td>
+<td class="px-lg py-md text-body-md">0903 456 789</td>
+<td class="px-lg py-md text-body-md">TP. Hồ Chí Minh</td>
+<td class="px-lg py-md text-body-md">NPP Miền Nam</td>
+<td class="px-lg py-md text-center">
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-secondary text-[12px] font-bold">Hoạt động</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-primary">15,100</td>
+<td class="px-lg py-md text-center">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Sample 4 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-lg py-md">
+<span class="font-label-md text-on-surface">Kumho Cầu Giấy</span>
+</td>
+<td class="px-lg py-md text-body-md">0911 222 333</td>
+<td class="px-lg py-md text-body-md">Hà Nội</td>
+<td class="px-lg py-md text-body-md">NPP Miền Bắc</td>
+<td class="px-lg py-md text-center">
+<span class="px-3 py-1 rounded-full bg-secondary-container/20 text-secondary text-[12px] font-bold">Hoạt động</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-primary">6,340</td>
+<td class="px-lg py-md text-center">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Sample 5 (Locked) -->
+<tr class="hover:bg-surface-container-low transition-colors bg-error-container/5">
+<td class="px-lg py-md">
+<span class="font-label-md text-on-surface">Kumho Hải Châu</span>
+</td>
+<td class="px-lg py-md text-body-md">0914 555 666</td>
+<td class="px-lg py-md text-body-md">Đà Nẵng</td>
+<td class="px-lg py-md text-body-md">NPP Miền Trung</td>
+<td class="px-lg py-md text-center">
+<span class="px-3 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold">Đã khoá</span>
+</td>
+<td class="px-lg py-md text-right font-bold text-on-surface-variant">2,110</td>
+<td class="px-lg py-md text-center">
+<button class="text-primary hover:bg-primary-container/10 p-2 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="px-lg py-md border-t border-outline-variant flex items-center justify-between bg-surface-container-low/30">
+<p class="text-label-sm text-on-surface-variant">Hiển thị 1 - 5 trong tổng số 1,248 đại lý</p>
+<div class="flex items-center gap-xs">
+<button class="p-2 rounded-lg hover:bg-surface-container transition-all disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded-lg bg-primary text-on-primary font-label-md shadow-sm">1</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container font-label-md">2</button>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container font-label-md">3</button>
+<span class="px-2">...</span>
+<button class="w-8 h-8 rounded-lg hover:bg-surface-container font-label-md">250</button>
+<button class="p-2 rounded-lg hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Suppress because it's a management list, but adding for UX flow to create new if allowed, although requirement didn't specify, standard practice for high-end UI) -->
+<!-- Suppressed per rule "suppress the FAB on Settings, Profile, Details, and Transactional screens" - assuming Management as transactional-style focus -->
+
+
+</body></html>

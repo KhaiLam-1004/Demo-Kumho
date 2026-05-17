@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết đại lý · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="quan-ly-dai-ly" data-breadcrumb="Quản lý đại lý|Chi tiết"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+  <div class="max-w-[1200px] mx-auto">
+
+    <div class="flex items-center justify-between mb-lg gap-md flex-wrap">
+      <div class="flex items-center gap-md">
+        <a href="quan-ly-dai-ly.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
+        <div>
+          <div class="flex items-center gap-3 flex-wrap">
+            <h1 id="dl-name" class="text-h1 font-bold">—</h1>
+            <span id="dl-status-chip" class="px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">—</span>
+          </div>
+          <p class="text-body-md text-on-surface-variant mt-xs">
+            Mã: <b id="dl-code">—</b> · NPP: <b id="dl-npp">—</b> · Khu vực: <span id="dl-region">—</span>
+          </p>
+        </div>
+      </div>
+      <div class="flex gap-sm" id="dl-actions">
+        <button id="btn-reset-pw" class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5">Reset mật khẩu</button>
+        <button id="btn-toggle-suspend" class="px-lg py-sm border border-error text-error font-bold rounded-lg hover:bg-error/5">Tạm khoá</button>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-gutter">
+
+      <!-- Card: Thông tin đại lý -->
+      <section class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-primary">storefront</span> Thông tin đại lý</h3>
+        <div class="grid grid-cols-2 gap-lg">
+          <div><label class="text-label-sm text-outline uppercase">Tên đại lý</label><p id="info-name" class="font-body-lg mt-1">—</p></div>
+          <div>
+            <label class="text-label-sm text-outline uppercase">Số điện thoại</label>
+            <div class="flex items-center gap-2 mt-1">
+              <p id="info-phone" class="font-body-lg">—</p>
+              <span class="text-secondary text-label-sm font-bold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px] fill">check_circle</span> Đã xác thực
+              </span>
+            </div>
+          </div>
+          <div class="col-span-2"><label class="text-label-sm text-outline uppercase">Địa chỉ</label><p id="info-address" class="font-body-lg mt-1 leading-relaxed">—</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Ngày Kumho duyệt</label><p id="info-approved" class="font-body-lg mt-1">—</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Đăng nhập Miniapp gần nhất</label><p id="info-last-login" class="font-body-lg mt-1">—</p></div>
+        </div>
+      </section>
+
+      <!-- Card: NPP quản lý -->
+      <section class="col-span-12 lg:col-span-4 bg-surface-container-low border border-outline-variant rounded-xl p-lg">
+        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-outline">business</span> NPP quản lý</h3>
+        <div class="space-y-md">
+          <div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/60">
+            <label class="text-label-sm text-outline uppercase">Nhà phân phối</label>
+            <a href="quan-ly-npp.html" id="npp-name-link" class="block font-label-md font-bold text-primary mt-1 hover:underline">—</a>
+          </div>
+          <div><label class="text-label-sm text-outline">Mã NPP</label><p id="npp-code" class="text-body-md mt-1">—</p></div>
+          <div><label class="text-label-sm text-outline">Người tạo hồ sơ</label><p id="npp-creator" class="text-body-md mt-1">—</p></div>
+        </div>
+      </section>
+
+      <!-- Card: Tích luỹ scheme -->
+      <section class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-secondary">trending_up</span> Tích luỹ scheme</h3>
+
+        <div class="bg-surface-container border border-outline-variant rounded-lg p-md mb-md" id="scheme-current">
+          <div class="flex items-end justify-between mb-xs">
+            <span class="text-label-sm text-on-surface-variant uppercase">Q2/2026 (đang chạy)</span>
+            <span id="scheme-current-num" class="text-h3 font-bold">—</span>
+          </div>
+          <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div id="scheme-current-bar" class="h-full bg-primary" style="width:0%"></div></div>
+          <p id="scheme-current-note" class="text-label-sm text-on-surface-variant mt-2">—</p>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md" id="scheme-prev" hidden>
+          <div class="flex items-end justify-between mb-xs">
+            <span class="text-label-sm text-on-surface-variant uppercase">Q1/2026 (đã đạt)</span>
+            <span class="text-h3 font-bold text-secondary">500/500</span>
+          </div>
+          <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-secondary" style="width:100%"></div></div>
+          <p id="scheme-prev-note" class="text-label-sm text-secondary mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px] fill">verified</span> Quà: Smart TV 55" — đã giao 22/03/2026</p>
+        </div>
+      </section>
+
+      <!-- Card: Tổng quan giao dịch -->
+      <section class="col-span-12 lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-primary">analytics</span> Tổng quan giao dịch</h3>
+        <div class="space-y-md">
+          <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
+            <div><p class="text-label-sm text-on-surface-variant">Tổng đơn lifetime</p><p id="stat-orders" class="text-h2 font-bold">—</p></div>
+            <span class="material-symbols-outlined text-primary text-[28px]">receipt_long</span>
+          </div>
+          <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
+            <div><p class="text-label-sm text-on-surface-variant">Tổng số lốp</p><p id="stat-tires" class="text-h2 font-bold text-secondary">—</p></div>
+            <span class="material-symbols-outlined text-secondary text-[28px]">inventory_2</span>
+          </div>
+          <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
+            <div><p class="text-label-sm text-on-surface-variant">Quà đã nhận</p><p id="stat-gifts" class="text-h2 font-bold text-tertiary">—</p></div>
+            <span class="material-symbols-outlined text-tertiary text-[28px]">redeem</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card: Đơn hàng gần đây -->
+      <section class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+        <div class="p-lg border-b border-outline-variant flex items-center justify-between">
+          <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-primary">receipt_long</span> Đơn hàng gần đây</h3>
+          <a href="quan-ly-don-hang.html" class="text-primary font-bold text-label-md hover:underline">Xem toàn bộ →</a>
+        </div>
+        <table class="w-full text-left">
+          <thead><tr class="bg-surface-container-low/40">
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Mã đơn</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Số SKU</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Số lốp</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đặt</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">NPP xác nhận</th>
+            <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+          </tr></thead>
+          <tbody class="divide-y divide-outline-variant" id="orders-tbody">
+            <tr><td class="px-lg py-md text-primary font-bold">DH00130</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">28</td><td class="px-lg py-md text-on-surface-variant">14/05/2026</td><td class="px-lg py-md text-on-surface-variant">14/05/2026 16:00</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-primary font-bold">DH00124</td><td class="px-lg py-md">3</td><td class="px-lg py-md text-right font-bold">42</td><td class="px-lg py-md text-on-surface-variant">07/05/2026</td><td class="px-lg py-md text-on-surface-variant">07/05/2026 15:30</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-primary font-bold">DH00118</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">30</td><td class="px-lg py-md text-on-surface-variant">28/04/2026</td><td class="px-lg py-md text-on-surface-variant">28/04/2026 14:00</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+          </tbody>
+        </table>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<!-- Modal: Reset mật khẩu -->
+<div id="reset-pw-modal" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[480px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
+    <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <h4 class="font-h3">Reset mật khẩu đại lý</h4>
+      <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md mb-md">Hệ thống sẽ tạo mật khẩu mặc định mới và gửi qua ZNS cho <b id="rpw-dl-name">đại lý</b>. Đại lý sẽ phải đổi mật khẩu khi đăng nhập lần đầu.</p>
+      <div class="bg-tertiary-fixed/40 border border-tertiary-fixed-dim/60 rounded-lg p-md flex gap-md">
+        <span class="material-symbols-outlined text-tertiary">warning</span>
+        <p class="text-label-sm text-on-tertiary-fixed-variant">Sau khi reset, đại lý sẽ bị đăng xuất khỏi mọi phiên Miniapp đang mở.</p>
+      </div>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low flex justify-end gap-md">
+      <button data-modal-close class="px-lg py-sm rounded-lg text-on-surface-variant font-bold hover:bg-surface-dim">Hủy</button>
+      <button id="confirm-reset-pw" data-modal-close class="px-xl py-sm rounded-lg bg-primary text-on-primary font-bold shadow-md hover:bg-primary-container">Xác nhận reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Toggle suspend -->
+<div id="suspend-modal" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[520px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
+    <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <h4 id="suspend-title" class="font-h3">Tạm khoá đại lý</h4>
+      <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-lg space-y-md">
+      <p id="suspend-desc" class="text-body-md text-on-surface-variant">—</p>
+      <div id="suspend-reason-wrap">
+        <label class="font-label-md block mb-xs">Lý do tạm khoá *</label>
+        <textarea id="suspend-reason" rows="3" class="w-full rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary/20 focus:border-primary p-md text-body-md outline-none" placeholder="Ví dụ: vi phạm điều khoản, kinh doanh không đúng cam kết..."></textarea>
+      </div>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low flex justify-end gap-md">
+      <button data-modal-close class="px-lg py-sm rounded-lg border border-outline-variant text-on-surface font-bold hover:bg-surface-container">Hủy</button>
+      <button id="confirm-suspend" data-modal-close class="px-lg py-sm rounded-lg bg-error text-on-error font-bold shadow-sm hover:brightness-90">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/state.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  // Mock dataset for the demo. Keyed by dealer code.
+  var dealers = {
+    'DL-TB-001': { name: 'Lốp Xe Tân Bình', phone: '0941 111 111', address: '218 Cộng Hoà, Phường 13, Quận Tân Bình, TP.HCM', region: 'Tân Bình, TP.HCM', approved: '12/05/2024', lastLogin: '15/05/2026 09:20', npp: 'DV Lốp Miền Đông', nppCode: 'NPP-BD-0012', creator: 'Trần Thị Minh', status: 'active', scheme: { current: 450, prev: true }, totalOrders: 14, totalTires: 312, gifts: 1 },
+    'DL-Q7-042': { name: 'Auto Zone Quận 7', phone: '0902 123 456', address: '123 Nguyễn Thị Thập, Phường Tân Hưng, Quận 7, TP.HCM', region: 'Quận 7, TP.HCM', approved: '20/08/2024', lastLogin: '14/05/2026 16:00', npp: 'DV Lốp Miền Đông', nppCode: 'NPP-BD-0012', creator: 'Trần Thị Minh', status: 'reached', scheme: { current: 128, prev: true }, totalOrders: 22, totalTires: 612, gifts: 1 },
+    'DL-BD-098': { name: 'Vỏ Xe Bình Dương', phone: '0908 123 456', address: 'Đường D2, KCN Sóng Thần 1, Dĩ An, Bình Dương', region: 'Dĩ An, Bình Dương', approved: '02/11/2024', lastLogin: '12/05/2026 11:00', npp: 'DV Lốp Miền Đông', nppCode: 'NPP-BD-0012', creator: 'Trần Thị Minh', status: 'active', scheme: { current: 200, prev: false }, totalOrders: 7, totalTires: 200, gifts: 0 },
+    'DL-LA-022': { name: 'Đại lý Long An S1', phone: '0978 222 333', address: 'Quốc lộ 1A, Tân An, Long An', region: 'Tân An, Long An', approved: '10/11/2024', lastLogin: '11/05/2026 08:30', npp: 'DV Lốp Miền Tây', nppCode: 'NPP-MT-0005', creator: 'Lê Văn Tây', status: 'active', scheme: { current: 300, prev: false }, totalOrders: 11, totalTires: 300, gifts: 0 },
+    'DL-DN-110': { name: 'Lốp Sông Hàn', phone: '0905 121 212', address: '88 Nguyễn Văn Linh, Đà Nẵng', region: 'Đà Nẵng', approved: '05/01/2026', lastLogin: '20/04/2026 10:00', npp: 'Lốp SG — Đà Nẵng', nppCode: 'NPP-MT-0003', creator: 'Nguyễn Trung', status: 'suspended', suspendReason: 'Kinh doanh sai cam kết khu vực', scheme: { current: 50, prev: false }, totalOrders: 3, totalTires: 50, gifts: 0 }
+  };
+
+  var id = new URLSearchParams(location.search).get('id') || 'DL-TB-001';
+  var d = dealers[id] || dealers['DL-TB-001'];
+
+  // Status chip styling per state.
+  var statusMeta = {
+    active:    { label: 'Đang hoạt động', cls: 'bg-secondary-container/30 text-secondary' },
+    reached:   { label: 'Đạt scheme',     cls: 'bg-secondary-container/30 text-secondary' },
+    suspended: { label: 'Tạm khoá',       cls: 'bg-tertiary-fixed text-tertiary-container' }
+  };
+
+  document.getElementById('dl-name').textContent = d.name;
+  document.getElementById('dl-code').textContent = id;
+  document.getElementById('dl-npp').textContent = d.npp;
+  document.getElementById('dl-region').textContent = d.region;
+  var chip = document.getElementById('dl-status-chip');
+  var meta = statusMeta[d.status];
+  chip.textContent = meta.label;
+  chip.className = 'px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider ' + meta.cls;
+
+  document.getElementById('info-name').textContent = d.name;
+  document.getElementById('info-phone').textContent = d.phone;
+  document.getElementById('info-address').textContent = d.address;
+  document.getElementById('info-approved').textContent = d.approved;
+  document.getElementById('info-last-login').textContent = d.lastLogin;
+
+  var nppLink = document.getElementById('npp-name-link');
+  nppLink.textContent = d.npp;
+  nppLink.href = 'npp-chi-tiet.html';
+  document.getElementById('npp-code').textContent = d.nppCode;
+  document.getElementById('npp-creator').textContent = d.creator;
+
+  // Scheme
+  var pct = Math.min(100, Math.round(d.scheme.current / 500 * 100));
+  document.getElementById('scheme-current-num').textContent = d.scheme.current + '/500';
+  document.getElementById('scheme-current-bar').style.width = pct + '%';
+  document.getElementById('scheme-current-note').textContent = d.scheme.current >= 500
+    ? 'Đã đạt scheme — chờ Kumho giao quà'
+    : ('Còn ' + (500 - d.scheme.current) + ' lốp nữa để đạt scheme');
+  if (d.scheme.prev) document.getElementById('scheme-prev').removeAttribute('hidden');
+
+  document.getElementById('stat-orders').textContent = d.totalOrders;
+  document.getElementById('stat-tires').textContent = d.totalTires;
+  document.getElementById('stat-gifts').textContent = d.gifts;
+
+  // Suspend button: toggle label + behavior based on current status.
+  var toggleBtn = document.getElementById('btn-toggle-suspend');
+  function paintToggle() {
+    if (d.status === 'suspended') {
+      toggleBtn.textContent = 'Mở khoá';
+      toggleBtn.className = 'px-lg py-sm border border-secondary text-secondary font-bold rounded-lg hover:bg-secondary/5';
+    } else {
+      toggleBtn.textContent = 'Tạm khoá';
+      toggleBtn.className = 'px-lg py-sm border border-error text-error font-bold rounded-lg hover:bg-error/5';
+    }
+  }
+  paintToggle();
+
+  toggleBtn.addEventListener('click', function () {
+    var modal = document.getElementById('suspend-modal');
+    var title = document.getElementById('suspend-title');
+    var desc = document.getElementById('suspend-desc');
+    var reasonWrap = document.getElementById('suspend-reason-wrap');
+    if (d.status === 'suspended') {
+      title.textContent = 'Mở khoá đại lý';
+      desc.innerHTML = 'Mở lại quyền sử dụng Miniapp cho <b>' + d.name + '</b>. Đại lý có thể nhập đơn ngay sau khi mở khoá.';
+      reasonWrap.setAttribute('hidden', '');
+      document.getElementById('confirm-suspend').textContent = 'Mở khoá';
+      document.getElementById('confirm-suspend').className = 'px-lg py-sm rounded-lg bg-secondary text-on-secondary font-bold shadow-sm hover:brightness-110';
+    } else {
+      title.textContent = 'Tạm khoá đại lý';
+      desc.innerHTML = 'Tạm khoá quyền sử dụng Miniapp của <b>' + d.name + '</b>. Đơn hàng đang chờ xác nhận sẽ vẫn được giữ.';
+      reasonWrap.removeAttribute('hidden');
+      document.getElementById('confirm-suspend').textContent = 'Xác nhận tạm khoá';
+      document.getElementById('confirm-suspend').className = 'px-lg py-sm rounded-lg bg-error text-on-error font-bold shadow-sm hover:brightness-90';
+    }
+    modal.removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+
+  document.getElementById('confirm-suspend').addEventListener('click', function () {
+    if (d.status === 'suspended') {
+      d.status = 'active';
+      toast('Đã mở khoá đại lý ' + d.name, 'success');
+    } else {
+      var reason = document.getElementById('suspend-reason').value.trim();
+      if (!reason) { document.getElementById('suspend-reason').focus(); return; }
+      d.status = 'suspended';
+      d.suspendReason = reason;
+      toast('Đã tạm khoá đại lý — ZNS thông báo đã gửi', 'error');
+    }
+    paintToggle();
+    chip.textContent = statusMeta[d.status].label;
+    chip.className = 'px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider ' + statusMeta[d.status].cls;
+    document.body.style.overflow = '';
+  });
+
+  // Reset password
+  document.getElementById('btn-reset-pw').addEventListener('click', function () {
+    document.getElementById('rpw-dl-name').textContent = d.name;
+    document.getElementById('reset-pw-modal').removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  });
+  document.getElementById('confirm-reset-pw').addEventListener('click', function () {
+    toast('Đã reset mật khẩu — ZNS đã gửi đại lý', 'success');
+    document.body.style.overflow = '';
+  });
+})();
+</script>
+</body>
+</html>

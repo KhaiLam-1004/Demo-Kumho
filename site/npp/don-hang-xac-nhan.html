@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đơn hàng cần xác nhận · Kumho NPP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="npp" data-active="don-hang-xac-nhan"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <div class="mb-xl">
+    <h1 class="text-h1 font-bold">Đơn hàng cần xác nhận</h1>
+    <p class="text-body-md text-on-surface-variant mt-xs">Đơn do đại lý nhập từ Miniapp, cần bạn đối chiếu hoá đơn thực tế và xác nhận.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary-container flex items-center justify-between">
+      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p><p id="stat-pending" class="text-[36px] font-bold mt-2 leading-none">3</p></div>
+      <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">pending_actions</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
+      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã xác nhận hôm nay</p><p id="stat-confirmed-today" class="text-[36px] font-bold mt-2 leading-none">12</p></div>
+      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">verified</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
+      <div><p class="text-label-sm text-primary uppercase tracking-wider">Tổng lốp tháng này</p><p class="text-[36px] font-bold mt-2 leading-none">412</p></div>
+      <span class="material-symbols-outlined text-primary text-[40px] opacity-40">inventory_2</span>
+    </div>
+  </div>
+
+  <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
+      <div class="relative w-full md:w-80">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm mã đơn, đại lý...">
+      </div>
+      <div class="flex gap-md">
+        <input type="date" class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"><option>Tất cả đại lý</option></select>
+      </div>
+    </div>
+    <table class="w-full text-left">
+      <thead><tr class="bg-surface-container-low/40">
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Mã đơn</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Số SKU</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Số lốp</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đặt</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Thao tác</th>
+      </tr></thead>
+      <tbody class="divide-y divide-outline-variant" id="order-tbody">
+        <tr class="hover:bg-surface-container-low/30" data-row data-order-id="DH00128">
+          <td class="px-lg py-md text-primary font-bold"><a href="chi-tiet-don-hang.html?id=DH00128" class="hover:underline">DH00128</a></td>
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">TB</div><div><div class="font-bold">Đại lý Lốp Tân Bình</div><div class="text-label-sm text-on-surface-variant">DL-TB-001</div></div></div></td>
+          <td class="px-lg py-md text-body-md">3</td>
+          <td class="px-lg py-md text-right font-bold">50</td>
+          <td class="px-lg py-md text-on-surface-variant">07/05/2026 09:30</td>
+          <td class="px-lg py-md" data-status-cell><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Chờ xác nhận</span></td>
+          <td class="px-lg py-md text-right" data-action-cell><a href="chi-tiet-don-hang.html?id=DH00128" class="text-primary hover:underline text-label-md font-bold">Xử lý →</a></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30" data-row data-order-id="DH00131">
+          <td class="px-lg py-md text-primary font-bold"><a href="chi-tiet-don-hang.html?id=DH00131" class="hover:underline">DH00131</a></td>
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">Q7</div><div><div class="font-bold">Auto Zone Quận 7</div><div class="text-label-sm text-on-surface-variant">DL-Q7-042</div></div></div></td>
+          <td class="px-lg py-md text-body-md">2</td>
+          <td class="px-lg py-md text-right font-bold">28</td>
+          <td class="px-lg py-md text-on-surface-variant">15/05/2026 14:12</td>
+          <td class="px-lg py-md" data-status-cell><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Chờ xác nhận</span></td>
+          <td class="px-lg py-md text-right" data-action-cell><a href="chi-tiet-don-hang.html?id=DH00131" class="text-primary hover:underline text-label-md font-bold">Xử lý →</a></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30" data-row data-order-id="DH00132">
+          <td class="px-lg py-md text-primary font-bold"><a href="chi-tiet-don-hang.html?id=DH00132" class="hover:underline">DH00132</a></td>
+          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">BD</div><div><div class="font-bold">Vỏ Xe Bình Dương</div><div class="text-label-sm text-on-surface-variant">DL-BD-098</div></div></div></td>
+          <td class="px-lg py-md text-body-md">4</td>
+          <td class="px-lg py-md text-right font-bold">72</td>
+          <td class="px-lg py-md text-on-surface-variant">16/05/2026 10:45</td>
+          <td class="px-lg py-md" data-status-cell><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Chờ xác nhận</span></td>
+          <td class="px-lg py-md text-right" data-action-cell><a href="chi-tiet-don-hang.html?id=DH00132" class="text-primary hover:underline text-label-md font-bold">Xử lý →</a></td>
+        </tr>
+        <tr id="empty-state" hidden>
+          <td colspan="7" class="py-xl px-md text-center">
+            <div class="flex flex-col items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-[48px]">verified</span>
+              <p class="text-h3 font-bold">Đã xử lý tất cả đơn cần xác nhận</p>
+              <p class="text-body-md text-on-surface-variant">Khi đại lý nhập đơn mới qua Miniapp, đơn sẽ hiện ở đây.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/state.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  function rows() { return Array.from(document.querySelectorAll('#order-tbody tr[data-row]')); }
+
+  function applyStatus(row, status, reason) {
+    var statusCell = row.querySelector('[data-status-cell]');
+    var actionCell = row.querySelector('[data-action-cell]');
+    if (status === 'approved') {
+      row.classList.add('bg-secondary-container/10');
+      statusCell.innerHTML = '<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/40 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Đã xác nhận</span>';
+      actionCell.innerHTML = '<span class="text-label-sm text-on-surface-variant">— Hoàn tất</span>';
+    } else if (status === 'rejected') {
+      row.classList.add('bg-error-container/20');
+      statusCell.innerHTML = '<span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold" title="' + (reason || '') + '"><span class="material-symbols-outlined text-[14px]">cancel</span> Đã từ chối</span>';
+      actionCell.innerHTML = '<span class="text-label-sm text-on-surface-variant">— Hoàn tất</span>';
+    }
+  }
+
+  function refresh() {
+    var all = rows();
+    var pendingN = all.filter(function (r) { return !State.getOrder(r.dataset.orderId); }).length;
+    var approvedN = all.filter(function (r) { var s = State.getOrder(r.dataset.orderId); return s && s.status === 'approved'; }).length;
+    document.getElementById('stat-pending').textContent = pendingN;
+    document.getElementById('stat-confirmed-today').textContent = 12 + approvedN;
+    document.getElementById('empty-state').toggleAttribute('hidden', pendingN !== 0);
+    var sidebarBadge = document.querySelector('aside nav a[href$="don-hang-xac-nhan.html"] span.bg-primary');
+    if (sidebarBadge) {
+      if (pendingN === 0) sidebarBadge.remove();
+      else sidebarBadge.textContent = pendingN;
+    }
+  }
+
+  rows().forEach(function (row) {
+    var s = State.getOrder(row.dataset.orderId);
+    if (s) applyStatus(row, s.status, s.reason);
+  });
+  refresh();
+})();
+</script>
+</body>
+</html>

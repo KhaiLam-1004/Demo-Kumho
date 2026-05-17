@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="light" lang="vi"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Chi tiết đại lý - Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-low": "#f5f2fe",
+                    "inverse-on-surface": "#f2effb",
+                    "background": "#fcf8ff",
+                    "tertiary": "#904900",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "primary": "#4648d4",
+                    "on-surface-variant": "#464554",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed-variant": "#005236",
+                    "on-primary-container": "#fffbff",
+                    "on-error": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#dbd8e4",
+                    "error": "#ba1a1a",
+                    "primary-fixed": "#e1e0ff",
+                    "secondary-fixed": "#6ffbbe",
+                    "on-background": "#1b1b23",
+                    "tertiary-container": "#b55d00",
+                    "on-primary-fixed": "#07006c",
+                    "surface-variant": "#e4e1ed",
+                    "inverse-primary": "#c0c1ff",
+                    "surface-container-high": "#e9e6f3",
+                    "surface-container": "#efecf8",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "secondary-fixed-dim": "#4edea3",
+                    "on-surface": "#1b1b23",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-container": "#00714d",
+                    "tertiary-fixed": "#ffdcc5",
+                    "secondary-container": "#6cf8bb",
+                    "on-primary": "#ffffff",
+                    "surface-container-highest": "#e4e1ed",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "inverse-surface": "#303038",
+                    "outline": "#767586",
+                    "on-tertiary-container": "#fffbff",
+                    "on-secondary-fixed": "#002113",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "surface-tint": "#494bd6",
+                    "secondary": "#006c49",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fcf8ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "margin-desktop": "40px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "h3": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "h1": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "h2": ["Inter"]
+            },
+            "fontSize": {
+                    "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fcf8ff;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+    </style>
+<style data-stitch-cursor=""></style><style data-stitch-scroll-lock=""></style></head>
+<body class="bg-background text-on-background">
+<!-- SideNavBar Shell -->
+<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest dark:bg-inverse-surface border-r border-outline-variant dark:border-outline flex flex-col z-50">
+<div class="p-lg flex flex-col gap-unit">
+<h1 class="text-h2 font-h2 text-primary dark:text-primary-fixed-dim tracking-tight">Kumho Management</h1>
+<p class="font-label-md text-label-md text-on-surface-variant">Portal Management</p>
+</div>
+<nav class="mt-md flex flex-col grow"><a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">how_to_reg</span>
+<span class="">Duyệt đại lý</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">hub</span>
+<span class="">Quản lý NPP</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container/10 text-primary font-bold border-l-4 border-primary font-label-md text-label-md transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="">Quản lý đại lý</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="">Quản lý đơn hàng</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-low transition-colors duration-200 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined">redeem</span>
+<span class="">Lịch sử trả quà</span>
+</a></nav>
+<div class="p-md mt-auto border-t border-outline-variant">
+<div class="flex items-center gap-sm">
+<img alt="Kumho Violet Logo" class="w-10 h-10 rounded-full bg-surface-container-high" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmqEFkeQxI9wRv5ehGbiCtVZmAyQrKa0lMBYw5X9o6o7BXpFgmIaxzQSrImieXye0Tam1R6JslKa-i4D3xBaYxQbdTLntGEViMXyR2uT1nUIp1pVCoqd_PMiSuOrtOWHrX4h0Jsve8d4-6-cQtzS84rNPK8REaXQl4CdmG4QcYe0PwtNVLW5vB4zSoA0t-LbFQTY2WCFe4i81dyss_DFhrx9NgWtihZBMs9IDKNXy0FNOLlF29uS-371UqQgPUB34-2UlsHFWWQJIp">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold">Admin Kumho</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">Super Administrator</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 left-[240px] h-[60px] bg-surface-container-lowest dark:bg-inverse-surface border-b border-outline-variant dark:border-outline flex items-center justify-end px-margin-desktop gap-lg z-40">
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-dim p-2 rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">help</span>
+</button>
+<button class="hover:bg-surface-container-low dark:hover:bg-surface-dim p-2 rounded-full transition-all text-on-surface-variant">
+<span class="material-symbols-outlined">logout</span>
+</button>
+<div class="w-px h-6 bg-outline-variant"></div>
+<img alt="User Profile Avatar" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAdKHmrN36eMf71xzZK-rOunJNnfCnz8Dz3xrLR592dkF8f8Cn0fGUZgyTmiByqqOALjya2ODIF96vFj1n6S4c3hF1RyGRAuTNTaILpbFaxEAjOXr94BcF5NtPdchTqK_hKiLMIMMYqYl_TuchORPhUgsdGj9zS9trgcmyT4rqkgywPcMCuNEvh0aRAc-MeQFowJzU6YN8ZRVFb3GnRIWYV_yN04aDio4fxHcYaNi3ptCrkKW3rRln0ykRh3crmIxsBe1ojDM4NYBv">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+<!-- Breadcrumb & Header Area -->
+<div class="mb-xl">
+<nav class="flex items-center gap-xs text-on-surface-variant mb-sm font-label-sm text-label-sm">
+<span class="">Quản lý đại lý</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="text-primary">Đại lý Lốp Tân Bình</span>
+</nav>
+<div class="flex items-center gap-md">
+<h2 class="font-h1 text-h1 text-on-surface">Chi tiết đại lý</h2>
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full font-label-sm text-label-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                    Hoạt động
+                </span>
+</div>
+</div>
+<div class="bento-grid">
+<!-- Left Column: Info Cards -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-gutter">
+<!-- Card 1: Thông tin đại lý -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex items-center justify-between mb-lg">
+<h3 class="font-h3 text-h3">Thông tin đại lý</h3>
+<span class="material-symbols-outlined text-outline">contact_page</span>
+</div>
+<div class="space-y-md">
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Mã đại lý</p>
+<p class="font-body-md text-body-md font-bold">KH-TB-9982</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Tên đại lý</p>
+<p class="font-body-md text-body-md">Đại lý Lốp Tân Bình - Minh Quang</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Số điện thoại</p>
+<p class="font-body-md text-body-md">0903 123 456</p>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter">Địa chỉ</p>
+<p class="font-body-md text-body-md leading-relaxed">142 Lý Thường Kiệt, Phường 7, Quận Tân Bình, TP. Hồ Chí Minh</p>
+</div>
+</div>
+</div>
+<!-- Card 2: NPP quản lý -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-lg shadow-sm">
+<div class="flex items-center gap-md mb-md">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined">storefront</span>
+</div>
+<div>
+<h3 class="font-h3 text-h3">NPP quản lý</h3>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Chi nhánh khu vực Miền Nam</p>
+</div>
+</div>
+<div class="p-md bg-surface-container rounded border border-outline-variant/50">
+<p class="font-body-md text-body-md font-bold text-on-surface">Công ty TNHH Kumho Tire Việt Nam</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Mã NPP: NPP-HCM-01</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Data -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-gutter">
+<!-- Row of 3 stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-primary-container text-on-primary-container p-lg rounded-lg shadow-sm flex flex-col justify-between min-h-[120px]">
+<span class="text-label-sm font-label-sm uppercase opacity-80">TỔNG ĐƠN HÀNG</span>
+<div class="flex items-end justify-between">
+<span class="text-[40px] font-bold leading-none">12</span>
+<span class="material-symbols-outlined text-[32px] opacity-40">shopping_bag</span>
+</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container p-lg rounded-lg shadow-sm flex flex-col justify-between min-h-[120px]">
+<span class="text-label-sm font-label-sm uppercase opacity-80">TỔNG SỐ LỐP</span>
+<div class="flex items-end justify-between">
+<span class="text-[40px] font-bold leading-none">245</span>
+<span class="material-symbols-outlined text-[32px] opacity-40">tire_repair</span>
+</div>
+</div>
+<div class="bg-tertiary-container text-on-tertiary-container p-lg rounded-lg shadow-sm flex flex-col justify-between min-h-[120px]">
+<span class="text-label-sm font-label-sm uppercase opacity-80">QUÀ ĐÃ NHẬN</span>
+<div class="flex items-end justify-between">
+<span class="text-[40px] font-bold leading-none">1</span>
+<span class="material-symbols-outlined text-[32px] opacity-40">redeem</span>
+</div>
+</div>
+</div>
+<!-- Tabs & Table Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg shadow-sm overflow-hidden flex flex-col flex-grow">
+<!-- Tab Headers -->
+<div class="flex border-b border-outline-variant">
+<button class="px-lg py-md border-b-2 border-primary text-primary font-bold font-label-md text-label-md flex items-center gap-2">
+                            Lịch sử đơn hàng (12)
+                        </button>
+<button class="px-lg py-md text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors">
+                            Lịch sử trả thưởng (1)
+                        </button>
+</div>
+<!-- Table (Orders history) -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant">
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Mã đơn</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Ngày đặt</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Số loại</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase">Tổng SL</th>
+<th class="p-md font-label-sm text-label-sm text-on-surface-variant uppercase text-right">Trạng thái</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-001</td>
+<td class="p-md font-body-md text-body-md">12/05/2024</td>
+<td class="p-md font-body-md text-body-md">4 loại</td>
+<td class="p-md font-body-md text-body-md">40 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-002</td>
+<td class="p-md font-body-md text-body-md">28/04/2024</td>
+<td class="p-md font-body-md text-body-md">2 loại</td>
+<td class="p-md font-body-md text-body-md">20 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-003</td>
+<td class="p-md font-body-md text-body-md">15/04/2024</td>
+<td class="p-md font-body-md text-body-md">6 loại</td>
+<td class="p-md font-body-md text-body-md">115 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-004</td>
+<td class="p-md font-body-md text-body-md">02/04/2024</td>
+<td class="p-md font-body-md text-body-md">1 loại</td>
+<td class="p-md font-body-md text-body-md">10 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-005</td>
+<td class="p-md font-body-md text-body-md">20/03/2024</td>
+<td class="p-md font-body-md text-body-md">3 loại</td>
+<td class="p-md font-body-md text-body-md">30 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-md font-body-md text-body-md font-medium text-primary">#ORD-2024-006</td>
+<td class="p-md font-body-md text-body-md">10/03/2024</td>
+<td class="p-md font-body-md text-body-md">3 loại</td>
+<td class="p-md font-body-md text-body-md">30 lốp</td>
+<td class="p-md text-right">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container rounded text-[11px] font-bold uppercase">Đã giao</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination / Footer -->
+<div class="mt-auto p-md bg-surface-container-low flex items-center justify-between">
+<p class="text-label-sm font-label-sm text-on-surface-variant">Hiển thị 6 trên 12 kết quả</p>
+<div class="flex items-center gap-xs">
+<button class="p-1 hover:bg-surface-container-high rounded disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<span class="text-label-sm font-bold px-2">1</span>
+<button class="p-1 hover:bg-surface-container-high rounded">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+
+
+</body></html>

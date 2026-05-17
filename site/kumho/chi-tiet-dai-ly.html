@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết đại lý chờ duyệt · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="duyet-dai-ly" data-breadcrumb="Duyệt đại lý|Đại lý Lốp Bình Dương"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <div class="max-w-[1200px] mx-auto">
+
+    <div class="flex items-center justify-between mb-lg">
+      <div class="flex items-center gap-md">
+        <a href="duyet-dai-ly.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant">
+          <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+        <h2 class="text-h1 font-bold">Chi tiết đại lý chờ duyệt</h2>
+        <span class="px-3 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant text-label-sm uppercase tracking-wider">Chờ duyệt</span>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-12 gap-gutter">
+
+      <!-- Card 1: Thông tin đại lý -->
+      <section class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+        <h3 class="font-h3 text-h3 flex items-center gap-2 mb-lg">
+          <span class="material-symbols-outlined text-primary">storefront</span>
+          Thông tin đại lý
+        </h3>
+        <div class="grid grid-cols-2 gap-lg">
+          <div><label class="text-label-sm text-outline uppercase">Tên đại lý</label><p class="font-body-lg font-medium mt-1">Đại lý Lốp Bình Dương</p></div>
+          <div>
+            <label class="text-label-sm text-outline uppercase">Số điện thoại</label>
+            <div class="flex items-center gap-2 mt-1">
+              <p class="font-body-lg font-medium">0908 123 456</p>
+              <span class="text-secondary text-label-sm font-bold flex items-center gap-1">
+                <span class="material-symbols-outlined text-[16px] fill">check_circle</span> Hợp lệ
+              </span>
+            </div>
+          </div>
+          <div class="col-span-2">
+            <label class="text-label-sm text-outline uppercase">Địa chỉ kinh doanh</label>
+            <p class="font-body-lg text-on-surface-variant mt-1 leading-relaxed">124 Đại lộ Bình Dương, Phường Hiệp Thành, Thành phố Thủ Dầu Một, Tỉnh Bình Dương</p>
+          </div>
+          <div><label class="text-label-sm text-outline uppercase">Người đại diện</label><p class="font-body-lg mt-1">Ông Nguyễn Văn Thành</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Loại hình</label><p class="font-body-lg mt-1">Đại lý cấp 2</p></div>
+        </div>
+      </section>
+
+      <!-- Card 2: Thông tin NPP tạo -->
+      <section class="col-span-12 lg:col-span-4 bg-surface-container-low rounded-xl border border-outline-variant p-lg">
+        <h3 class="font-h3 text-h3 mb-lg flex items-center gap-2">
+          <span class="material-symbols-outlined text-outline">business</span>
+          NPP gửi đại lý
+        </h3>
+        <div class="space-y-md">
+          <div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/60">
+            <label class="text-label-sm text-outline uppercase">Nhà phân phối</label>
+            <p class="font-label-md font-bold text-primary mt-1">Công ty TNHH DV Lốp Miền Đông</p>
+          </div>
+          <div><label class="text-label-sm text-outline">Mã NPP</label><p class="text-body-md mt-1">NPP-BD-0012</p></div>
+          <div><label class="text-label-sm text-outline">Ngày gửi duyệt</label><p class="text-body-md mt-1">14:20 — 22/04/2026</p></div>
+          <div><label class="text-label-sm text-outline">Người tạo</label><p class="text-body-md mt-1">Trần Thị Minh (NPP Admin)</p></div>
+        </div>
+      </section>
+
+      <!-- Card 3: Hồ sơ đính kèm -->
+      <section class="col-span-12 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+        <h3 class="font-h3 text-h3 flex items-center gap-2 mb-lg">
+          <span class="material-symbols-outlined text-primary">folder_open</span>
+          Hồ sơ đính kèm
+        </h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+          <div class="aspect-[4/3] bg-surface-container rounded-lg border border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-primary text-[40px]">image</span>
+            <span class="text-label-sm text-on-surface-variant mt-2">CMND mặt trước.jpg</span>
+          </div>
+          <div class="aspect-[4/3] bg-surface-container rounded-lg border border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-primary text-[40px]">image</span>
+            <span class="text-label-sm text-on-surface-variant mt-2">CMND mặt sau.jpg</span>
+          </div>
+          <div class="aspect-[4/3] bg-surface-container rounded-lg border border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-primary text-[40px]">image</span>
+            <span class="text-label-sm text-on-surface-variant mt-2">Mặt bằng cửa hàng.jpg</span>
+          </div>
+          <div class="aspect-[4/3] bg-surface-container rounded-lg border border-outline-variant flex flex-col items-center justify-center hover:border-primary hover:bg-primary/5 transition-all cursor-pointer">
+            <span class="material-symbols-outlined text-error text-[40px]">picture_as_pdf</span>
+            <span class="text-label-sm text-on-surface-variant mt-2">GPKD.pdf</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 4: Quyết định duyệt -->
+      <section class="col-span-12 bg-surface-container-lowest rounded-xl border border-outline-variant p-lg shadow-sm">
+        <h3 class="font-h3 text-h3 mb-lg flex items-center gap-2">
+          <span class="material-symbols-outlined text-primary">gavel</span>
+          Quyết định duyệt
+        </h3>
+        <div>
+          <label class="block text-label-md text-on-surface-variant font-medium mb-2">Ghi chú duyệt / từ chối</label>
+          <textarea rows="3" class="w-full bg-surface-container border border-outline-variant rounded-lg p-md text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none" placeholder="Nhập lý do từ chối hoặc lưu ý phê duyệt tại đây..."></textarea>
+          <p class="mt-2 text-label-sm text-outline italic">Lưu ý: Ghi chú sẽ được gửi đến NPP qua ZNS.</p>
+        </div>
+        <div class="flex items-center justify-end gap-md pt-lg mt-md border-t border-outline-variant">
+          <button data-modal-open="reject-confirm" class="px-xl py-md rounded-lg border-2 border-error text-error font-bold hover:bg-error/5 transition-all">Từ chối</button>
+          <button data-modal-open="approve-confirm" class="px-xl py-md rounded-lg bg-primary text-on-primary font-bold shadow-md shadow-primary/20 hover:bg-primary-container transition-all">Phê duyệt</button>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- Modals -->
+<div id="approve-confirm" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[480px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
+    <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <h4 class="font-h3">Xác nhận phê duyệt</h4>
+      <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-lg flex items-start gap-md">
+      <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0"><span class="material-symbols-outlined fill text-primary">verified_user</span></div>
+      <div>
+        <p class="text-body-lg mb-2">Bạn xác nhận phê duyệt <b>"Đại lý Lốp Bình Dương"</b> vào hệ thống chính thức?</p>
+        <p class="text-body-md text-on-surface-variant">Đại lý sẽ có thể đăng nhập Miniapp và nhập đơn để tích lũy scheme.</p>
+      </div>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low flex justify-end gap-md">
+      <button data-modal-close class="px-lg py-sm rounded-lg text-on-surface-variant font-bold hover:bg-surface-dim">Hủy</button>
+      <button id="confirm-approve" class="px-xl py-sm rounded-lg bg-primary text-on-primary font-bold shadow-md hover:opacity-90">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<div id="reject-confirm" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-inverse-surface/60 backdrop-blur-sm"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[480px] rounded-xl shadow-2xl border border-outline-variant fade-in overflow-hidden">
+    <div class="px-lg py-md border-b border-outline-variant flex items-center justify-between">
+      <h4 class="font-h3">Xác nhận từ chối</h4>
+      <button data-modal-close class="text-outline hover:text-on-surface"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md mb-md">Bạn xác nhận từ chối đại lý <b>"Đại lý Lốp Bình Dương"</b>? Ghi chú từ chối sẽ được gửi cho NPP qua ZNS.</p>
+      <div class="bg-tertiary-fixed/40 border border-tertiary-fixed-dim/60 rounded-lg p-md flex gap-md">
+        <span class="material-symbols-outlined text-tertiary">warning</span>
+        <p class="text-label-sm text-on-tertiary-fixed-variant">Hành động này không thể hoàn tác. NPP phải tạo hồ sơ mới để gửi lại.</p>
+      </div>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low flex justify-end gap-md">
+      <button data-modal-close class="px-lg py-sm rounded-lg text-on-surface-variant font-bold hover:bg-surface-dim">Hủy</button>
+      <button id="confirm-reject" class="px-xl py-sm rounded-lg bg-error text-on-error font-bold shadow-md hover:brightness-90">Xác nhận từ chối</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/state.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  var dealerId = 'DL-00452';
+  var dealerName = 'Đại lý Lốp Bình Dương';
+
+  // If already processed, show a banner and disable action buttons.
+  var existing = State.getDealer(dealerId);
+  if (existing) {
+    var statusBar = document.createElement('div');
+    var isApproved = existing.status === 'approved';
+    statusBar.className = 'max-w-[1200px] mx-auto mb-md p-md rounded-lg border ' + (isApproved ? 'bg-secondary-container/30 border-secondary/30 text-secondary' : 'bg-error-container border-error/30 text-on-error-container');
+    statusBar.innerHTML = '<div class="flex items-center gap-2"><span class="material-symbols-outlined fill">' + (isApproved ? 'verified' : 'cancel') + '</span><b>' + (isApproved ? 'Đại lý đã được phê duyệt' : 'Đại lý đã bị từ chối') + '</b>' + (existing.reason ? ' — Lý do: ' + existing.reason : '') + '</div>';
+    document.querySelector('main').insertBefore(statusBar, document.querySelector('main').firstChild.nextSibling);
+    // Disable action buttons.
+    document.querySelectorAll('[data-modal-open="approve-confirm"], [data-modal-open="reject-confirm"]').forEach(function (b) {
+      b.disabled = true;
+      b.classList.add('opacity-40', 'cursor-not-allowed');
+      b.classList.remove('hover:bg-primary-container', 'hover:bg-error/5');
+    });
+  }
+
+  document.getElementById('confirm-approve').addEventListener('click', function () {
+    State.setDealer(dealerId, { status: 'approved', name: dealerName });
+    // Close modal and redirect.
+    document.body.style.overflow = '';
+    location.href = 'duyet-dai-ly.html';
+  });
+
+  document.getElementById('confirm-reject').addEventListener('click', function () {
+    var reason = (document.querySelector('section textarea') && document.querySelector('section textarea').value.trim()) || 'Hồ sơ không đạt yêu cầu phê duyệt';
+    State.setDealer(dealerId, { status: 'rejected', name: dealerName, reason: reason });
+    document.body.style.overflow = '';
+    location.href = 'duyet-dai-ly.html';
+  });
+})();
+</script>
+</body>
+</html>

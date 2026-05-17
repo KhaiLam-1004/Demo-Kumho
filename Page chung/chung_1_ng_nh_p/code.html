@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#dbd8e4",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "primary-container": "#6063ee",
+                        "primary": "#4648d4",
+                        "secondary-fixed-dim": "#4edea3",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary-container": "#00714d",
+                        "on-secondary-fixed": "#002113",
+                        "inverse-surface": "#303038",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "inverse-on-surface": "#f2effb",
+                        "on-secondary-fixed-variant": "#005236",
+                        "on-tertiary-container": "#fffbff",
+                        "on-primary": "#ffffff",
+                        "on-background": "#1b1b23",
+                        "on-tertiary-fixed": "#301400",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "surface-container-highest": "#e4e1ed",
+                        "tertiary-container": "#b55d00",
+                        "secondary-container": "#6cf8bb",
+                        "surface-container-low": "#f5f2fe",
+                        "secondary-fixed": "#6ffbbe",
+                        "outline": "#767586",
+                        "on-surface": "#1b1b23",
+                        "outline-variant": "#c7c4d7",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "tertiary": "#904900",
+                        "surface": "#fcf8ff",
+                        "surface-tint": "#494bd6",
+                        "on-primary-container": "#fffbff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "background": "#fcf8ff",
+                        "on-primary-fixed": "#07006c",
+                        "surface-container-high": "#e9e6f3",
+                        "inverse-primary": "#c0c1ff",
+                        "tertiary-fixed": "#ffdcc5",
+                        "surface-container": "#efecf8",
+                        "on-surface-variant": "#464554",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#006c49",
+                        "surface-variant": "#e4e1ed",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#fcf8ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "gutter": "24px",
+                        "xl": "32px",
+                        "xs": "4px",
+                        "margin-desktop": "40px",
+                        "unit": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "h3": ["Inter"],
+                        "h1": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["Inter"],
+                        "h2": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h3": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "h1": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "h2": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-low min-h-screen flex items-center justify-center p-md">
+<!-- Login Card Container -->
+<main class="w-full max-w-[440px] bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm p-lg md:p-xl">
+<!-- Logo Section -->
+<div class="flex flex-col items-center mb-xl">
+<div class="w-12 h-12 bg-primary-container/10 rounded-lg flex items-center justify-center mb-sm">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="redeem">redeem</span>
+</div>
+<h1 class="font-h2 text-h2 text-primary">Kumho NPP Portal</h1>
+</div>
+<!-- Title -->
+<div class="mb-lg">
+<h2 class="font-h1 text-h1 text-on-surface">Đăng nhập</h2>
+</div>
+<!-- Info Box (Instructional) -->
+<div class="bg-primary-container/5 border border-primary-container/20 rounded-lg p-md mb-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="info">info</span>
+<span class="font-label-md text-label-md text-primary">Hướng dẫn đăng nhập</span>
+</div>
+<ul class="space-y-xs">
+<li class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span>👤</span> NPP: dùng số điện thoại + mật khẩu
+                </li>
+<li class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span>✉️</span> Kumho / Admin: dùng email + mật khẩu
+                </li>
+</ul>
+</div>
+<!-- Login Form -->
+<form class="space-y-lg">
+<!-- Email/SĐT Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface" for="identifier">Email hoặc Số điện thoại</label>
+<div class="relative">
+<input class="w-full px-md py-sm bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50" id="identifier" name="identifier" placeholder="VD: admin@kumho.vn hoặc 0912345678" type="text"/>
+</div>
+</div>
+<!-- Password Field -->
+<div class="space-y-xs">
+<div class="flex justify-between items-center">
+<label class="font-label-md text-label-md text-on-surface" for="password">Mật khẩu</label>
+<a class="font-label-sm text-label-sm text-primary hover:underline" href="#">Quên mật khẩu?</a>
+</div>
+<div class="relative">
+<input class="w-full px-md py-sm bg-surface rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50" id="password" name="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 text-on-surface-variant hover:text-primary transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="visibility">visibility</span>
+</button>
+</div>
+</div>
+<!-- Submit Button -->
+<button class="w-full py-sm bg-primary text-on-primary font-label-md text-label-md rounded-lg hover:bg-primary-container active:opacity-80 transition-all shadow-md" type="submit">
+                Đăng nhập
+            </button>
+</form>
+<!-- Bottom Footer Note -->
+<div class="mt-xl pt-lg border-t border-outline-variant">
+<p class="font-body-md text-body-md text-on-surface-variant text-center">
+                Tài khoản do Admin hệ thống cấp. <br/>
+<span class="text-primary font-medium cursor-pointer hover:underline">Liên hệ Admin</span> nếu chưa có tài khoản.
+            </p>
+</div>
+</main>
+<!-- Support Background Decoration (Subtle) -->
+<div class="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[5%] w-[40%] h-[40%] bg-primary/5 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-[10%] -right-[5%] w-[30%] h-[30%] bg-secondary/5 blur-[100px] rounded-full"></div>
+</div>
+</body></html>

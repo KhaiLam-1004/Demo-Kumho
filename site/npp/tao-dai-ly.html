@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tạo đại lý mới · Kumho NPP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="npp" data-active="quan-ly-dai-ly" data-breadcrumb="Quản lý đại lý|Tạo mới"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="mb-lg">
+      <h1 class="text-h1 font-bold">Tạo đại lý mới</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Cung cấp thông tin chi tiết để đăng ký đại lý mới trong hệ thống.</p>
+    </div>
+
+    <form class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden" onsubmit="event.preventDefault(); window.location.href='quan-ly-dai-ly.html';">
+      <div class="p-lg border-b border-outline-variant bg-surface-container-low/40">
+        <h3 class="font-h3 text-h3">Thông tin đại lý</h3>
+      </div>
+
+      <div class="p-lg space-y-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div>
+            <label class="font-label-md block mb-xs">Số điện thoại</label>
+            <input value="0987654321" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Nhập số điện thoại">
+            <p class="text-secondary flex items-center gap-1 text-label-sm mt-1">
+              <span class="material-symbols-outlined text-[16px] fill">check_circle</span> Số điện thoại hợp lệ
+            </p>
+          </div>
+          <div>
+            <label class="font-label-md block mb-xs">Tên đại lý</label>
+            <input class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Ví dụ: Đại lý Kumho Tân Bình">
+          </div>
+        </div>
+
+        <div>
+          <label class="font-label-md block mb-xs">Khu vực</label>
+          <div class="relative">
+            <select class="w-full h-12 px-md pr-xl appearance-none rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md bg-white">
+              <option>Miền Nam</option>
+              <option>Miền Trung</option>
+              <option>Miền Bắc</option>
+            </select>
+            <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+          </div>
+        </div>
+
+        <div>
+          <label class="font-label-md block mb-xs">Địa chỉ</label>
+          <textarea rows="3" class="w-full p-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Nhập địa chỉ chi tiết (Số nhà, đường, phường/xã...)"></textarea>
+        </div>
+
+        <div class="flex gap-md p-md bg-surface-container-low rounded-lg border-l-4 border-primary">
+          <span class="material-symbols-outlined text-primary">info</span>
+          <p class="text-body-md text-on-surface-variant">Đại lý sẽ được Kumho duyệt trước khi kích hoạt. Bạn có thể theo dõi trạng thái tại mục Lịch sử quản lý.</p>
+        </div>
+      </div>
+
+      <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-end items-center gap-md">
+        <a href="quan-ly-dai-ly.html" class="px-xl py-3 rounded-lg text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Hủy</a>
+        <button type="submit" onclick="toast('Đã gửi duyệt — Kumho sẽ phản hồi trong 1-2 ngày','success')" class="px-xl py-3 rounded-lg text-label-md bg-primary text-on-primary font-bold hover:bg-primary-container active:scale-95 shadow-md">Gửi duyệt</button>
+      </div>
+    </form>
+
+  </div>
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

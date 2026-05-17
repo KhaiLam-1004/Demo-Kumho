@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý NPP · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="quan-ly-npp"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+    <div>
+      <h1 class="text-h1 font-bold">Quản lý NPP</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Danh sách Nhà phân phối được Kumho cấp quyền sử dụng portal.</p>
+    </div>
+    <div class="flex gap-sm">
+      <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container flex items-center gap-2">
+        <span class="material-symbols-outlined text-[20px]">download</span> Xuất Excel
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-surface-container-low border border-primary/20 rounded-lg p-md mb-lg flex gap-md items-start">
+    <span class="material-symbols-outlined text-primary">info</span>
+    <p class="text-body-md text-on-surface-variant leading-relaxed">
+      Danh sách NPP được <b>Admin nội bộ Got It</b> import từ file Excel Kumho cung cấp (Flow B1). Kumho chỉ xem, theo dõi hoạt động và tạm khoá / mở khoá quyền truy cập portal khi cần.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between">
+      <div><p class="text-label-sm text-on-surface-variant">Tổng NPP</p><p class="text-h2 font-bold mt-1">24</p></div>
+      <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">corporate_fare</span></div>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between">
+      <div><p class="text-label-sm text-on-surface-variant">Đang hoạt động</p><p class="text-h2 font-bold text-secondary mt-1">22</p></div>
+      <div class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center"><span class="material-symbols-outlined text-secondary">verified</span></div>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between">
+      <div><p class="text-label-sm text-on-surface-variant">Tạm khoá</p><p class="text-h2 font-bold text-tertiary mt-1">2</p></div>
+      <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center"><span class="material-symbols-outlined text-tertiary-container">pause_circle</span></div>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant flex items-center justify-between">
+      <div><p class="text-label-sm text-on-surface-variant">Đại lý quản lý</p><p class="text-h2 font-bold mt-1">128</p></div>
+      <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><span class="material-symbols-outlined text-primary">groups</span></div>
+    </div>
+  </div>
+
+  <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
+      <div class="relative w-full md:w-96">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none" placeholder="Tìm theo tên, mã NPP, khu vực...">
+      </div>
+      <div class="flex items-center gap-md w-full md:w-auto">
+        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-body-md">
+          <option>Tất cả khu vực</option><option>Miền Bắc</option><option>Miền Trung</option><option>Miền Nam</option>
+        </select>
+        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary text-body-md">
+          <option>Tất cả trạng thái</option><option>Hoạt động</option><option>Tạm khoá</option>
+        </select>
+      </div>
+    </div>
+    <table class="w-full text-left border-collapse">
+      <thead><tr class="bg-surface-container-low/40">
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Mã NPP</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Nhà phân phối</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Khu vực</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Doanh số tháng</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Thao tác</th>
+      </tr></thead>
+      <tbody class="divide-y divide-outline-variant">
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md font-label-md text-primary font-bold">NPP-BD-0012</td>
+          <td class="px-lg py-md"><a href="npp-chi-tiet.html" class="hover:text-primary font-bold">Công ty TNHH DV Lốp Miền Đông</a></td>
+          <td class="px-lg py-md text-body-md">Đông Nam Bộ</td>
+          <td class="px-lg py-md text-body-md">18</td>
+          <td class="px-lg py-md text-body-md font-bold">412 lốp</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Hoạt động</span></td>
+          <td class="px-lg py-md text-right"><a href="npp-chi-tiet.html" class="text-primary hover:underline text-label-md">Xem</a></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md font-label-md text-primary font-bold">NPP-MT-0005</td>
+          <td class="px-lg py-md"><a href="npp-chi-tiet.html" class="hover:text-primary font-bold">Công ty TNHH DV Lốp Miền Tây</a></td>
+          <td class="px-lg py-md text-body-md">Tây Nam Bộ</td>
+          <td class="px-lg py-md text-body-md">22</td>
+          <td class="px-lg py-md text-body-md font-bold">508 lốp</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Hoạt động</span></td>
+          <td class="px-lg py-md text-right"><a href="npp-chi-tiet.html" class="text-primary hover:underline text-label-md">Xem</a></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md font-label-md text-primary font-bold">NPP-MB-0001</td>
+          <td class="px-lg py-md"><a href="npp-chi-tiet.html" class="hover:text-primary font-bold">Công ty TNHH Lốp Việt Bắc</a></td>
+          <td class="px-lg py-md text-body-md">Miền Bắc</td>
+          <td class="px-lg py-md text-body-md">15</td>
+          <td class="px-lg py-md text-body-md font-bold">301 lốp</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Hoạt động</span></td>
+          <td class="px-lg py-md text-right"><a href="npp-chi-tiet.html" class="text-primary hover:underline text-label-md">Xem</a></td>
+        </tr>
+        <tr class="hover:bg-surface-container-low/30">
+          <td class="px-lg py-md font-label-md text-primary font-bold">NPP-MT-0003</td>
+          <td class="px-lg py-md"><a href="npp-chi-tiet.html" class="hover:text-primary font-bold">Lốp Sài Gòn — Đà Nẵng</a></td>
+          <td class="px-lg py-md text-body-md">Miền Trung</td>
+          <td class="px-lg py-md text-body-md">9</td>
+          <td class="px-lg py-md text-body-md font-bold">187 lốp</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Tạm khoá</span></td>
+          <td class="px-lg py-md text-right"><a href="npp-chi-tiet.html" class="text-primary hover:underline text-label-md">Xem</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant">
+      <span class="text-label-sm text-on-surface-variant">Hiển thị 4 trên 24 NPP</span>
+      <div class="flex items-center gap-xs">
+        <button class="w-8 h-8 rounded bg-primary text-on-primary text-label-md">1</button>
+        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">2</button>
+        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">3</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+</body>
+</html>

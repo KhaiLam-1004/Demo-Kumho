@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duyệt đại lý · Kumho NPP Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="kumho" data-active="duyet-dai-ly"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+
+  <!-- Header -->
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+    <div>
+      <h1 class="text-h1 font-bold text-on-surface">Duyệt đại lý</h1>
+      <p class="text-body-md text-on-surface-variant mt-xs">Xem xét và phê duyệt các yêu cầu đăng ký đại lý mới từ NPP.</p>
+    </div>
+    <div class="flex items-center gap-sm">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+        <input class="pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none w-[280px]" placeholder="Tìm đại lý, mã, NPP...">
+      </div>
+      <button class="flex items-center gap-2 px-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-lg hover:bg-surface-container-low transition-all text-on-surface">
+        <span class="material-symbols-outlined text-[20px]">filter_list</span>
+        <span class="font-label-md text-label-md">Bộ lọc</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col gap-xs border-l-4 border-l-tertiary-container">
+      <span class="font-label-sm text-tertiary uppercase tracking-wider">Chờ duyệt</span>
+      <div class="flex items-end justify-between">
+        <span id="stat-pending" class="text-[40px] font-bold leading-none text-on-surface">5</span>
+        <span class="material-symbols-outlined text-tertiary opacity-40 text-[32px]">pending_actions</span>
+      </div>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col gap-xs border-l-4 border-l-secondary">
+      <span class="font-label-sm text-secondary uppercase tracking-wider">Đã duyệt tháng này</span>
+      <div class="flex items-end justify-between">
+        <span id="stat-approved" class="text-[40px] font-bold leading-none text-on-surface">32</span>
+        <span class="material-symbols-outlined text-secondary opacity-40 text-[32px]">verified</span>
+      </div>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm flex flex-col gap-xs border-l-4 border-l-error">
+      <span class="font-label-sm text-error uppercase tracking-wider">Từ chối tháng này</span>
+      <div class="flex items-end justify-between">
+        <span id="stat-rejected" class="text-[40px] font-bold leading-none text-on-surface">3</span>
+        <span class="material-symbols-outlined text-error opacity-40 text-[32px]">cancel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk action bar -->
+  <div data-bulk-bar hidden class="fade-in mb-md bg-primary/5 border border-primary/20 rounded-xl p-md flex items-center justify-between">
+    <div class="flex items-center gap-md">
+      <span class="material-symbols-outlined fill text-primary">check_circle</span>
+      <span class="text-body-lg font-bold text-on-surface">Đã chọn <span data-bulk-count>0</span> đại lý</span>
+      <button data-bulk-clear class="text-primary text-label-md hover:underline">Bỏ chọn</button>
+    </div>
+    <div class="flex items-center gap-md">
+      <button data-modal-open="bulk-reject-modal" class="px-lg py-2 border border-error text-error rounded-lg font-label-md hover:bg-error/5 transition-all">Từ chối đã chọn</button>
+      <button data-modal-open="bulk-approve-modal" class="px-lg py-2 bg-primary text-on-primary rounded-lg font-label-md hover:bg-primary-container transition-all shadow-sm">Duyệt đã chọn</button>
+    </div>
+  </div>
+
+  <!-- Table -->
+  <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="bg-surface-container-low border-b border-outline-variant">
+          <th class="py-3 px-md w-12 text-center">
+            <input data-row-check-all type="checkbox" class="w-4 h-4 rounded border-outline text-primary focus:ring-primary">
+          </th>
+          <th class="py-3 px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Đại lý</th>
+          <th class="py-3 px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">NPP</th>
+          <th class="py-3 px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Khu vực</th>
+          <th class="py-3 px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Ngày gửi</th>
+          <th class="py-3 px-md font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-outline-variant" id="dealer-tbody">
+        <tr class="hover:bg-surface-container-low/40 transition-colors" data-row data-dealer-id="DL-00452" data-dealer-name="Đại lý Lốp Bình Dương" data-dealer-area="Bình Dương" data-dealer-avatar="BD">
+          <td class="py-3 px-md text-center"><input data-row-check type="checkbox" class="w-4 h-4 rounded border-outline text-primary"></td>
+          <td class="py-3 px-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">BD</div>
+              <div>
+                <a href="chi-tiet-dai-ly.html" class="font-label-md font-bold text-on-surface hover:text-primary">Đại lý Lốp Bình Dương</a>
+                <div class="text-label-sm text-on-surface-variant">DL-00452 · 0908 123 456</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-md text-body-md">DV Lốp Miền Đông</td>
+          <td class="py-3 px-md"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[11px] font-bold">ĐÔNG NAM BỘ</span></td>
+          <td class="py-3 px-md text-body-md text-on-surface-variant">12/05/2026</td>
+          <td class="py-3 px-md" data-action-cell>
+            <div class="flex justify-end gap-2">
+              <button data-approve-row class="p-1.5 border border-secondary text-secondary rounded hover:bg-secondary hover:text-white transition-all" title="Duyệt nhanh"><span class="material-symbols-outlined text-[18px]">check</span></button>
+              <button data-reject-row class="p-1.5 border border-error text-error rounded hover:bg-error hover:text-white transition-all" title="Từ chối"><span class="material-symbols-outlined text-[18px]">close</span></button>
+              <a href="chi-tiet-dai-ly.html" class="p-1.5 border border-outline text-outline rounded hover:bg-outline hover:text-white transition-all inline-block" title="Xem chi tiết"><span class="material-symbols-outlined text-[18px]">visibility</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="hover:bg-surface-container-low/40 transition-colors" data-row data-dealer-id="DL-00891" data-dealer-name="Auto Long An Center" data-dealer-area="Long An" data-dealer-avatar="LA">
+          <td class="py-3 px-md text-center"><input data-row-check type="checkbox" class="w-4 h-4 rounded border-outline text-primary"></td>
+          <td class="py-3 px-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">LA</div>
+              <div>
+                <a href="chi-tiet-dai-ly.html" class="font-label-md font-bold text-on-surface hover:text-primary">Auto Long An Center</a>
+                <div class="text-label-sm text-on-surface-variant">DL-00891 · 0912 345 678</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-md text-body-md">DV Lốp Miền Tây</td>
+          <td class="py-3 px-md"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[11px] font-bold">TÂY NAM BỘ</span></td>
+          <td class="py-3 px-md text-body-md text-on-surface-variant">13/05/2026</td>
+          <td class="py-3 px-md" data-action-cell>
+            <div class="flex justify-end gap-2">
+              <button data-approve-row class="p-1.5 border border-secondary text-secondary rounded hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">check</span></button>
+              <button data-reject-row class="p-1.5 border border-error text-error rounded hover:bg-error hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">close</span></button>
+              <a href="chi-tiet-dai-ly.html" class="p-1.5 border border-outline text-outline rounded hover:bg-outline hover:text-white transition-all inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="hover:bg-surface-container-low/40 transition-colors" data-row data-dealer-id="DL-01204" data-dealer-name="Kumho Bắc Ninh Store" data-dealer-area="Bắc Ninh" data-dealer-avatar="BN">
+          <td class="py-3 px-md text-center"><input data-row-check type="checkbox" class="w-4 h-4 rounded border-outline text-primary"></td>
+          <td class="py-3 px-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">BN</div>
+              <div>
+                <a href="chi-tiet-dai-ly.html" class="font-label-md font-bold text-on-surface hover:text-primary">Kumho Bắc Ninh Store</a>
+                <div class="text-label-sm text-on-surface-variant">DL-01204 · 0988 776 554</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-md text-body-md">DV Lốp Miền Bắc</td>
+          <td class="py-3 px-md"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[11px] font-bold">MIỀN BẮC</span></td>
+          <td class="py-3 px-md text-body-md text-on-surface-variant">14/05/2026</td>
+          <td class="py-3 px-md" data-action-cell>
+            <div class="flex justify-end gap-2">
+              <button data-approve-row class="p-1.5 border border-secondary text-secondary rounded hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">check</span></button>
+              <button data-reject-row class="p-1.5 border border-error text-error rounded hover:bg-error hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">close</span></button>
+              <a href="chi-tiet-dai-ly.html" class="p-1.5 border border-outline text-outline rounded hover:bg-outline hover:text-white transition-all inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="hover:bg-surface-container-low/40 transition-colors" data-row data-dealer-id="DL-01355" data-dealer-name="Kumho Đà Nẵng — Lốp Sông Hàn" data-dealer-area="Đà Nẵng" data-dealer-avatar="DN">
+          <td class="py-3 px-md text-center"><input data-row-check type="checkbox" class="w-4 h-4 rounded border-outline text-primary"></td>
+          <td class="py-3 px-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">DN</div>
+              <div>
+                <a href="chi-tiet-dai-ly.html" class="font-label-md font-bold text-on-surface hover:text-primary">Kumho Đà Nẵng — Lốp Sông Hàn</a>
+                <div class="text-label-sm text-on-surface-variant">DL-01355 · 0905 121 212</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-md text-body-md">DV Lốp Miền Trung</td>
+          <td class="py-3 px-md"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[11px] font-bold">MIỀN TRUNG</span></td>
+          <td class="py-3 px-md text-body-md text-on-surface-variant">15/05/2026</td>
+          <td class="py-3 px-md" data-action-cell>
+            <div class="flex justify-end gap-2">
+              <button data-approve-row class="p-1.5 border border-secondary text-secondary rounded hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">check</span></button>
+              <button data-reject-row class="p-1.5 border border-error text-error rounded hover:bg-error hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">close</span></button>
+              <a href="chi-tiet-dai-ly.html" class="p-1.5 border border-outline text-outline rounded hover:bg-outline hover:text-white transition-all inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <tr class="hover:bg-surface-container-low/40 transition-colors" data-row data-dealer-id="DL-01402" data-dealer-name="Kumho Cần Thơ — Vỏ xe Tây Đô" data-dealer-area="Cần Thơ" data-dealer-avatar="CT">
+          <td class="py-3 px-md text-center"><input data-row-check type="checkbox" class="w-4 h-4 rounded border-outline text-primary"></td>
+          <td class="py-3 px-md">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">CT</div>
+              <div>
+                <a href="chi-tiet-dai-ly.html" class="font-label-md font-bold text-on-surface hover:text-primary">Kumho Cần Thơ — Vỏ xe Tây Đô</a>
+                <div class="text-label-sm text-on-surface-variant">DL-01402 · 0939 445 566</div>
+              </div>
+            </div>
+          </td>
+          <td class="py-3 px-md text-body-md">DV Lốp Miền Tây</td>
+          <td class="py-3 px-md"><span class="px-2 py-1 bg-surface-variant text-on-surface-variant rounded text-[11px] font-bold">TÂY NAM BỘ</span></td>
+          <td class="py-3 px-md text-body-md text-on-surface-variant">16/05/2026</td>
+          <td class="py-3 px-md" data-action-cell>
+            <div class="flex justify-end gap-2">
+              <button data-approve-row class="p-1.5 border border-secondary text-secondary rounded hover:bg-secondary hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">check</span></button>
+              <button data-reject-row class="p-1.5 border border-error text-error rounded hover:bg-error hover:text-white transition-all"><span class="material-symbols-outlined text-[18px]">close</span></button>
+              <a href="chi-tiet-dai-ly.html" class="p-1.5 border border-outline text-outline rounded hover:bg-outline hover:text-white transition-all inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a>
+            </div>
+          </td>
+        </tr>
+
+        <!-- Empty state — shown when all rows processed -->
+        <tr id="empty-state" hidden>
+          <td colspan="6" class="py-xl px-md text-center">
+            <div class="flex flex-col items-center gap-2">
+              <span class="material-symbols-outlined text-secondary text-[48px]">verified</span>
+              <p class="text-h3 font-bold">Tất cả yêu cầu đã được xử lý</p>
+              <p class="text-body-md text-on-surface-variant">Không còn đại lý nào chờ Kumho phê duyệt.</p>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="p-md bg-surface-container-low/40 flex justify-between items-center border-t border-outline-variant">
+      <span class="text-label-sm text-on-surface-variant"><span id="visible-count">5</span> yêu cầu chờ duyệt</span>
+      <div class="flex gap-2">
+        <button class="px-3 py-1.5 rounded bg-surface-container border border-outline-variant text-on-surface-variant font-label-md opacity-50 cursor-not-allowed">Trước</button>
+        <button class="px-3 py-1.5 rounded bg-surface-container border border-outline-variant text-on-surface-variant font-label-md opacity-50 cursor-not-allowed">Sau</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- Modal: Approve (single + bulk reuse) -->
+<div id="approve-modal" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[560px] rounded-xl shadow-2xl overflow-hidden border border-outline-variant fade-in">
+    <div class="px-lg pt-lg pb-md flex items-start justify-between">
+      <div>
+        <h2 id="approve-title" class="text-h2 font-bold text-on-surface">Xác nhận phê duyệt</h2>
+        <p class="text-body-md text-on-surface-variant mt-xs">Đại lý sẽ được kích hoạt ngay. ZNS sẽ gửi đến số đại diện kèm link Miniapp Kumho.</p>
+      </div>
+      <button data-modal-close class="p-2 hover:bg-surface-container-low rounded-full"><span class="material-symbols-outlined text-on-surface-variant">close</span></button>
+    </div>
+    <div class="px-lg pb-md">
+      <div id="approve-list" class="bg-surface-container border border-outline-variant rounded-lg overflow-hidden divide-y divide-outline-variant"></div>
+    </div>
+    <div class="px-lg pb-lg flex items-center justify-end gap-md">
+      <button data-modal-close class="px-lg py-2 border border-outline-variant rounded-lg font-label-md text-on-surface hover:bg-surface-container-low">Hủy</button>
+      <button id="approve-confirm" class="px-lg py-2 bg-primary text-on-primary rounded-lg font-label-md font-bold shadow-sm hover:bg-primary-container">Xác nhận duyệt</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Reject (single + bulk reuse) -->
+<div id="reject-modal" data-modal hidden class="fixed inset-0 z-50 flex items-center justify-center p-md">
+  <div data-modal-backdrop class="absolute inset-0 bg-black/50"></div>
+  <div class="relative bg-surface-container-lowest w-full max-w-[560px] rounded-xl shadow-2xl overflow-hidden border border-outline-variant fade-in">
+    <div class="px-lg py-md border-b border-outline-variant flex items-start justify-between">
+      <div>
+        <h3 id="reject-title" class="text-h2 font-bold text-on-surface">Từ chối đại lý</h3>
+        <p class="text-body-md text-on-surface-variant mt-xs">Lý do từ chối sẽ được gửi đến NPP qua ZNS để chỉnh sửa và gửi lại.</p>
+      </div>
+      <button data-modal-close class="p-2 hover:bg-surface-container-low rounded-full"><span class="material-symbols-outlined text-on-surface-variant">close</span></button>
+    </div>
+    <div class="p-lg space-y-md">
+      <div id="reject-list" class="grid gap-2"></div>
+      <div>
+        <label class="font-label-md text-on-surface block mb-xs">Lý do từ chối *</label>
+        <textarea id="reject-reason" rows="3" class="w-full rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary/20 focus:border-primary p-md text-body-md outline-none" placeholder="Ví dụ: Thiếu giấy phép kinh doanh, không đủ diện tích mặt bằng yêu cầu..."></textarea>
+      </div>
+      <div class="bg-tertiary-fixed/40 border border-tertiary-fixed-dim/60 rounded-lg p-md flex gap-md">
+        <span class="material-symbols-outlined text-tertiary">warning</span>
+        <p class="text-label-sm text-on-tertiary-fixed-variant"><b>Lưu ý:</b> Sau khi từ chối, NPP cần tạo hồ sơ mới để gửi lại. Thao tác này không thể hoàn tác.</p>
+      </div>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low flex justify-end gap-md">
+      <button data-modal-close class="px-lg py-2 rounded-lg border border-outline-variant text-on-surface font-bold hover:bg-surface-container">Hủy</button>
+      <button id="reject-confirm" class="px-lg py-2 rounded-lg bg-error text-on-error font-bold shadow-sm hover:brightness-90">Xác nhận từ chối</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/state.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  var rows = function () { return Array.from(document.querySelectorAll('#dealer-tbody tr[data-row]')); };
+  var pending = null;  // { kind: 'approve'|'reject', targets: [ {id,name,area,avatar,rowEl} ] }
+
+  function applyStatusToRow(row, status, reason) {
+    var actionCell = row.querySelector('[data-action-cell]');
+    var name = row.dataset.dealerName;
+    if (status === 'approved') {
+      row.classList.add('bg-secondary-container/10');
+      var checkbox = row.querySelector('[data-row-check]');
+      if (checkbox) { checkbox.checked = false; checkbox.disabled = true; }
+      actionCell.innerHTML = '<div class="flex justify-end items-center gap-2"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/40 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">verified</span> Đã duyệt — Active</span></div>';
+    } else if (status === 'rejected') {
+      row.classList.add('bg-error-container/20');
+      var cb = row.querySelector('[data-row-check]');
+      if (cb) { cb.checked = false; cb.disabled = true; }
+      actionCell.innerHTML = '<div class="flex justify-end items-center gap-2"><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold" title="' + (reason || '') + '"><span class="material-symbols-outlined text-[14px]">cancel</span> Đã từ chối</span></div>';
+    }
+    row.classList.remove('hover:bg-surface-container-low/40');
+  }
+
+  function refreshCounts() {
+    var all = rows();
+    var pendingCount = all.filter(function (r) { return !State.getDealer(r.dataset.dealerId); }).length;
+    var approvedCount = all.filter(function (r) { var s = State.getDealer(r.dataset.dealerId); return s && s.status === 'approved'; }).length;
+    var rejectedCount = all.filter(function (r) { var s = State.getDealer(r.dataset.dealerId); return s && s.status === 'rejected'; }).length;
+    document.getElementById('stat-pending').textContent = pendingCount;
+    document.getElementById('stat-approved').textContent = 32 + approvedCount;
+    document.getElementById('stat-rejected').textContent = 3 + rejectedCount;
+    document.getElementById('visible-count').textContent = pendingCount;
+    var sidebarBadge = document.querySelector('aside nav a[href$="duyet-dai-ly.html"] span.bg-primary');
+    if (sidebarBadge) {
+      if (pendingCount === 0) sidebarBadge.remove(); else sidebarBadge.textContent = pendingCount;
+    }
+    document.getElementById('empty-state').toggleAttribute('hidden', pendingCount !== 0);
+  }
+
+  function hydrate() {
+    rows().forEach(function (row) {
+      var s = State.getDealer(row.dataset.dealerId);
+      if (s) applyStatusToRow(row, s.status, s.reason);
+    });
+    refreshCounts();
+  }
+
+  function targetsFromRow(row) {
+    return [{ id: row.dataset.dealerId, name: row.dataset.dealerName, area: row.dataset.dealerArea, avatar: row.dataset.dealerAvatar, rowEl: row }];
+  }
+  function selectedTargets() {
+    return rows().filter(function (r) {
+      var cb = r.querySelector('[data-row-check]');
+      return cb && cb.checked && !cb.disabled;
+    }).map(function (r) {
+      return { id: r.dataset.dealerId, name: r.dataset.dealerName, area: r.dataset.dealerArea, avatar: r.dataset.dealerAvatar, rowEl: r };
+    });
+  }
+
+  function buildApproveListHtml(targets) {
+    return targets.map(function (t) {
+      return '<div class="px-md py-3 flex items-center justify-between">'
+        + '<div class="flex items-center gap-3">'
+        + '<div class="w-9 h-9 bg-primary-fixed text-on-primary-fixed rounded-full flex items-center justify-center font-bold">' + t.avatar + '</div>'
+        + '<div><p class="font-label-md text-on-surface">' + t.name + '</p>'
+        + '<p class="text-label-sm text-on-surface-variant">' + t.id + ' · ' + t.area + '</p></div></div>'
+        + '<span class="material-symbols-outlined fill text-secondary">check_circle</span>'
+        + '</div>';
+    }).join('');
+  }
+  function buildRejectListHtml(targets) {
+    return targets.map(function (t) {
+      return '<div class="flex items-center gap-md p-md bg-surface-container-low rounded-lg border border-outline-variant">'
+        + '<div class="w-9 h-9 rounded-full bg-surface-container-high flex items-center justify-center text-primary"><span class="material-symbols-outlined fill">store</span></div>'
+        + '<div class="flex-1"><p class="font-label-md">' + t.name + '</p>'
+        + '<p class="text-label-sm text-on-surface-variant">' + t.id + ' · ' + t.area + '</p></div></div>';
+    }).join('');
+  }
+
+  function openApprove(targets) {
+    if (!targets.length) { toast('Chưa chọn đại lý nào', 'error'); return; }
+    pending = { kind: 'approve', targets: targets };
+    document.getElementById('approve-title').textContent = targets.length === 1 ? 'Phê duyệt đại lý' : ('Duyệt ' + targets.length + ' đại lý đã chọn');
+    document.getElementById('approve-list').innerHTML = buildApproveListHtml(targets);
+    document.getElementById('approve-modal').removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+  function openReject(targets) {
+    if (!targets.length) { toast('Chưa chọn đại lý nào', 'error'); return; }
+    pending = { kind: 'reject', targets: targets };
+    document.getElementById('reject-title').textContent = targets.length === 1 ? 'Từ chối đại lý' : ('Từ chối ' + targets.length + ' đại lý đã chọn');
+    document.getElementById('reject-list').innerHTML = buildRejectListHtml(targets);
+    document.getElementById('reject-reason').value = '';
+    document.getElementById('reject-modal').removeAttribute('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  // Inline approve / reject
+  document.addEventListener('click', function (e) {
+    var apBtn = e.target.closest('[data-approve-row]');
+    if (apBtn) { openApprove(targetsFromRow(apBtn.closest('tr'))); return; }
+    var rjBtn = e.target.closest('[data-reject-row]');
+    if (rjBtn) { openReject(targetsFromRow(rjBtn.closest('tr'))); return; }
+  });
+
+  // Bulk bar buttons (re-bind from the existing markup)
+  document.querySelector('[data-modal-open="bulk-approve-modal"]').setAttribute('data-modal-open', '');
+  document.querySelector('[data-modal-open="bulk-reject-modal"]').setAttribute('data-modal-open', '');
+  document.querySelector('[data-bulk-bar] button.bg-primary').addEventListener('click', function () { openApprove(selectedTargets()); });
+  document.querySelector('[data-bulk-bar] button.border-error').addEventListener('click', function () { openReject(selectedTargets()); });
+
+  // Confirm handlers
+  document.getElementById('approve-confirm').addEventListener('click', function () {
+    if (!pending || pending.kind !== 'approve') return;
+    pending.targets.forEach(function (t) {
+      State.setDealer(t.id, { status: 'approved', name: t.name });
+      applyStatusToRow(t.rowEl, 'approved');
+    });
+    var n = pending.targets.length;
+    document.getElementById('approve-modal').setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    refreshCounts();
+    toast(n === 1 ? 'Đã duyệt đại lý — ZNS đã gửi' : ('Đã duyệt ' + n + ' đại lý — ZNS đã gửi'), 'success');
+    pending = null;
+  });
+
+  document.getElementById('reject-confirm').addEventListener('click', function () {
+    if (!pending || pending.kind !== 'reject') return;
+    var reason = document.getElementById('reject-reason').value.trim();
+    if (!reason) { document.getElementById('reject-reason').focus(); return; }
+    pending.targets.forEach(function (t) {
+      State.setDealer(t.id, { status: 'rejected', name: t.name, reason: reason });
+      applyStatusToRow(t.rowEl, 'rejected', reason);
+    });
+    var n = pending.targets.length;
+    document.getElementById('reject-modal').setAttribute('hidden', '');
+    document.body.style.overflow = '';
+    refreshCounts();
+    toast(n === 1 ? 'Đã từ chối — ZNS lý do đã gửi NPP' : ('Đã từ chối ' + n + ' đại lý — ZNS đã gửi'), 'error');
+    pending = null;
+  });
+
+  hydrate();
+})();
+</script>
+</body>
+</html>
