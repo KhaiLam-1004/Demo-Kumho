@@ -18,8 +18,28 @@
   };
 
   var roleLabels = {
-    kumho: { tag: 'Kumho Portal', badge: 'Admin Kumho' },
-    npp:   { tag: 'Distributor Portal', badge: 'Nhà phân phối' }
+    kumho: {
+      tag: 'Trung tâm điều hành',
+      badge: 'Admin Kumho',
+      title: 'Kumho HQ',
+      icon: 'admin_panel_settings',
+      iconBg: 'bg-primary text-on-primary',
+      titleCls: 'text-primary',
+      chipCls: 'bg-primary/10 text-primary border border-primary/20',
+      chipIcon: 'shield_person',
+      accentBar: 'bg-primary'
+    },
+    npp: {
+      tag: 'Kênh phân phối',
+      badge: 'Nhà phân phối',
+      title: 'NPP Portal',
+      icon: 'local_shipping',
+      iconBg: 'bg-secondary text-on-secondary',
+      titleCls: 'text-secondary',
+      chipCls: 'bg-secondary-container/40 text-secondary border border-secondary/20',
+      chipIcon: 'corporate_fare',
+      accentBar: 'bg-secondary'
+    }
   };
 
   function renderSidebar(role, active, session) {
@@ -27,18 +47,22 @@
     var label = roleLabels[role];
     var html = ''
       + '<aside class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col z-30">'
-      + '  <div class="p-lg flex items-center gap-3">'
-      + '    <div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">'
-      + '      <span class="material-symbols-outlined">tire_repair</span>'
-      + '    </div>'
-      + '    <div>'
-      + '      <h1 class="text-label-md font-bold text-primary leading-none tracking-tight">Kumho NPP</h1>'
-      + '      <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold mt-1">' + label.tag + '</p>'
+      + '  <div class="relative">'
+      + '    <div class="absolute left-0 top-0 bottom-0 w-1 ' + label.accentBar + '"></div>'
+      + '    <div class="p-lg flex items-center gap-3">'
+      + '      <div class="w-11 h-11 ' + label.iconBg + ' rounded-lg flex items-center justify-center shadow-md shrink-0">'
+      + '        <span class="material-symbols-outlined fill">' + label.icon + '</span>'
+      + '      </div>'
+      + '      <div class="min-w-0">'
+      + '        <p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold leading-none">Kumho Tyre</p>'
+      + '        <h1 class="text-h3 font-bold ' + label.titleCls + ' leading-none tracking-tight mt-1 truncate">' + label.title + '</h1>'
+      + '        <p class="text-[10px] text-on-surface-variant uppercase tracking-wider font-bold mt-1 truncate">' + label.tag + '</p>'
+      + '      </div>'
       + '    </div>'
       + '  </div>'
       + '  <div class="px-lg pb-md">'
-      + '    <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest ' + (role === 'kumho' ? 'bg-primary/10 text-primary' : 'bg-secondary-container/40 text-secondary') + '">'
-      + '      <span class="material-symbols-outlined text-[12px]">' + (role === 'kumho' ? 'admin_panel_settings' : 'corporate_fare') + '</span>' + label.badge
+      + '    <span class="inline-flex items-center gap-1 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest ' + label.chipCls + '">'
+      + '      <span class="material-symbols-outlined text-[12px]">' + label.chipIcon + '</span>' + label.badge
       + '    </span>'
       + '  </div>'
       + '  <nav class="flex-1 overflow-y-auto scroll-hidden">';
