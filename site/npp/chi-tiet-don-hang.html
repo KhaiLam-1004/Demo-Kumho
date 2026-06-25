@@ -75,27 +75,21 @@
       <!-- Right column -->
       <div class="col-span-12 lg:col-span-4 space-y-gutter">
 
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
-          <h3 class="font-h3 mb-md">Tác động đến scheme</h3>
-          <p class="text-label-sm text-on-surface-variant mb-md">Sau xác nhận, <b id="scheme-add">—</b> lốp được cộng vào scheme Q2/2026 của đại lý.</p>
-          <div class="bg-surface-container border border-outline-variant rounded-lg p-md">
-            <div class="flex items-end justify-between mb-xs">
-              <span class="text-label-sm text-on-surface-variant uppercase">Sau xác nhận</span>
-              <span id="scheme-after" class="text-h3 font-bold text-primary">—/500</span>
-            </div>
-            <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden"><div id="scheme-bar" class="h-full bg-primary" style="width:0%"></div></div>
-            <p id="scheme-remaining" class="text-label-sm text-on-surface-variant mt-2">—</p>
+        <!-- Tác động đến Scheme tích luỹ — multi-block (§3 wireframe spec) -->
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm sticky top-[80px]">
+          <div class="px-lg pt-lg pb-md border-b border-outline-variant flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary">trending_up</span>
+            <h3 class="font-h3">Tác động đến Scheme tích luỹ</h3>
           </div>
-        </div>
-
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
-          <h3 class="font-h3 mb-md">Ghi chú nội bộ</h3>
-          <textarea rows="4" class="w-full rounded-lg border border-outline-variant focus:ring-2 focus:ring-primary/20 focus:border-primary p-md text-body-md outline-none resize-none" placeholder="Ghi chú riêng cho NPP (đại lý không nhìn thấy)..."></textarea>
+          <p class="px-lg pt-md text-label-sm text-on-surface-variant italic">Minh hoạ "nếu duyệt" — dựa trên số <b>đại lý nhập</b>, không đổi khi bạn gõ số xác nhận.</p>
+          <div id="scheme-blocks" class="px-lg py-md divide-y divide-outline-variant max-h-[60vh] overflow-y-auto">
+            <!-- blocks rendered by JS -->
+          </div>
         </div>
 
         <div class="bg-tertiary-fixed/40 border border-tertiary-fixed-dim/60 rounded-lg p-md flex gap-md">
           <span class="material-symbols-outlined text-tertiary">warning</span>
-          <p class="text-label-sm text-on-tertiary-fixed-variant leading-relaxed">Đơn hàng sau khi xác nhận hoặc từ chối <b>không thể chỉnh sửa</b>. Hệ thống cập nhật scheme ngay lập tức.</p>
+          <p class="text-label-sm text-on-tertiary-fixed-variant leading-relaxed">Đơn hàng sau khi duyệt / từ chối <b>không thể chỉnh sửa</b>. Hệ thống cập nhật Scheme ngay khi duyệt.</p>
         </div>
       </div>
     </div>
@@ -164,37 +158,74 @@
 <script src="../assets/app.js"></script>
 <script>
 (function () {
-  // Mock orders matching the rows in don-hang-xac-nhan.html (cùng tổng số lốp).
+  // Mỗi order có 1 hoặc nhiều Scheme tích luỹ đang chạy. Số liệu render trong
+  // card bên phải dựa trên số ĐẠI LÝ NHẬP (qty trong items), không phải số
+  // Xác nhận NPP gõ — đúng spec wireframe Scheme.
+  //
+  // State của 1 block Scheme:
+  //   'default'   — đang chạy, dưới mốc → render đủ 4 vùng (no badge, no sub-text)
+  //   'received'  — đại lý đã nhận quà → badge xám + inline "(không tạo quà mới)" + sub-text
+  //   'oof'       — đơn không có lốp thuộc phạm vi Scheme → delta=0, bar không nhích
+  //   'milestone' — đơn duyệt khiến đại lý chạm / vượt mốc → bar ≥100%, đổi màu, sub-text đạt mốc
+  //
+  // Order DH00133 = empty state (không có Scheme đang chạy).
   var orders = {
+    // (1) DEFAULT scenario — 3 scheme đang chạy, đơn cộng vào cả 3, chưa chạm mốc
     'DH00128': {
       dealer: { name: 'Đại lý Lốp Tân Bình', phone: '0941 111 111', region: 'Đông Nam Bộ — TP.HCM' },
       date: '07/05/2026', sent: '07/05/2026 09:30',
-      schemeCurrent: 128,
       items: [
         { sku: 'Kumho KR201 215/55R17',        qty: 30 },
         { sku: 'Kumho Crugen HP71 235/60R18',  qty: 15 },
         { sku: 'Kumho KH27 195/65R15',         qty: 5  }
+      ],
+      schemes: [
+        { id: 'S-PCR-Q2', name: 'Scheme Q2/2026 — Lốp PCR ≥17 inch', target: 100, reward: 'iPhone 15 Pro', current: 64, add: 30, state: 'default' },
+        { id: 'S-SUV-Q2', name: 'Scheme Q2/2026 — Lốp SUV ≥18 inch', target: 80,  reward: 'Smart TV 55"', current: 32, add: 15, state: 'default' },
+        { id: 'S-ALL-2026', name: 'Scheme cả năm 2026 — Tổng tích luỹ', target: 500, reward: 'Du lịch Hàn Quốc', current: 180, add: 50, state: 'default' }
       ]
     },
+
+    // (3) CHẠM MỐC scenario — 1 scheme sẽ vượt 100% sau khi duyệt
     'DH00131': {
       dealer: { name: 'Auto Zone Quận 7', phone: '0902 123 456', region: 'Đông Nam Bộ — TP.HCM' },
       date: '15/05/2026', sent: '15/05/2026 14:12',
-      schemeCurrent: 472,
       items: [
         { sku: 'Kumho Ecsta PS31 225/45R17',   qty: 18 },
         { sku: 'Kumho KH27 195/65R15',         qty: 10 }
+      ],
+      schemes: [
+        { id: 'S-PCR-Q2', name: 'Scheme Q2/2026 — Lốp PCR ≥17 inch', target: 100, reward: 'iPhone 15 Pro', current: 85, add: 18, state: 'milestone' },
+        { id: 'S-ALL-2026', name: 'Scheme cả năm 2026 — Tổng tích luỹ', target: 500, reward: 'Du lịch Hàn Quốc', current: 400, add: 28, state: 'default' }
       ]
     },
+
+    // (2) MIXED scenario — 1 "đã nhận quà" + 1 default + 1 "+0 lốp" (out-of-scope)
     'DH00132': {
       dealer: { name: 'Vỏ Xe Bình Dương', phone: '0908 123 456', region: 'Đông Nam Bộ — Bình Dương' },
       date: '16/05/2026', sent: '16/05/2026 10:45',
-      schemeCurrent: 200,
       items: [
         { sku: 'Kumho KR201 215/55R17',        qty: 20 },
         { sku: 'Kumho Crugen HP71 235/60R18',  qty: 22 },
         { sku: 'Kumho KH27 195/65R15',         qty: 15 },
         { sku: 'Kumho Ecsta PS31 225/45R17',   qty: 15 }
+      ],
+      schemes: [
+        { id: 'S-PCR-Q1', name: 'Scheme Q1/2026 — Lốp PCR ≥17 inch', target: 100, reward: 'Smart TV 55"', current: 100, add: 35, state: 'received' },
+        { id: 'S-SUV-Q2', name: 'Scheme Q2/2026 — Lốp SUV ≥18 inch', target: 80,  reward: 'iPhone 15 Pro', current: 40,  add: 22, state: 'default' },
+        { id: 'S-SMALL', name: 'Scheme Khuyến mãi — Lốp size <15 inch', target: 60,  reward: 'Voucher 5tr', current: 22, add: 0, state: 'oof' }
       ]
+    },
+
+    // (4) EMPTY scenario — không có Scheme nào đang chạy
+    'DH00133': {
+      dealer: { name: 'Lốp Xe Quận 8', phone: '0914 887 661', region: 'Đông Nam Bộ — TP.HCM' },
+      date: '20/06/2026', sent: '20/06/2026 11:05',
+      items: [
+        { sku: 'Kumho KR201 215/55R17',        qty: 12 },
+        { sku: 'Kumho KH27 195/65R15',         qty: 8 }
+      ],
+      schemes: []
     }
   };
 
@@ -237,33 +268,94 @@
       sum += Math.max(0, parseInt(inp.value, 10) || 0);
     });
     document.getElementById('total-confirmed').textContent = sum;
-    paintScheme(sum);
     document.getElementById('approve-total').textContent = sum;
+    // Scheme card KHÔNG đổi khi NPP gõ — chỉ là minh hoạ "nếu duyệt" theo số đại lý nhập.
     return sum;
   }
   document.querySelectorAll('[data-confirm-qty]').forEach(function (inp) {
     inp.addEventListener('input', recomputeTotal);
   });
 
-  // Scheme card
-  function paintScheme(add) {
-    var current = o.schemeCurrent || 0;
-    var after = current + add;
-    var pct = Math.min(100, Math.round(after / 500 * 100));
-    document.getElementById('scheme-add').textContent = add;
-    document.getElementById('scheme-after').textContent = after + '/500';
-    document.getElementById('scheme-bar').style.width = pct + '%';
-    if (after >= 500) {
-      document.getElementById('scheme-remaining').innerHTML = '<span class="text-secondary font-bold">✓ Đại lý sẽ đạt scheme — Kumho sẽ giao quà</span>';
-      document.getElementById('scheme-bar').classList.remove('bg-primary');
-      document.getElementById('scheme-bar').classList.add('bg-secondary');
-    } else {
-      document.getElementById('scheme-remaining').innerHTML = 'Còn <b>' + (500 - after) + ' lốp</b> nữa để đạt scheme.';
-      document.getElementById('scheme-bar').classList.add('bg-primary');
-      document.getElementById('scheme-bar').classList.remove('bg-secondary');
+  // ===== Scheme impact card — multi-block renderer =====
+  function renderSchemeBlock(s) {
+    var after = s.current + s.add;
+    var pctNum = s.target > 0 ? after / s.target * 100 : 0;
+    var pctClamped = Math.min(100, pctNum);
+    var isMilestone = s.state === 'milestone' || pctNum >= 100;
+    var isReceived = s.state === 'received';
+    var isOof = s.state === 'oof';
+
+    // Header badge slot
+    var badge = '';
+    if (isReceived) badge = '<span class="ml-2 px-2 py-0.5 rounded-full bg-on-surface/10 text-on-surface-variant text-[11px] font-bold uppercase">Đã nhận quà</span>';
+    else if (isMilestone) badge = '<span class="ml-2 px-2 py-0.5 rounded-full bg-secondary-container/50 text-secondary text-[11px] font-bold uppercase">Sắp đạt mốc</span>';
+
+    // Inline note for line 2
+    var inlineNote = isReceived ? '<span class="text-label-sm text-on-surface-variant ml-1">(không tạo quà mới)</span>' : '';
+
+    // Bar color
+    var barColor;
+    if (isReceived) barColor = 'bg-on-surface/30';
+    else if (isMilestone) barColor = 'bg-secondary';
+    else if (isOof) barColor = 'bg-on-surface/20';
+    else barColor = 'bg-primary';
+
+    // Sub-text
+    var sub = '';
+    if (isReceived) {
+      sub = '<p class="text-label-sm text-on-surface-variant mt-2 leading-relaxed">Đại lý đã nhận quà của Scheme này — số lốp đơn này vẫn ghi nhận làm số liệu lịch sử nhưng <b>không trigger trả thưởng lần 2</b>.</p>';
+    } else if (isMilestone) {
+      sub = '<p class="text-label-sm text-secondary font-bold mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px] fill">verified</span> Đại lý sẽ đạt mốc thưởng sau khi đơn được duyệt.</p>';
+    } else if (isOof) {
+      sub = '<p class="text-label-sm text-on-surface-variant mt-2 italic">Đơn không có lốp thuộc phạm vi Scheme này.</p>';
     }
+
+    return ''
+      + '<div class="py-md first:pt-0 last:pb-0">'
+      // Header block
+      + '<div class="mb-sm">'
+      + '<div class="flex items-start gap-2 flex-wrap">'
+      + '<p class="font-label-md font-bold text-on-surface flex-1 min-w-0">' + s.name + '</p>'
+      + badge
+      + '</div>'
+      + '<p class="text-label-sm text-on-surface-variant mt-0.5">Mốc <b>' + s.target + ' lốp</b> · Quà: ' + s.reward + '</p>'
+      + '</div>'
+      // Line 1
+      + '<div class="flex items-baseline justify-between text-body-md">'
+      + '<span class="text-on-surface-variant">Tích luỹ hiện tại</span>'
+      + '<span class="font-medium">' + s.current + '/' + s.target + ' lốp</span>'
+      + '</div>'
+      // Line 2
+      + '<div class="flex items-baseline justify-between text-body-md mt-1">'
+      + '<span class="text-on-surface-variant">Sẽ cộng nếu duyệt</span>'
+      + '<span class="font-bold ' + (s.add > 0 ? 'text-primary' : 'text-on-surface-variant') + '">+' + s.add + ' lốp' + inlineNote + '</span>'
+      + '</div>'
+      // Line 3
+      + '<div class="flex items-baseline justify-between text-body-md mt-1">'
+      + '<span class="text-on-surface-variant">Tổng sau khi duyệt</span>'
+      + '<span class="font-bold">' + after + '/' + s.target + ' lốp</span>'
+      + '</div>'
+      // Progress bar
+      + '<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden mt-2"><div class="h-full ' + barColor + '" style="width:' + pctClamped + '%"></div></div>'
+      // Sub-text
+      + sub
+      + '</div>';
   }
-  paintScheme(orderTotal);
+
+  function renderSchemeCard() {
+    var box = document.getElementById('scheme-blocks');
+    if (!o.schemes || !o.schemes.length) {
+      // Empty state — D
+      box.innerHTML = ''
+        + '<div class="py-xl text-center">'
+        + '<span class="material-symbols-outlined text-on-surface-variant text-[40px] opacity-60">inventory_2</span>'
+        + '<p class="text-body-md text-on-surface-variant mt-2 leading-relaxed px-md">Hiện không có Scheme nào đang chạy — số lốp duyệt sẽ được ghi nhận làm lịch sử, không cộng tích luỹ thưởng.</p>'
+        + '</div>';
+      return;
+    }
+    box.innerHTML = o.schemes.map(renderSchemeBlock).join('');
+  }
+  renderSchemeCard();
 
   // Modal text
   document.getElementById('approve-order-id').textContent = orderId;
