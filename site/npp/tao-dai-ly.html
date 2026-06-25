@@ -19,10 +19,10 @@
 
     <div class="mb-lg">
       <h1 class="text-h1 font-bold">Tạo đại lý mới</h1>
-      <p class="text-body-md text-on-surface-variant mt-xs">Cung cấp thông tin chi tiết để đăng ký đại lý mới trong hệ thống.</p>
+      <p class="text-body-md text-on-surface-variant mt-xs">Cung cấp thông tin chi tiết để đăng ký đại lý mới. Sau khi gửi, Kumho sẽ duyệt trong 1-2 ngày.</p>
     </div>
 
-    <form class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden" onsubmit="event.preventDefault(); window.location.href='quan-ly-dai-ly.html';">
+    <form id="create-form" class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden" onsubmit="return false;">
       <div class="p-lg border-b border-outline-variant bg-surface-container-low/40">
         <h3 class="font-h3 text-h3">Thông tin đại lý</h3>
       </div>
@@ -30,52 +30,184 @@
       <div class="p-lg space-y-lg">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
           <div>
-            <label class="font-label-md block mb-xs">Số điện thoại</label>
-            <input value="0987654321" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Nhập số điện thoại">
-            <p class="text-secondary flex items-center gap-1 text-label-sm mt-1">
-              <span class="material-symbols-outlined text-[16px] fill">check_circle</span> Số điện thoại hợp lệ
-            </p>
+            <label class="font-label-md block mb-xs">Tên đại lý <span class="text-error">*</span></label>
+            <input id="f-name" maxlength="255" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="VD: Đại lý Kumho Tân Bình">
+            <p class="text-label-sm text-on-surface-variant mt-1"><span id="cnt-name">0</span>/255 ký tự</p>
           </div>
           <div>
-            <label class="font-label-md block mb-xs">Tên đại lý</label>
-            <input class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Ví dụ: Đại lý Kumho Tân Bình">
+            <label class="font-label-md block mb-xs">SĐT đại lý <span class="text-error">*</span></label>
+            <input id="f-phone" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="VD: 0901234567" maxlength="10">
+            <p id="phone-hint" class="text-label-sm text-on-surface-variant mt-1">10 chữ số, bắt đầu 03/05/07/08/09</p>
           </div>
         </div>
 
         <div>
-          <label class="font-label-md block mb-xs">Khu vực</label>
-          <div class="relative">
-            <select class="w-full h-12 px-md pr-xl appearance-none rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md bg-white">
-              <option>Miền Nam</option>
-              <option>Miền Trung</option>
-              <option>Miền Bắc</option>
-            </select>
-            <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+          <label class="font-label-md block mb-xs">Địa chỉ đại lý <span class="text-error">*</span></label>
+          <textarea id="f-address" rows="2" maxlength="255" class="w-full p-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Số nhà, đường, phường/xã"></textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div>
+            <label class="font-label-md block mb-xs">Tỉnh thành <span class="text-error">*</span></label>
+            <div class="relative">
+              <select id="f-province" class="w-full h-12 px-md pr-xl appearance-none rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md bg-white">
+                <option value="">— Chọn tỉnh thành —</option>
+                <option>TP. Hồ Chí Minh</option>
+                <option>Hà Nội</option>
+                <option>Bình Dương</option>
+                <option>Đồng Nai</option>
+                <option>Long An</option>
+                <option>Đà Nẵng</option>
+                <option>Cần Thơ</option>
+                <option>Bến Tre</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="font-label-md block mb-xs">Khu vực (multi-select) <span class="text-error">*</span></label>
+            <button type="button" id="f-region-btn" class="w-full h-12 px-md text-left rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none bg-white flex items-center justify-between gap-2">
+              <span id="f-region-label" class="text-on-surface-variant truncate">— Chọn ≥ 1 khu vực —</span>
+              <span class="material-symbols-outlined text-on-surface-variant">expand_more</span>
+            </button>
+            <div id="f-region-panel" class="hidden mt-1 border border-outline-variant rounded-lg bg-white shadow-lg p-md max-h-[200px] overflow-y-auto">
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Quận 1"> Quận 1</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Quận 3"> Quận 3</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Quận 5"> Quận 5</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Quận 7"> Quận 7</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Quận 8"> Quận 8</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Tân Bình"> Tân Bình</label>
+              <label class="flex items-center gap-2 py-1.5 cursor-pointer hover:bg-surface-container-low rounded px-1"><input type="checkbox" class="region-cb rounded text-primary" value="Thủ Đức"> Thủ Đức</label>
+            </div>
+            <p class="text-label-sm text-on-surface-variant mt-1">Chỉ chọn khu vực thuộc phạm vi NPP của bạn.</p>
           </div>
         </div>
 
-        <div>
-          <label class="font-label-md block mb-xs">Địa chỉ</label>
-          <textarea rows="3" class="w-full p-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md" placeholder="Nhập địa chỉ chi tiết (Số nhà, đường, phường/xã...)"></textarea>
-        </div>
-
-        <div class="flex gap-md p-md bg-surface-container-low rounded-lg border-l-4 border-primary">
+        <div class="flex gap-md p-md bg-primary/5 rounded-lg border-l-4 border-primary">
           <span class="material-symbols-outlined text-primary">info</span>
-          <p class="text-body-md text-on-surface-variant">Đại lý sẽ được Kumho duyệt trước khi kích hoạt. Bạn có thể theo dõi trạng thái tại mục Lịch sử quản lý.</p>
+          <p class="text-body-md text-on-surface-variant">Sau khi gửi, đại lý sẽ ở trạng thái <b>Chờ duyệt</b>. Kumho phản hồi sẽ thông báo qua portal + ZNS.</p>
         </div>
       </div>
 
       <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-end items-center gap-md">
-        <a href="quan-ly-dai-ly.html" class="px-xl py-3 rounded-lg text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Hủy</a>
-        <button type="submit" onclick="toast('Đã gửi duyệt — Kumho sẽ phản hồi trong 1-2 ngày','success')" class="px-xl py-3 rounded-lg text-label-md bg-primary text-on-primary font-bold hover:bg-primary-container active:scale-95 shadow-md">Gửi duyệt</button>
+        <button id="btn-cancel" type="button" class="px-xl py-3 rounded-lg text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Huỷ</button>
+        <button id="btn-submit" type="submit" disabled class="px-xl py-3 rounded-lg text-label-md bg-primary text-on-primary font-bold hover:bg-primary-container active:scale-95 shadow-md disabled:opacity-50 disabled:cursor-not-allowed">Gửi duyệt</button>
       </div>
     </form>
 
   </div>
 </main>
 
+<!-- Popup Huỷ form (khi đã nhập field) -->
+<div id="modal-cancel" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+  <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[440px] overflow-hidden">
+    <div class="p-lg border-b border-outline-variant">
+      <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-warning">warning</span> Huỷ tạo đại lý?</h3>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md text-on-surface leading-relaxed">Bạn có chắc muốn huỷ? Dữ liệu đã nhập sẽ mất.</p>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+      <button data-close-modal="modal-cancel" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Quay lại</button>
+      <a href="quan-ly-dai-ly.html" class="px-lg py-sm bg-error text-on-error rounded-lg font-bold hover:opacity-90">Xác nhận</a>
+    </div>
+  </div>
+</div>
+
 <script src="../assets/auth.js"></script>
 <script src="../assets/partials.js"></script>
 <script src="../assets/app.js"></script>
+<script>
+(function () {
+  var fName = document.getElementById('f-name');
+  var fPhone = document.getElementById('f-phone');
+  var fAddress = document.getElementById('f-address');
+  var fProvince = document.getElementById('f-province');
+  var regionBtn = document.getElementById('f-region-btn');
+  var regionPanel = document.getElementById('f-region-panel');
+  var regionLabel = document.getElementById('f-region-label');
+  var phoneHint = document.getElementById('phone-hint');
+  var btnSubmit = document.getElementById('btn-submit');
+  var btnCancel = document.getElementById('btn-cancel');
+  var cntName = document.getElementById('cnt-name');
+
+  fName.addEventListener('input', function () {
+    cntName.textContent = fName.value.length;
+    refresh();
+  });
+
+  fPhone.addEventListener('input', function () {
+    var v = fPhone.value.replace(/\D/g, '');
+    fPhone.value = v;
+    if (!v) {
+      phoneHint.textContent = '10 chữ số, bắt đầu 03/05/07/08/09';
+      phoneHint.className = 'text-label-sm text-on-surface-variant mt-1';
+    } else if (!/^(03|05|07|08|09)\d{8}$/.test(v)) {
+      phoneHint.textContent = 'Số điện thoại không đúng định dạng (10 chữ số, bắt đầu 03/05/07/08/09)';
+      phoneHint.className = 'text-label-sm text-error mt-1';
+    } else {
+      phoneHint.textContent = '✓ Số điện thoại hợp lệ';
+      phoneHint.className = 'text-label-sm text-secondary mt-1';
+    }
+    refresh();
+  });
+
+  [fAddress, fProvince].forEach(function (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
+
+  regionBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    regionPanel.classList.toggle('hidden');
+  });
+  document.addEventListener('click', function (e) {
+    if (!regionPanel.classList.contains('hidden') && !regionPanel.contains(e.target) && !regionBtn.contains(e.target)) {
+      regionPanel.classList.add('hidden');
+    }
+  });
+  regionPanel.addEventListener('change', function () {
+    var selected = Array.from(regionPanel.querySelectorAll('.region-cb:checked')).map(function (cb) { return cb.value; });
+    if (!selected.length) {
+      regionLabel.textContent = '— Chọn ≥ 1 khu vực —';
+      regionLabel.className = 'text-on-surface-variant truncate';
+    } else {
+      regionLabel.textContent = selected.join(', ');
+      regionLabel.className = 'text-on-surface truncate';
+    }
+    refresh();
+  });
+
+  function isDirty() {
+    return fName.value || fPhone.value || fAddress.value || fProvince.value || regionPanel.querySelector('.region-cb:checked');
+  }
+
+  function isValid() {
+    var phoneOk = /^(03|05|07|08|09)\d{8}$/.test(fPhone.value);
+    var regionOk = regionPanel.querySelector('.region-cb:checked');
+    return fName.value.trim() && phoneOk && fAddress.value.trim() && fProvince.value && regionOk;
+  }
+
+  function refresh() {
+    btnSubmit.disabled = !isValid();
+  }
+
+  btnCancel.addEventListener('click', function () {
+    if (isDirty()) {
+      document.getElementById('modal-cancel').classList.remove('hidden');
+    } else {
+      location.href = 'quan-ly-dai-ly.html';
+    }
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(function (b) {
+    b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-close-modal')).classList.add('hidden'); });
+  });
+
+  btnSubmit.addEventListener('click', function () {
+    if (!isValid()) return;
+    if (window.toast) toast('Đã tạo đại lý ' + fName.value + ' — chờ Kumho duyệt', 'success');
+    setTimeout(function () { location.href = 'quan-ly-dai-ly.html'; }, 600);
+  });
+})();
+</script>
 </body>
 </html>

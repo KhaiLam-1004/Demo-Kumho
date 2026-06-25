@@ -68,10 +68,10 @@
 
     <!-- Preview table (step 3) -->
     <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
-      <div class="p-lg border-b border-outline-variant flex items-center justify-between bg-surface-container-low/40">
+      <div class="p-lg border-b border-outline-variant flex items-center justify-between bg-surface-container-low/40 flex-wrap gap-md">
         <div>
           <h3 class="font-h3">3. Kiểm tra dữ liệu</h3>
-          <p class="text-label-sm text-on-surface-variant mt-1">5 dòng hợp lệ · <span class="text-error font-bold">1 dòng có lỗi</span></p>
+          <p class="text-label-sm text-on-surface-variant mt-1">Tổng <b>6</b> dòng — <span class="text-secondary font-bold">5 hợp lệ</span> — <span class="text-error font-bold">1 lỗi</span></p>
         </div>
         <div class="flex items-center gap-md">
           <span class="text-label-sm text-on-surface-variant">File: <b>dai_ly_thang_05.xlsx</b></span>
@@ -79,30 +79,55 @@
         </div>
       </div>
 
+      <!-- Tab filter -->
+      <div class="px-lg border-b border-outline-variant flex gap-0 bg-surface-container-low/20" id="preview-tabs">
+        <button data-tab="all" class="px-md py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface">Tất cả (6)</button>
+        <button data-tab="ok"  class="px-md py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface">Hợp lệ (5)</button>
+        <button data-tab="err" class="px-md py-3 font-label-md text-error border-b-2 border-error font-bold">Lỗi (1)</button>
+      </div>
+
       <table class="w-full text-left">
         <thead><tr class="bg-surface-container-low/40">
-          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">#</th>
-          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">SĐT</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">STT</th>
           <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Tên đại lý</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">SĐT đại lý</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Địa chỉ đại lý</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Tỉnh thành</th>
           <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Khu vực</th>
-          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Địa chỉ</th>
-          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Validate</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+          <th class="px-md py-3 font-label-sm text-on-surface-variant uppercase">Lý do lỗi</th>
         </tr></thead>
-        <tbody class="divide-y divide-outline-variant">
-          <tr><td class="px-md py-3 text-body-md">1</td><td class="px-md py-3 text-body-md">0901 111 222</td><td class="px-md py-3 text-body-md font-bold">Lốp Tân Phú</td><td class="px-md py-3 text-body-md">Tân Phú, TP.HCM</td><td class="px-md py-3 text-body-md">123 Lê Trọng Tấn</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
-          <tr><td class="px-md py-3 text-body-md">2</td><td class="px-md py-3 text-body-md">0908 333 444</td><td class="px-md py-3 text-body-md font-bold">Auto Bình Tân</td><td class="px-md py-3 text-body-md">Bình Tân, TP.HCM</td><td class="px-md py-3 text-body-md">Khu B, Tên Lửa</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
-          <tr class="bg-error-container/30"><td class="px-md py-3 text-body-md">3</td><td class="px-md py-3 text-body-md text-error font-bold">097_invalid</td><td class="px-md py-3 text-body-md">Vỏ xe Ngoại Thành</td><td class="px-md py-3 text-body-md">Quận 12</td><td class="px-md py-3 text-body-md">—</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold"><span class="material-symbols-outlined text-[14px]">error</span> SĐT sai định dạng</span></td></tr>
-          <tr><td class="px-md py-3 text-body-md">4</td><td class="px-md py-3 text-body-md">0931 555 666</td><td class="px-md py-3 text-body-md font-bold">Lốp Củ Chi</td><td class="px-md py-3 text-body-md">Củ Chi, TP.HCM</td><td class="px-md py-3 text-body-md">Tỉnh lộ 8</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
-          <tr><td class="px-md py-3 text-body-md">5</td><td class="px-md py-3 text-body-md">0939 777 888</td><td class="px-md py-3 text-body-md font-bold">Garage Mỹ Tho</td><td class="px-md py-3 text-body-md">Tiền Giang</td><td class="px-md py-3 text-body-md">Lê Văn Phẩm</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
-          <tr><td class="px-md py-3 text-body-md">6</td><td class="px-md py-3 text-body-md">0913 999 000</td><td class="px-md py-3 text-body-md font-bold">Lốp Đồng Nai</td><td class="px-md py-3 text-body-md">Biên Hoà</td><td class="px-md py-3 text-body-md">KCN Amata</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td></tr>
+        <tbody class="divide-y divide-outline-variant" id="preview-tbody">
+          <tr data-status="ok"><td class="px-md py-3 text-body-md">1</td><td class="px-md py-3 text-body-md font-bold">Lốp Tân Phú</td><td class="px-md py-3 text-body-md">0901111222</td><td class="px-md py-3 text-body-md">123 Lê Trọng Tấn, Tân Phú</td><td class="px-md py-3 text-body-md">TP. Hồ Chí Minh</td><td class="px-md py-3 text-body-md">Tân Phú</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td><td class="px-md py-3 text-body-md text-on-surface-variant">—</td></tr>
+          <tr data-status="ok"><td class="px-md py-3 text-body-md">2</td><td class="px-md py-3 text-body-md font-bold">Auto Bình Tân</td><td class="px-md py-3 text-body-md">0908333444</td><td class="px-md py-3 text-body-md">Khu B, Tên Lửa, Bình Tân</td><td class="px-md py-3 text-body-md">TP. Hồ Chí Minh</td><td class="px-md py-3 text-body-md">Bình Tân</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td><td class="px-md py-3 text-body-md text-on-surface-variant">—</td></tr>
+          <tr data-status="err" class="bg-error-container/20"><td class="px-md py-3 text-body-md">3</td><td class="px-md py-3 text-body-md font-bold">Vỏ xe Ngoại Thành</td><td class="px-md py-3 text-body-md text-error font-bold">097_invalid</td><td class="px-md py-3 text-body-md">—</td><td class="px-md py-3 text-body-md">TP. Hồ Chí Minh</td><td class="px-md py-3 text-body-md">Quận 12</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold"><span class="material-symbols-outlined text-[14px]">error</span> Lỗi</span></td><td class="px-md py-3 text-label-sm text-error">SĐT sai định dạng; Địa chỉ trống</td></tr>
+          <tr data-status="ok"><td class="px-md py-3 text-body-md">4</td><td class="px-md py-3 text-body-md font-bold">Lốp Củ Chi</td><td class="px-md py-3 text-body-md">0931555666</td><td class="px-md py-3 text-body-md">Tỉnh lộ 8, Củ Chi</td><td class="px-md py-3 text-body-md">TP. Hồ Chí Minh</td><td class="px-md py-3 text-body-md">Củ Chi</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td><td class="px-md py-3 text-body-md text-on-surface-variant">—</td></tr>
+          <tr data-status="ok"><td class="px-md py-3 text-body-md">5</td><td class="px-md py-3 text-body-md font-bold">Garage Mỹ Tho</td><td class="px-md py-3 text-body-md">0939777888</td><td class="px-md py-3 text-body-md">123 Lê Văn Phẩm</td><td class="px-md py-3 text-body-md">Tiền Giang</td><td class="px-md py-3 text-body-md">TP. Mỹ Tho</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td><td class="px-md py-3 text-body-md text-on-surface-variant">—</td></tr>
+          <tr data-status="ok"><td class="px-md py-3 text-body-md">6</td><td class="px-md py-3 text-body-md font-bold">Lốp Đồng Nai</td><td class="px-md py-3 text-body-md">0913999000</td><td class="px-md py-3 text-body-md">KCN Amata, Biên Hoà</td><td class="px-md py-3 text-body-md">Đồng Nai</td><td class="px-md py-3 text-body-md">Biên Hoà</td><td class="px-md py-3"><span class="inline-flex items-center gap-1 px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold"><span class="material-symbols-outlined text-[14px] fill">check_circle</span> Hợp lệ</span></td><td class="px-md py-3 text-body-md text-on-surface-variant">—</td></tr>
         </tbody>
       </table>
 
-      <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-between items-center">
-        <p class="text-label-sm text-on-surface-variant">Chỉ các dòng hợp lệ sẽ được gửi duyệt. Dòng lỗi có thể sửa và import lại.</p>
+      <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-between items-center flex-wrap gap-md">
+        <p class="text-label-sm text-on-surface-variant">Chỉ các dòng hợp lệ sẽ được gửi duyệt. Sửa file và upload lại để xử lý dòng lỗi.</p>
         <div class="flex gap-md">
-          <a href="quan-ly-dai-ly.html" class="px-lg py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-bold">Hủy</a>
-          <button onclick="toast('Đã gửi 5 đại lý hợp lệ lên Kumho duyệt','success'); setTimeout(()=>location.href='quan-ly-dai-ly.html', 900);" class="px-lg py-2 rounded-lg bg-primary text-on-primary font-bold shadow-sm hover:bg-primary-container">Gửi 5 đại lý hợp lệ</button>
+          <a href="quan-ly-dai-ly.html" class="px-lg py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high font-bold">Huỷ</a>
+          <button id="btn-import" class="px-lg py-2 rounded-lg bg-primary text-on-primary font-bold shadow-sm hover:bg-primary-container">Tiếp tục import 5 dòng hợp lệ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup confirm cuối -->
+    <div id="modal-import" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+      <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[480px] overflow-hidden">
+        <div class="p-lg border-b border-outline-variant">
+          <h3 class="font-h3">Xác nhận import</h3>
+        </div>
+        <div class="p-lg">
+          <p class="text-body-md text-on-surface leading-relaxed"><b>5 dòng hợp lệ</b> sẽ được gửi duyệt. <b>1 dòng lỗi</b> sẽ bị bỏ qua. Tiếp tục?</p>
+        </div>
+        <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+          <button data-close-modal="modal-import" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Quay lại</button>
+          <button id="confirm-import" class="px-lg py-sm bg-primary text-on-primary rounded-lg font-bold hover:opacity-90">Xác nhận</button>
         </div>
       </div>
     </div>
@@ -113,5 +138,38 @@
 <script src="../assets/auth.js"></script>
 <script src="../assets/partials.js"></script>
 <script src="../assets/app.js"></script>
+<script>
+(function () {
+  var tabs = document.querySelectorAll('#preview-tabs [data-tab]');
+  var rows = document.querySelectorAll('#preview-tbody tr');
+  function setTab(name) {
+    tabs.forEach(function (b) {
+      var on = b.getAttribute('data-tab') === name;
+      b.className = on
+        ? 'px-md py-3 font-label-md text-primary border-b-2 border-primary font-bold'
+        : 'px-md py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface';
+    });
+    rows.forEach(function (tr) {
+      if (name === 'all') tr.classList.remove('hidden');
+      else if (name === 'ok')  tr.classList.toggle('hidden', tr.getAttribute('data-status') !== 'ok');
+      else if (name === 'err') tr.classList.toggle('hidden', tr.getAttribute('data-status') !== 'err');
+    });
+  }
+  tabs.forEach(function (b) { b.addEventListener('click', function () { setTab(b.getAttribute('data-tab')); }); });
+  setTab('err'); // default = Lỗi vì Y > 0
+
+  document.getElementById('btn-import').addEventListener('click', function () {
+    document.getElementById('modal-import').classList.remove('hidden');
+  });
+  document.querySelectorAll('[data-close-modal]').forEach(function (b) {
+    b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-close-modal')).classList.add('hidden'); });
+  });
+  document.getElementById('confirm-import').addEventListener('click', function () {
+    document.getElementById('modal-import').classList.add('hidden');
+    if (window.toast) toast('Đã import 5 đại lý — chờ Kumho duyệt', 'success');
+    setTimeout(function () { location.href = 'quan-ly-dai-ly.html'; }, 700);
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sửa đại lý · Kumho NPP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="../assets/theme-config.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<link href="../assets/theme.css" rel="stylesheet">
+</head>
+<body class="bg-background text-on-surface">
+
+<div data-shell data-role="npp" data-active="quan-ly-dai-ly" data-breadcrumb="Quản lý đại lý|Auto Zone Quận 7|Sửa"></div>
+
+<main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
+  <div class="max-w-3xl mx-auto">
+
+    <div class="flex items-center gap-md mb-lg">
+      <a href="chi-tiet-dai-ly.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
+      <div>
+        <h1 id="page-title" class="text-h1 font-bold">Sửa đại lý</h1>
+        <p id="page-sub" class="text-body-md text-on-surface-variant mt-xs">Cập nhật thông tin và lưu thay đổi.</p>
+      </div>
+    </div>
+
+    <!-- Banner lý do từ chối (chỉ hiển thị với status=rejected) -->
+    <div id="reject-banner" class="hidden mb-md bg-error-container/30 border border-error rounded-xl p-md flex items-start gap-sm">
+      <span class="material-symbols-outlined text-error mt-0.5">error</span>
+      <div class="flex-1">
+        <p class="font-label-md text-error font-bold">Lý do từ chối từ Kumho</p>
+        <p class="text-body-md text-on-surface mt-1">Địa chỉ chưa đúng quy chuẩn — vui lòng bổ sung số nhà cụ thể. — 18/05/2026 14:32</p>
+      </div>
+    </div>
+
+    <form id="edit-form" class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden" onsubmit="return false;">
+      <div class="p-lg border-b border-outline-variant bg-surface-container-low/40">
+        <h3 class="font-h3 text-h3">Thông tin đại lý</h3>
+      </div>
+
+      <div class="p-lg space-y-lg">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div>
+            <label class="font-label-md block mb-xs">Tên đại lý <span class="text-error">*</span></label>
+            <input id="f-name" value="Auto Zone Quận 7" maxlength="255" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md">
+          </div>
+          <div>
+            <label class="font-label-md block mb-xs">SĐT đại lý <span class="text-error">*</span></label>
+            <input id="f-phone" value="0902123456" maxlength="10" class="w-full h-12 px-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md">
+            <p id="phone-hint" class="text-label-sm text-on-surface-variant mt-1">⛔ Readonly với trạng thái Hoạt động — chỉ Đã từ chối mới edit được SĐT.</p>
+          </div>
+        </div>
+
+        <div>
+          <label class="font-label-md block mb-xs">Địa chỉ đại lý <span class="text-error">*</span></label>
+          <textarea id="f-address" rows="2" maxlength="255" class="w-full p-md rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md">123 Nguyễn Thị Thập, Phường Tân Hưng, Quận 7, TP.HCM</textarea>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div>
+            <label class="font-label-md block mb-xs">Tỉnh thành <span class="text-error">*</span></label>
+            <div class="relative">
+              <select id="f-province" class="w-full h-12 px-md pr-xl appearance-none rounded-lg border border-outline-variant focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none text-body-md bg-white">
+                <option>TP. Hồ Chí Minh</option>
+                <option>Hà Nội</option>
+                <option>Bình Dương</option>
+                <option>Đồng Nai</option>
+                <option>Long An</option>
+              </select>
+              <span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+            </div>
+          </div>
+
+          <div>
+            <label class="font-label-md block mb-xs">Khu vực (readonly)</label>
+            <input value="Quận 7, Quận 8" disabled class="w-full h-12 px-md rounded-lg border border-outline-variant bg-surface-container-low text-on-surface-variant text-body-md cursor-not-allowed">
+            <p class="text-label-sm text-on-surface-variant mt-1">⛔ Không sửa được sau khi tạo. Tạo đại lý mới nếu cần khu vực khác.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="p-lg bg-surface-container-low/40 border-t border-outline-variant flex justify-end items-center gap-md">
+        <button id="btn-cancel" type="button" class="px-xl py-3 rounded-lg text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors">Huỷ</button>
+        <button id="btn-submit" type="submit" class="px-xl py-3 rounded-lg text-label-md bg-primary text-on-primary font-bold hover:bg-primary-container active:scale-95 shadow-md">Lưu thay đổi</button>
+      </div>
+    </form>
+
+  </div>
+</main>
+
+<!-- Popup huỷ khi dirty -->
+<div id="modal-cancel" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+  <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[440px] overflow-hidden">
+    <div class="p-lg border-b border-outline-variant">
+      <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-warning">warning</span> Huỷ chỉnh sửa?</h3>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md text-on-surface leading-relaxed">Bạn có chắc muốn huỷ? Thay đổi chưa lưu sẽ mất.</p>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+      <button data-close-modal="modal-cancel" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Quay lại</button>
+      <a href="chi-tiet-dai-ly.html" class="px-lg py-sm bg-error text-on-error rounded-lg font-bold hover:opacity-90">Xác nhận</a>
+    </div>
+  </div>
+</div>
+
+<!-- Popup confirm commit -->
+<div id="modal-commit" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+  <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[480px] overflow-hidden">
+    <div class="p-lg border-b border-outline-variant">
+      <h3 id="commit-title" class="font-h3">Cập nhật thông tin đại lý?</h3>
+    </div>
+    <div class="p-lg">
+      <p id="commit-body" class="text-body-md text-on-surface leading-relaxed">Cập nhật thông tin đại lý <b>Auto Zone Quận 7</b>? Thay đổi sẽ áp dụng ngay, không cần Kumho duyệt lại.</p>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+      <button data-close-modal="modal-commit" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Huỷ</button>
+      <button id="confirm-commit" class="px-lg py-sm bg-primary text-on-primary rounded-lg font-bold hover:opacity-90">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<script src="../assets/auth.js"></script>
+<script src="../assets/partials.js"></script>
+<script src="../assets/app.js"></script>
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  var isRejected = params.get('status') === 'rejected';
+
+  var fName = document.getElementById('f-name');
+  var fPhone = document.getElementById('f-phone');
+  var fAddress = document.getElementById('f-address');
+  var fProvince = document.getElementById('f-province');
+  var phoneHint = document.getElementById('phone-hint');
+  var btnSubmit = document.getElementById('btn-submit');
+  var btnCancel = document.getElementById('btn-cancel');
+
+  // Theo trạng thái:
+  // - Hoạt động: SĐT readonly, CTA "Lưu thay đổi"
+  // - Đã từ chối: SĐT edit được, CTA "Gửi duyệt"
+  if (isRejected) {
+    document.getElementById('reject-banner').classList.remove('hidden');
+    btnSubmit.textContent = 'Gửi duyệt';
+    document.getElementById('commit-title').textContent = 'Gửi duyệt lại đại lý?';
+    document.getElementById('commit-body').innerHTML = 'Gửi duyệt lại đại lý <b>Auto Zone Quận 7</b>? Kumho sẽ nhận thông báo mới và đại lý quay về trạng thái <b>Chờ duyệt</b>.';
+    phoneHint.textContent = '10 chữ số, bắt đầu 03/05/07/08/09 — có thể sửa khi trạng thái Đã từ chối.';
+    phoneHint.className = 'text-label-sm text-on-surface-variant mt-1';
+  } else {
+    fPhone.readOnly = true;
+    fPhone.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'cursor-not-allowed');
+  }
+
+  // Track initial values to detect dirty.
+  var initial = {
+    name: fName.value, phone: fPhone.value, address: fAddress.value, province: fProvince.value
+  };
+  function isDirty() {
+    return fName.value !== initial.name || fPhone.value !== initial.phone
+        || fAddress.value !== initial.address || fProvince.value !== initial.province;
+  }
+
+  // Phone validation only when editable.
+  if (!fPhone.readOnly) {
+    fPhone.addEventListener('input', function () {
+      var v = fPhone.value.replace(/\D/g, ''); fPhone.value = v;
+      if (!v) { phoneHint.textContent = '10 chữ số, bắt đầu 03/05/07/08/09'; phoneHint.className = 'text-label-sm text-on-surface-variant mt-1'; return; }
+      if (!/^(03|05|07|08|09)\d{8}$/.test(v)) {
+        phoneHint.textContent = 'Số điện thoại không đúng định dạng (10 chữ số, bắt đầu 03/05/07/08/09)';
+        phoneHint.className = 'text-label-sm text-error mt-1';
+      } else {
+        phoneHint.textContent = '✓ Số điện thoại hợp lệ';
+        phoneHint.className = 'text-label-sm text-secondary mt-1';
+      }
+    });
+  }
+
+  // Modal helpers.
+  document.querySelectorAll('[data-close-modal]').forEach(function (b) {
+    b.addEventListener('click', function () { document.getElementById(b.getAttribute('data-close-modal')).classList.add('hidden'); });
+  });
+
+  btnCancel.addEventListener('click', function () {
+    if (isDirty()) {
+      document.getElementById('modal-cancel').classList.remove('hidden');
+    } else {
+      location.href = 'chi-tiet-dai-ly.html' + (isRejected ? '?status=rejected' : '');
+    }
+  });
+
+  btnSubmit.addEventListener('click', function () {
+    document.getElementById('modal-commit').classList.remove('hidden');
+  });
+
+  document.getElementById('confirm-commit').addEventListener('click', function () {
+    document.getElementById('modal-commit').classList.add('hidden');
+    if (window.toast) {
+      toast(isRejected ? 'Đã gửi duyệt lại — chờ Kumho phản hồi' : 'Đã cập nhật thông tin đại lý', 'success');
+    }
+    setTimeout(function () { location.href = 'chi-tiet-dai-ly.html'; }, 600);
+  });
+
+  // Warn on navigate when dirty (back / sidebar / etc.).
+  window.addEventListener('beforeunload', function (e) {
+    if (isDirty()) { e.preventDefault(); e.returnValue = ''; }
+  });
+})();
+</script>
+</body>
+</html>

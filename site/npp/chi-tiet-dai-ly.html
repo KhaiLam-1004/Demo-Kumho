@@ -22,49 +22,52 @@
         <a href="quan-ly-dai-ly.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
         <div>
           <h1 class="text-h1 font-bold">Auto Zone Quận 7</h1>
-          <p class="text-body-md text-on-surface-variant mt-xs">Mã: <b>DL-Q7-042</b> · <span class="text-secondary font-bold">Đạt scheme Q1/2026</span></p>
+          <p class="text-body-md text-on-surface-variant mt-xs">SĐT: <b>0902 123 456</b> · Khu vực: <b>Quận 7, TP.HCM</b></p>
         </div>
       </div>
-      <div class="flex gap-sm">
-        <button class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5">Chỉnh sửa</button>
+      <div id="action-bar" class="flex gap-sm">
+        <a href="sua-dai-ly.html" class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[20px]">edit</span> Sửa
+        </a>
+        <button id="btn-lock" class="px-lg py-sm border border-error text-error font-bold rounded-lg hover:bg-error/5 flex items-center gap-2">
+          <span class="material-symbols-outlined text-[20px]">lock</span> Khoá
+        </button>
+      </div>
+    </div>
+
+    <!-- Banner lý do từ chối (chỉ hiển thị khi trạng thái = Đã từ chối) -->
+    <div id="reject-banner" class="hidden mb-md bg-error-container/30 border border-error rounded-xl p-md flex items-start gap-sm">
+      <span class="material-symbols-outlined text-error mt-0.5">error</span>
+      <div class="flex-1">
+        <p class="font-label-md text-error font-bold">Lý do từ chối</p>
+        <p class="text-body-md text-on-surface mt-1" id="reject-reason-text">—</p>
       </div>
     </div>
 
     <div class="grid grid-cols-12 gap-gutter">
-      <section class="col-span-12 lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
-        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-primary">storefront</span> Thông tin đại lý</h3>
-        <div class="grid grid-cols-2 gap-lg">
+      <!-- Card 1 — Thông tin đại lý (readonly) -->
+      <section class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+        <div class="flex items-center justify-between mb-lg">
+          <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-primary">storefront</span> Thông tin đại lý</h3>
+          <span id="status-badge" class="px-3 py-1 rounded-full bg-secondary-container/30 text-secondary text-label-sm font-bold">Hoạt động</span>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-3 gap-lg">
           <div><label class="text-label-sm text-outline uppercase">Tên đại lý</label><p class="font-body-lg mt-1">Auto Zone Quận 7</p></div>
-          <div><label class="text-label-sm text-outline uppercase">Số điện thoại</label><p class="font-body-lg mt-1">0902 123 456</p></div>
-          <div class="col-span-2"><label class="text-label-sm text-outline uppercase">Địa chỉ</label><p class="font-body-lg mt-1 leading-relaxed">123 Nguyễn Thị Thập, Phường Tân Hưng, Quận 7, TP.HCM</p></div>
-          <div><label class="text-label-sm text-outline uppercase">Người đại diện</label><p class="font-body-lg mt-1">Ông Phạm Hữu Đức</p></div>
-          <div><label class="text-label-sm text-outline uppercase">Ngày tham gia</label><p class="font-body-lg mt-1">20/08/2024</p></div>
+          <div><label class="text-label-sm text-outline uppercase">SĐT đại lý</label><p class="font-body-lg mt-1">0902 123 456</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Tỉnh thành</label><p class="font-body-lg mt-1">TP. Hồ Chí Minh</p></div>
+          <div class="col-span-2 lg:col-span-3"><label class="text-label-sm text-outline uppercase">Địa chỉ đại lý</label><p class="font-body-lg mt-1 leading-relaxed">123 Nguyễn Thị Thập, Phường Tân Hưng, Quận 7, TP.HCM</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Khu vực</label><p class="font-body-lg mt-1">Quận 7, Quận 8</p></div>
+          <div><label class="text-label-sm text-outline uppercase">Ngày tạo</label><p class="font-body-lg mt-1">20/08/2024</p></div>
         </div>
       </section>
 
-      <section class="col-span-12 lg:col-span-4 bg-surface-container-low border border-outline-variant rounded-xl p-lg">
-        <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-secondary">trending_up</span> Tích luỹ scheme</h3>
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md mb-md">
-          <div class="flex items-end justify-between mb-xs">
-            <span class="text-label-sm text-on-surface-variant uppercase">Q1/2026 (đã đạt)</span>
-            <span class="text-h3 font-bold text-secondary">500/500</span>
-          </div>
-          <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-secondary" style="width:100%"></div></div>
-          <p class="text-label-sm text-secondary mt-2 flex items-center gap-1"><span class="material-symbols-outlined text-[16px] fill">verified</span> Quà: Smart TV 55" — đã giao 22/03/2026</p>
-        </div>
-        <div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-md">
-          <div class="flex items-end justify-between mb-xs">
-            <span class="text-label-sm text-on-surface-variant uppercase">Q2/2026 (đang chạy)</span>
-            <span class="text-h3 font-bold">128/500</span>
-          </div>
-          <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden"><div class="h-full bg-primary" style="width:25%"></div></div>
-        </div>
-      </section>
+      <!-- Card 2 — Tổng số lốp đã mua: ẨN HOÀN TOÀN (Out of scope Phase 1, chờ module Scheme) -->
 
+      <!-- Card 3 — Đơn hàng gần đây (Top 10) -->
       <section class="col-span-12 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
         <div class="p-lg border-b border-outline-variant flex items-center justify-between">
           <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-primary">receipt_long</span> Đơn hàng gần đây</h3>
-          <a href="lich-su-don-hang.html" class="text-primary font-bold text-label-md hover:underline">Xem tất cả →</a>
+          <a href="lich-su-don-hang.html" class="text-primary font-bold text-label-md hover:underline">Xem tất cả đơn hàng →</a>
         </div>
         <table class="w-full text-left">
           <thead><tr class="bg-surface-container-low/40">
@@ -75,9 +78,10 @@
             <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
           </tr></thead>
           <tbody class="divide-y divide-outline-variant">
-            <tr><td class="px-lg py-md text-primary font-bold">DH00130</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">28</td><td class="px-lg py-md text-on-surface-variant">14/05/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
-            <tr><td class="px-lg py-md text-primary font-bold">DH00124</td><td class="px-lg py-md">3</td><td class="px-lg py-md text-right font-bold">42</td><td class="px-lg py-md text-on-surface-variant">07/05/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
-            <tr><td class="px-lg py-md text-primary font-bold">DH00118</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">30</td><td class="px-lg py-md text-on-surface-variant">28/04/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-on-surface font-bold">DH00130</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">28</td><td class="px-lg py-md text-on-surface-variant">14/05/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-on-surface font-bold">DH00124</td><td class="px-lg py-md">3</td><td class="px-lg py-md text-right font-bold">42</td><td class="px-lg py-md text-on-surface-variant">07/05/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-on-surface font-bold">DH00118</td><td class="px-lg py-md">2</td><td class="px-lg py-md text-right font-bold">30</td><td class="px-lg py-md text-on-surface-variant">28/04/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã duyệt</span></td></tr>
+            <tr><td class="px-lg py-md text-on-surface font-bold">DH00109</td><td class="px-lg py-md">1</td><td class="px-lg py-md text-right font-bold">12</td><td class="px-lg py-md text-on-surface-variant">15/04/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-error-container text-on-error-container text-[12px] font-bold">Đã từ chối</span></td></tr>
           </tbody>
         </table>
       </section>
@@ -85,8 +89,123 @@
   </div>
 </main>
 
+<!-- Popup Khoá đại lý (A6) -->
+<div id="modal-lock" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+  <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[480px] overflow-hidden">
+    <div class="p-lg border-b border-outline-variant">
+      <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-error">lock</span> Khoá đại lý</h3>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md text-on-surface leading-relaxed">
+        Khoá đại lý <b>Auto Zone Quận 7</b>? Đại lý sẽ không đăng nhập Miniapp và không tạo đơn mới được. Đơn hàng đang <b>Chờ xác nhận</b> của đại lý này bạn vẫn duyệt / từ chối được bình thường.
+      </p>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+      <button data-close-modal="modal-lock" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Quay lại</button>
+      <button id="confirm-lock" class="px-lg py-sm bg-error text-on-error rounded-lg font-bold hover:opacity-90">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Mở khoá đại lý (A6) -->
+<div id="modal-unlock" class="hidden fixed inset-0 z-50 bg-black/40 flex items-center justify-center p-md">
+  <div class="bg-surface-container-lowest rounded-xl shadow-2xl w-full max-w-[480px] overflow-hidden">
+    <div class="p-lg border-b border-outline-variant">
+      <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-secondary">lock_open</span> Mở khoá đại lý</h3>
+    </div>
+    <div class="p-lg">
+      <p class="text-body-md text-on-surface leading-relaxed">
+        Mở khoá đại lý <b>Auto Zone Quận 7</b>? Đại lý sẽ đăng nhập Miniapp được trở lại ngay, không cần Kumho duyệt lại.
+      </p>
+    </div>
+    <div class="px-lg py-md bg-surface-container-low/40 flex justify-end gap-sm">
+      <button data-close-modal="modal-unlock" class="px-lg py-sm border border-outline-variant rounded-lg font-bold text-on-surface hover:bg-surface-container">Quay lại</button>
+      <button id="confirm-unlock" class="px-lg py-sm bg-primary text-on-primary rounded-lg font-bold hover:opacity-90">Xác nhận</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="hidden fixed bottom-6 right-6 z-[60] bg-on-surface text-surface-container-lowest px-lg py-md rounded-lg shadow-2xl flex items-center gap-2">
+  <span class="material-symbols-outlined">check_circle</span>
+  <span id="toast-text">—</span>
+</div>
+
 <script src="../assets/auth.js"></script>
+<script src="../assets/state.js"></script>
 <script src="../assets/partials.js"></script>
 <script src="../assets/app.js"></script>
+<script>
+(function () {
+  // Demo dealer state — read from query string ?status=locked|rejected to demo variants.
+  var params = new URLSearchParams(location.search);
+  var statusOverride = params.get('status');
+
+  var actionBar = document.getElementById('action-bar');
+  var statusBadge = document.getElementById('status-badge');
+  var btnLock = document.getElementById('btn-lock');
+  var rejectBanner = document.getElementById('reject-banner');
+
+  function setStatus(status) {
+    if (status === 'locked') {
+      statusBadge.textContent = 'Đã khoá';
+      statusBadge.className = 'px-3 py-1 rounded-full bg-on-surface/10 text-on-surface text-label-sm font-bold';
+      // Action bar: chỉ Mở khoá
+      actionBar.innerHTML = '<button id="btn-unlock" class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg hover:opacity-90 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">lock_open</span> Mở khoá</button>';
+      document.getElementById('btn-unlock').addEventListener('click', function () { openModal('modal-unlock'); });
+    } else if (status === 'rejected') {
+      statusBadge.textContent = 'Đã từ chối';
+      statusBadge.className = 'px-3 py-1 rounded-full bg-error-container text-on-error-container text-label-sm font-bold';
+      // Action bar: chỉ Sửa (gửi duyệt lại)
+      actionBar.innerHTML = '<a href="sua-dai-ly.html?status=rejected" class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">edit</span> Sửa</a>';
+      // Banner đỏ
+      rejectBanner.classList.remove('hidden');
+      document.getElementById('reject-reason-text').textContent = 'Địa chỉ chưa đúng quy chuẩn — vui lòng bổ sung số nhà cụ thể. — 18/05/2026 14:32';
+    } else if (status === 'pending') {
+      statusBadge.textContent = 'Chờ duyệt';
+      statusBadge.className = 'px-3 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-label-sm font-bold';
+      // Không có icon action
+      actionBar.innerHTML = '';
+    }
+    // default = active: keep markup as-is (Sửa + Khoá)
+  }
+
+  if (statusOverride) setStatus(statusOverride);
+
+  // Modal helpers.
+  function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+  function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+  document.querySelectorAll('[data-close-modal]').forEach(function (b) {
+    b.addEventListener('click', function () { closeModal(b.getAttribute('data-close-modal')); });
+  });
+
+  if (btnLock) btnLock.addEventListener('click', function () { openModal('modal-lock'); });
+
+  function showToast(msg) {
+    var t = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = msg;
+    t.classList.remove('hidden');
+    setTimeout(function () { t.classList.add('hidden'); }, 3000);
+  }
+
+  document.getElementById('confirm-lock').addEventListener('click', function () {
+    closeModal('modal-lock');
+    setStatus('locked');
+    showToast('Đã khoá đại lý Auto Zone Quận 7');
+  });
+  document.getElementById('confirm-unlock').addEventListener('click', function () {
+    closeModal('modal-unlock');
+    setStatus('active');
+    // Reset action bar về Hoạt động.
+    actionBar.innerHTML = ''
+      + '<a href="sua-dai-ly.html" class="px-lg py-sm border border-primary text-primary font-bold rounded-lg hover:bg-primary/5 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">edit</span> Sửa</a>'
+      + '<button id="btn-lock" class="px-lg py-sm border border-error text-error font-bold rounded-lg hover:bg-error/5 flex items-center gap-2"><span class="material-symbols-outlined text-[20px]">lock</span> Khoá</button>';
+    statusBadge.textContent = 'Hoạt động';
+    statusBadge.className = 'px-3 py-1 rounded-full bg-secondary-container/30 text-secondary text-label-sm font-bold';
+    document.getElementById('btn-lock').addEventListener('click', function () { openModal('modal-lock'); });
+    showToast('Đã mở khoá đại lý Auto Zone Quận 7');
+  });
+})();
+</script>
 </body>
 </html>
