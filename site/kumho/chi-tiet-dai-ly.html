@@ -12,7 +12,7 @@
 </head>
 <body class="bg-background text-on-surface">
 
-<div data-shell data-role="kumho" data-active="duyet-dai-ly" data-breadcrumb="Duyệt đại lý|Đại lý Lốp Bình Dương"></div>
+<div data-shell data-role="kumho" data-active="quan-ly-dai-ly" data-breadcrumb="Quản lý đại lý|Duyệt đại lý|Đại lý Lốp Bình Dương"></div>
 
 <main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen pb-[120px]">
 
@@ -55,34 +55,17 @@
         </div>
       </section>
 
-      <!-- Card 2: Lịch sử Từ chối (chỉ hiển thị nếu có) -->
-      <section class="col-span-12 bg-surface-container-lowest rounded-xl border border-error/30 p-lg shadow-sm">
-        <h3 class="font-h3 text-h3 flex items-center gap-2 mb-lg">
-          <span class="material-symbols-outlined text-error">history</span>
-          Lịch sử từ chối
-          <span class="text-label-sm font-normal text-on-surface-variant">— Đại lý đã từng bị từ chối 2 lần trước đây</span>
-        </h3>
-        <table class="w-full text-left border border-outline-variant rounded-lg overflow-hidden">
-          <thead class="bg-surface-container-low/40">
-            <tr>
-              <th class="px-md py-2 font-label-sm text-on-surface-variant uppercase w-16">Lần</th>
-              <th class="px-md py-2 font-label-sm text-on-surface-variant uppercase">Thời điểm</th>
-              <th class="px-md py-2 font-label-sm text-on-surface-variant uppercase">Lý do từ chối</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-outline-variant">
-            <tr>
-              <td class="px-md py-3 font-bold">1</td>
-              <td class="px-md py-3 text-body-md">22/04/2026 14:32</td>
-              <td class="px-md py-3 text-body-md">Địa chỉ chưa đúng quy chuẩn — vui lòng bổ sung số nhà cụ thể và phường/xã.</td>
-            </tr>
-            <tr>
-              <td class="px-md py-3 font-bold">2</td>
-              <td class="px-md py-3 text-body-md">15/05/2026 09:18</td>
-              <td class="px-md py-3 text-body-md">SĐT đã tồn tại trên hệ thống — vui lòng dùng SĐT khác hoặc liên hệ admin để hợp nhất.</td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Card 2: Đơn hàng gần đây (BRD v1.2 — top 10, readonly) -->
+      <section class="col-span-12 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
+        <div class="p-lg border-b border-outline-variant flex items-center justify-between">
+          <h3 class="font-h3 flex items-center gap-2"><span class="material-symbols-outlined text-primary">receipt_long</span> Đơn hàng gần đây</h3>
+          <a href="quan-ly-don-hang.html" class="text-primary font-bold text-label-md hover:underline">Xem tất cả đơn hàng →</a>
+        </div>
+        <p class="px-lg pt-md text-label-sm text-on-surface-variant italic">Đại lý chưa có đơn hàng nào — đơn sẽ xuất hiện ở đây khi đại lý chính thức hoạt động.</p>
+        <div class="px-lg pb-lg pt-2 text-label-sm text-on-surface-variant flex items-center gap-2">
+          <span class="material-symbols-outlined text-on-surface-variant text-[20px]">info</span>
+          <span>Đại lý đang chờ duyệt nên chưa thể nhập đơn.</span>
+        </div>
       </section>
 
     </div>

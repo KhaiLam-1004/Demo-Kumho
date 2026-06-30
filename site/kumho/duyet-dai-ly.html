@@ -12,13 +12,28 @@
 </head>
 <body class="bg-background text-on-surface">
 
-<div data-shell data-role="kumho" data-active="duyet-dai-ly"></div>
+<div data-shell data-role="kumho" data-active="quan-ly-dai-ly"></div>
 
 <main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
 
+  <div class="mb-lg">
+    <h1 class="text-h1 font-bold text-on-surface">Quản lý đại lý</h1>
+    <p class="text-body-md text-on-surface-variant mt-xs">Phê duyệt đại lý mới do NPP gửi và xem toàn bộ đại lý đã được Kumho duyệt.</p>
+  </div>
+
+  <!-- Module tabs (BRD v1.2 — gộp Duyệt + Danh sách) -->
+  <div class="border-b border-outline-variant mb-xl flex gap-0">
+    <a href="duyet-dai-ly.html" class="px-lg py-3 font-label-md font-bold text-primary border-b-2 border-primary flex items-center gap-2">
+      <span class="material-symbols-outlined text-[18px]">how_to_reg</span> Duyệt đại lý
+      <span class="ml-1 px-2 py-0.5 rounded-full bg-error text-on-error text-[10px] font-bold" id="tab-badge">10</span>
+    </a>
+    <a href="quan-ly-dai-ly.html" class="px-lg py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface flex items-center gap-2">
+      <span class="material-symbols-outlined text-[18px]">groups</span> Danh sách đại lý
+    </a>
+  </div>
+
   <div class="mb-xl">
-    <h1 class="text-h1 font-bold text-on-surface">Duyệt đại lý</h1>
-    <p class="text-body-md text-on-surface-variant mt-xs">Xem xét và phê duyệt yêu cầu đăng ký đại lý mới từ NPP. Sắp xếp FIFO — đại lý cũ nhất hiển thị trước.</p>
+    <p class="text-body-md text-on-surface-variant">Sắp xếp FIFO — đại lý gửi sớm nhất hiển thị trước.</p>
   </div>
 
   <!-- Stat cards -->

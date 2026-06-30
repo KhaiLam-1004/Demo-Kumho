@@ -1,18 +1,22 @@
 // Renders the shared sidebar + topbar, and enforces role-based access.
 // Each role page sets <div data-shell data-role="kumho|npp" data-active="...">.
 (function () {
+  // Sidebar gộp theo BRD v1.2/v1.3 (xem wireframe_update_checklist):
+  // - Kumho: 1 entry "Quản lý đại lý" gộp Duyệt + Danh sách (2 tab nội bộ).
+  //   Badge = số đại lý chờ duyệt.
+  // - NPP: 1 entry "Quản lý đơn hàng" gộp Đơn cần xác nhận + Lịch sử (4 tab nội bộ).
+  //   Badge = số đơn Chờ xác nhận (> 99 → "99+", = 0 → ẩn).
   var navItems = {
     kumho: [
-      { key: 'duyet-dai-ly',       icon: 'how_to_reg',      label: 'Duyệt đại lý',     href: 'duyet-dai-ly.html',     badge: 10 },
-      { key: 'quan-ly-npp',        icon: 'corporate_fare',  label: 'Quản lý NPP',      href: 'quan-ly-npp.html' },
-      { key: 'quan-ly-dai-ly',     icon: 'groups',          label: 'Quản lý đại lý',   href: 'quan-ly-dai-ly.html' },
+      // Kumho default landing = tab "Duyệt đại lý" per BRD v1.2 (highest priority work).
+      { key: 'quan-ly-dai-ly',     icon: 'groups',          label: 'Quản lý đại lý',   href: 'duyet-dai-ly.html',   badge: 10 },
       { key: 'quan-ly-don-hang',   icon: 'shopping_cart',   label: 'Quản lý đơn hàng', href: 'quan-ly-don-hang.html' },
-      { key: 'lich-su-tra-qua',    icon: 'redeem',          label: 'Lịch sử trả quà',  href: 'lich-su-tra-qua.html' }
+      { key: 'quan-ly-npp',        icon: 'corporate_fare',  label: 'Quản lý NPP',      href: 'quan-ly-npp.html' },
+      { key: 'lich-su-tra-qua',    icon: 'redeem',          label: 'Lịch sử trả thưởng', href: 'lich-su-tra-qua.html' }
     ],
     npp: [
       { key: 'quan-ly-dai-ly',     icon: 'group',           label: 'Quản lý đại lý',       href: 'quan-ly-dai-ly.html' },
-      { key: 'don-hang-xac-nhan',  icon: 'pending_actions', label: 'Đơn hàng cần xác nhận', href: 'don-hang-xac-nhan.html', badge: 3 },
-      { key: 'lich-su-don-hang',   icon: 'history',         label: 'Lịch sử đơn hàng',     href: 'lich-su-don-hang.html' },
+      { key: 'quan-ly-don-hang',   icon: 'shopping_cart',   label: 'Quản lý đơn hàng',     href: 'quan-ly-don-hang.html', badge: 3 },
       { key: 'lich-su-tra-thuong', icon: 'payments',        label: 'Lịch sử trả thưởng',   href: 'lich-su-tra-thuong.html' }
     ]
   };

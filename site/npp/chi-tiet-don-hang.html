@@ -12,13 +12,13 @@
 </head>
 <body class="bg-background text-on-surface">
 
-<div data-shell data-role="npp" data-active="don-hang-xac-nhan" data-breadcrumb="Đơn hàng cần xác nhận|—"></div>
+<div data-shell data-role="npp" data-active="quan-ly-don-hang" data-breadcrumb="Quản lý đơn hàng|—"></div>
 
 <main class="ml-[240px] pt-[60px] pb-[100px] p-margin-desktop min-h-screen">
   <div class="max-w-[1200px] mx-auto">
 
     <div class="flex items-center gap-md mb-lg">
-      <a href="don-hang-xac-nhan.html" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
+      <a href="quan-ly-don-hang.html?tab=pending" class="p-2 rounded-full hover:bg-surface-container-low text-on-surface-variant"><span class="material-symbols-outlined">arrow_back</span></a>
       <h1 class="text-h1 font-bold">Xác nhận đơn hàng <span id="page-order-id">—</span></h1>
       <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-3 py-1 rounded-full text-label-sm font-bold uppercase tracking-wider">Chờ xác nhận</span>
     </div>
@@ -381,7 +381,7 @@
   document.getElementById('confirm-order-approve').addEventListener('click', function () {
     State.setOrder(orderId, { status: 'approved' });
     document.body.style.overflow = '';
-    location.href = 'don-hang-xac-nhan.html';
+    location.href = 'quan-ly-don-hang.html?tab=pending';
   });
 
   document.getElementById('confirm-order-reject').addEventListener('click', function () {
@@ -390,7 +390,7 @@
     if (!reason) { if (reasonEl) reasonEl.focus(); return; }
     State.setOrder(orderId, { status: 'rejected', reason: reason });
     document.body.style.overflow = '';
-    location.href = 'don-hang-xac-nhan.html';
+    location.href = 'quan-ly-don-hang.html?tab=pending';
   });
 })();
 </script>

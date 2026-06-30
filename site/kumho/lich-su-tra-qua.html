@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lịch sử trả quà · Kumho NPP Portal</title>
+<title>Lịch sử trả thưởng · Kumho NPP Portal</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="../assets/theme-config.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,87 +16,129 @@
 
 <main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
 
-  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
     <div>
-      <h1 class="text-h1 font-bold">Lịch sử trả quà</h1>
-      <p class="text-body-md text-on-surface-variant mt-xs">Đại lý đạt scheme tích luỹ (500 lốp / 3 tháng). Kumho liên hệ giao quà.</p>
+      <h1 class="text-h1 font-bold">Lịch sử trả thưởng</h1>
+      <!-- Subtitle Scheme động (BR-022) -->
+      <p id="scheme-subtitle" class="text-body-md text-on-surface-variant mt-xs">
+        Scheme đang chạy: <b>Scheme Q2/2026 — Lốp PCR ≥17 inch</b> · Mốc <b>100 lốp</b> · Quà <b>iPhone 15 Pro</b>
+      </p>
     </div>
     <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container flex items-center gap-2">
       <span class="material-symbols-outlined text-[20px]">download</span> Xuất Excel
     </button>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
-      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã giao quà</p><p class="text-[36px] font-bold mt-2 leading-none">38</p></div>
-      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">redeem</span>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary-container flex items-center justify-between">
-      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Đang chờ giao</p><p class="text-[36px] font-bold mt-2 leading-none">7</p></div>
-      <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">local_shipping</span>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
-      <div><p class="text-label-sm text-primary uppercase tracking-wider">Tổng giá trị quà</p><p class="text-[28px] font-bold mt-2 leading-none">312 tr.đ</p></div>
-      <span class="material-symbols-outlined text-primary text-[40px] opacity-40">paid</span>
-    </div>
-  </div>
-
   <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
     <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
       <div class="relative w-full md:w-80">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
-        <input class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm đại lý...">
+        <input id="f-search" class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm tên đại lý / SĐT...">
       </div>
-      <div class="flex gap-md">
-        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"><option>Tất cả scheme</option><option>Q1/2026 — 500 lốp</option><option>Q4/2025 — 500 lốp</option></select>
-        <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"><option>Tất cả trạng thái</option><option>Đã giao</option><option>Đang chờ</option></select>
+      <div class="flex gap-md flex-wrap">
+        <!-- Dropdown NPP (chỉ Kumho có) — list NPP có >=1 đại lý đạt mốc trong khu vực phụ trách, sort A-Z -->
+        <select id="f-npp" class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option value="">NPP — tất cả</option>
+          <option>DV Lốp Miền Bắc</option>
+          <option>DV Lốp Miền Đông</option>
+          <option>DV Lốp Miền Tây</option>
+          <option>DV Lốp Miền Trung</option>
+        </select>
+        <select id="f-scheme" class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option value="">Tất cả Scheme</option>
+          <option>Scheme Q2/2026 — Lốp PCR ≥17 inch</option>
+          <option>Scheme Q1/2026 — Lốp PCR ≥17 inch</option>
+          <option>Scheme Q4/2025 — Tổng tích luỹ</option>
+        </select>
+        <select id="f-status" class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option value="">Tất cả trạng thái</option>
+          <option value="received">Đã nhận</option>
+          <option value="shipping">Đang giao</option>
+          <option value="delivered">Đã giao</option>
+        </select>
+        <select class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option>10 / trang</option><option>20 / trang</option><option>50 / trang</option><option>100 / trang</option>
+        </select>
       </div>
     </div>
+
+    <div class="px-lg py-2 bg-primary/5 border-b border-outline-variant text-label-sm text-on-surface-variant flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-primary">info</span>
+      Sắp xếp <b>Ngày đạt mốc giảm dần</b> — bản ghi mới nhất ở đầu (cố định, không đổi được).
+    </div>
+
     <table class="w-full text-left">
       <thead><tr class="bg-surface-container-low/40">
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">NPP</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Scheme</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Tích luỹ</th>
+        <!-- 6 cột Kumho: thêm NPP chủ quản sau SĐT đại lý (BRD v1.1 spec C.2) -->
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Tên đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">SĐT đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">NPP chủ quản</th>
         <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Quà thưởng</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đạt</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái giao</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đạt mốc</th>
       </tr></thead>
-      <tbody class="divide-y divide-outline-variant">
-        <tr class="hover:bg-surface-container-low/30">
-          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">Q7</div><div><div class="font-label-md font-bold">Auto Zone Quận 7</div><div class="text-label-sm text-on-surface-variant">DL-Q7-042</div></div></div></td>
+      <tbody class="divide-y divide-outline-variant" id="reward-tbody">
+        <tr data-row data-status="delivered" data-npp="DV Lốp Miền Đông">
+          <td class="px-lg py-md font-bold">Auto Zone Quận 7</td>
+          <td class="px-lg py-md text-body-md">0902 123 456</td>
           <td class="px-lg py-md text-body-md">DV Lốp Miền Đông</td>
-          <td class="px-lg py-md text-body-md">Q1/2026 — 500 lốp</td>
-          <td class="px-lg py-md text-right font-bold text-secondary">500</td>
-          <td class="px-lg py-md text-body-md">Smart TV 55"</td>
-          <td class="px-lg py-md text-on-surface-variant">22/03/2026</td>
+          <td class="px-lg py-md text-body-md">iPhone 15 Pro</td>
           <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">22/03/2026 14:08:42</td>
         </tr>
-        <tr class="hover:bg-surface-container-low/30">
-          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">TB</div><div><div class="font-label-md font-bold">Lốp Xe Tân Bình</div><div class="text-label-sm text-on-surface-variant">DL-TB-001</div></div></div></td>
+        <tr data-row data-status="shipping" data-npp="DV Lốp Miền Đông">
+          <td class="px-lg py-md font-bold">Lốp Xe Tân Bình</td>
+          <td class="px-lg py-md text-body-md">0941 111 111</td>
           <td class="px-lg py-md text-body-md">DV Lốp Miền Đông</td>
-          <td class="px-lg py-md text-body-md">Q1/2026 — 500 lốp</td>
-          <td class="px-lg py-md text-right font-bold text-secondary">512</td>
           <td class="px-lg py-md text-body-md">Tablet 11"</td>
-          <td class="px-lg py-md text-on-surface-variant">12/04/2026</td>
-          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang chờ giao</span></td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">12/04/2026 09:22:15</td>
         </tr>
-        <tr class="hover:bg-surface-container-low/30">
-          <td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">LA</div><div><div class="font-label-md font-bold">Đại lý Long An S1</div><div class="text-label-sm text-on-surface-variant">DL-LA-022</div></div></div></td>
-          <td class="px-lg py-md text-body-md">DV Lốp Miền Tây</td>
-          <td class="px-lg py-md text-body-md">Q4/2025 — 500 lốp</td>
-          <td class="px-lg py-md text-right font-bold text-secondary">501</td>
-          <td class="px-lg py-md text-body-md">Máy lạnh inverter</td>
-          <td class="px-lg py-md text-on-surface-variant">20/12/2025</td>
+        <tr data-row data-status="delivered" data-npp="DV Lốp Miền Đông">
+          <td class="px-lg py-md font-bold">Vỏ Xe Bình Dương</td>
+          <td class="px-lg py-md text-body-md">0908 123 456</td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Đông</td>
+          <td class="px-lg py-md text-body-md">Máy lạnh inverter 1.5HP</td>
           <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">15/01/2026 11:05:30</td>
+        </tr>
+        <tr data-row data-status="received" data-npp="DV Lốp Miền Tây">
+          <td class="px-lg py-md font-bold">Đại lý Long An S1</td>
+          <td class="px-lg py-md text-body-md">0978 222 333</td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Tây</td>
+          <td class="px-lg py-md text-body-md">Voucher mua sắm 5.000.000đ</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-primary-container/40 text-primary text-[12px] font-bold">Đã nhận</span></td>
+          <td class="px-lg py-md text-on-surface-variant">20/12/2025 16:48:00</td>
+        </tr>
+        <tr data-row data-status="delivered" data-npp="DV Lốp Miền Bắc">
+          <td class="px-lg py-md font-bold">Kumho Hà Đông</td>
+          <td class="px-lg py-md text-body-md">0987 654 321</td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Bắc</td>
+          <td class="px-lg py-md text-body-md">Smart TV 55"</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">02/11/2025 10:15:22</td>
+        </tr>
+        <tr data-row data-status="shipping" data-npp="DV Lốp Miền Trung">
+          <td class="px-lg py-md font-bold">Kumho Đà Nẵng — Lốp Sông Hàn</td>
+          <td class="px-lg py-md text-body-md">0905 121 212</td>
+          <td class="px-lg py-md text-body-md">DV Lốp Miền Trung</td>
+          <td class="px-lg py-md text-body-md">Smartphone flagship</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">28/10/2025 13:30:45</td>
         </tr>
       </tbody>
     </table>
-    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant">
-      <span class="text-label-sm text-on-surface-variant">Hiển thị 3 trên 45 lần trả quà</span>
+
+    <div id="empty-filtered" class="hidden py-xl text-center">
+      <span class="material-symbols-outlined text-on-surface-variant text-[48px] opacity-60">search_off</span>
+      <p class="text-h3 font-bold mt-2">Không có dữ liệu.</p>
+      <button id="clear-filter" class="mt-3 px-lg py-2 text-primary font-bold hover:underline">Xoá bộ lọc</button>
+    </div>
+
+    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant" id="page-bar">
+      <span class="text-label-sm text-on-surface-variant" id="page-count">Hiển thị 6 trên 6 bản ghi</span>
       <div class="flex items-center gap-xs">
         <button class="w-8 h-8 rounded bg-primary text-on-primary text-label-md">1</button>
-        <button class="w-8 h-8 rounded hover:bg-surface-container-high text-label-md">2</button>
       </div>
     </div>
   </div>
@@ -106,5 +148,43 @@
 <script src="../assets/auth.js"></script>
 <script src="../assets/partials.js"></script>
 <script src="../assets/app.js"></script>
+<script>
+(function () {
+  var search = document.getElementById('f-search');
+  var fNpp = document.getElementById('f-npp');
+  var fScheme = document.getElementById('f-scheme');
+  var fStatus = document.getElementById('f-status');
+  var rows = function () { return Array.from(document.querySelectorAll('#reward-tbody tr[data-row]')); };
+
+  function refresh() {
+    var q = (search.value || '').trim().toLowerCase();
+    var st = fStatus.value;
+    var npp = fNpp.value;
+    var visible = 0;
+    rows().forEach(function (tr) {
+      var name = tr.cells[0].textContent.toLowerCase();
+      var phone = tr.cells[1].textContent.toLowerCase();
+      var match = (!q || name.indexOf(q) >= 0 || phone.indexOf(q) >= 0)
+               && (!st || tr.getAttribute('data-status') === st)
+               && (!npp || tr.getAttribute('data-npp') === npp);
+      tr.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    document.getElementById('page-count').textContent = 'Hiển thị ' + visible + ' bản ghi';
+    var isFiltered = q || st || npp || fScheme.value;
+    document.getElementById('empty-filtered').classList.toggle('hidden', !(visible === 0 && isFiltered));
+    document.getElementById('page-bar').classList.toggle('hidden', visible === 0);
+  }
+
+  [search, fNpp, fScheme, fStatus].forEach(function (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
+
+  document.getElementById('clear-filter').addEventListener('click', function () {
+    search.value = ''; fNpp.value = ''; fScheme.value = ''; fStatus.value = '';
+    refresh();
+  });
+
+  refresh();
+})();
+</script>
 </body>
 </html>

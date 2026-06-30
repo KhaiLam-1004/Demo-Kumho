@@ -16,47 +16,111 @@
 
 <main class="ml-[240px] pt-[60px] p-margin-desktop min-h-screen">
 
-  <div class="mb-xl">
-    <h1 class="text-h1 font-bold">Lịch sử trả thưởng</h1>
-    <p class="text-body-md text-on-surface-variant mt-xs">Đại lý do bạn quản lý đã đạt scheme. Kumho trực tiếp giao quà.</p>
-  </div>
-
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
-      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đại lý đạt scheme</p><p class="text-[36px] font-bold mt-2 leading-none">7</p></div>
-      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">verified</span>
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+    <div>
+      <h1 class="text-h1 font-bold">Lịch sử trả thưởng</h1>
+      <!-- Subtitle Scheme động (BR-022): lấy Scheme mới nhất theo ngày bắt đầu desc.
+           Không có Scheme đang chạy → ẩn subtitle. -->
+      <p id="scheme-subtitle" class="text-body-md text-on-surface-variant mt-xs">
+        Scheme đang chạy: <b>Scheme Q2/2026 — Lốp PCR ≥17 inch</b> · Mốc <b>100 lốp</b> · Quà <b>iPhone 15 Pro</b>
+      </p>
     </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
-      <div><p class="text-label-sm text-primary uppercase tracking-wider">Đã giao quà</p><p class="text-[36px] font-bold mt-2 leading-none">5</p></div>
-      <span class="material-symbols-outlined text-primary text-[40px] opacity-40">redeem</span>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary-container flex items-center justify-between">
-      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Đang chờ giao</p><p class="text-[36px] font-bold mt-2 leading-none">2</p></div>
-      <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">local_shipping</span>
-    </div>
+    <button class="px-lg py-sm bg-primary text-on-primary font-bold rounded-lg shadow-sm hover:bg-primary-container flex items-center gap-2">
+      <span class="material-symbols-outlined text-[20px]">download</span> Xuất Excel
+    </button>
   </div>
 
   <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
-    <div class="p-lg border-b border-outline-variant flex items-center justify-between bg-surface-container-low/40">
-      <h3 class="font-h3">Danh sách đại lý đạt scheme</h3>
-      <select class="px-4 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none"><option>Tất cả scheme</option><option>Q1/2026</option><option>Q4/2025</option></select>
+    <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
+      <div class="relative w-full md:w-80">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+        <input id="f-search" class="w-full pl-10 pr-4 py-2 bg-white border border-outline-variant rounded-lg outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary" placeholder="Tìm tên đại lý / SĐT...">
+      </div>
+      <div class="flex gap-md flex-wrap">
+        <select id="f-scheme" class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option value="">Tất cả Scheme</option>
+          <option>Scheme Q2/2026 — Lốp PCR ≥17 inch</option>
+          <option>Scheme Q1/2026 — Lốp PCR ≥17 inch</option>
+          <option>Scheme Q4/2025 — Tổng tích luỹ</option>
+        </select>
+        <select id="f-status" class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option value="">Tất cả trạng thái</option>
+          <option value="received">Đã nhận</option>
+          <option value="shipping">Đang giao</option>
+          <option value="delivered">Đã giao</option>
+        </select>
+        <select class="px-3 py-2 bg-white border border-outline-variant rounded-lg text-body-md outline-none">
+          <option>10 / trang</option><option>20 / trang</option><option>50 / trang</option><option>100 / trang</option>
+        </select>
+      </div>
     </div>
+
+    <div class="px-lg py-2 bg-primary/5 border-b border-outline-variant text-label-sm text-on-surface-variant flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-primary">info</span>
+      Sắp xếp <b>Ngày đạt mốc giảm dần</b> — bản ghi mới nhất ở đầu (cố định, không đổi được).
+    </div>
+
     <table class="w-full text-left">
       <thead><tr class="bg-surface-container-low/40">
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Đại lý</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Scheme</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase text-right">Tích luỹ</th>
+        <!-- 5 cột theo BRD v1.1 — KHÔNG có Tên Scheme / Thời gian tích luỹ / Tổng số lốp -->
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Tên đại lý</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">SĐT đại lý</th>
         <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Quà thưởng</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đạt</th>
-        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái giao</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Trạng thái</th>
+        <th class="px-lg py-md font-label-sm text-on-surface-variant uppercase">Ngày đạt mốc</th>
       </tr></thead>
-      <tbody class="divide-y divide-outline-variant">
-        <tr><td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">Q7</div><div><div class="font-bold">Auto Zone Quận 7</div><div class="text-label-sm text-on-surface-variant">DL-Q7-042</div></div></div></td><td class="px-lg py-md">Q1/2026 — 500 lốp</td><td class="px-lg py-md text-right font-bold text-secondary">500</td><td class="px-lg py-md">Smart TV 55"</td><td class="px-lg py-md text-on-surface-variant">22/03/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td></tr>
-        <tr><td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">TB</div><div><div class="font-bold">Lốp Xe Tân Bình</div><div class="text-label-sm text-on-surface-variant">DL-TB-001</div></div></div></td><td class="px-lg py-md">Q1/2026 — 500 lốp</td><td class="px-lg py-md text-right font-bold text-secondary">512</td><td class="px-lg py-md">Tablet 11"</td><td class="px-lg py-md text-on-surface-variant">12/04/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang chờ giao</span></td></tr>
-        <tr><td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">BD</div><div><div class="font-bold">Vỏ Xe Bình Dương</div><div class="text-label-sm text-on-surface-variant">DL-BD-098</div></div></div></td><td class="px-lg py-md">Q4/2025 — 500 lốp</td><td class="px-lg py-md text-right font-bold text-secondary">524</td><td class="px-lg py-md">Máy lạnh inverter</td><td class="px-lg py-md text-on-surface-variant">15/01/2026</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td></tr>
-        <tr><td class="px-lg py-md"><div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">LA</div><div><div class="font-bold">Đại lý Long An S1</div><div class="text-label-sm text-on-surface-variant">DL-LA-022</div></div></div></td><td class="px-lg py-md">Q4/2025 — 500 lốp</td><td class="px-lg py-md text-right font-bold text-secondary">501</td><td class="px-lg py-md">Smartphone flagship</td><td class="px-lg py-md text-on-surface-variant">20/12/2025</td><td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td></tr>
+      <tbody class="divide-y divide-outline-variant" id="reward-tbody">
+        <tr data-row data-status="delivered">
+          <td class="px-lg py-md font-bold">Auto Zone Quận 7</td>
+          <td class="px-lg py-md text-body-md">0902 123 456</td>
+          <td class="px-lg py-md text-body-md">iPhone 15 Pro</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">22/03/2026 14:08:42</td>
+        </tr>
+        <tr data-row data-status="shipping">
+          <td class="px-lg py-md font-bold">Lốp Xe Tân Bình</td>
+          <td class="px-lg py-md text-body-md">0941 111 111</td>
+          <td class="px-lg py-md text-body-md">Tablet 11"</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-tertiary-fixed text-tertiary-container text-[12px] font-bold">Đang giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">12/04/2026 09:22:15</td>
+        </tr>
+        <tr data-row data-status="delivered">
+          <td class="px-lg py-md font-bold">Vỏ Xe Bình Dương</td>
+          <td class="px-lg py-md text-body-md">0908 123 456</td>
+          <td class="px-lg py-md text-body-md">Máy lạnh inverter 1.5HP</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">15/01/2026 11:05:30</td>
+        </tr>
+        <tr data-row data-status="received">
+          <td class="px-lg py-md font-bold">Đại lý Long An S1</td>
+          <td class="px-lg py-md text-body-md">0978 222 333</td>
+          <td class="px-lg py-md text-body-md">Voucher mua sắm 5.000.000đ</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-primary-container/40 text-primary text-[12px] font-bold">Đã nhận</span></td>
+          <td class="px-lg py-md text-on-surface-variant">20/12/2025 16:48:00</td>
+        </tr>
+        <tr data-row data-status="delivered">
+          <td class="px-lg py-md font-bold">Kumho Thủ Đức</td>
+          <td class="px-lg py-md text-body-md">0938 555 111</td>
+          <td class="px-lg py-md text-body-md">Smartphone flagship</td>
+          <td class="px-lg py-md"><span class="px-2 py-1 rounded-full bg-secondary-container/30 text-secondary text-[12px] font-bold">Đã giao</span></td>
+          <td class="px-lg py-md text-on-surface-variant">02/11/2025 10:15:22</td>
+        </tr>
       </tbody>
     </table>
+
+    <!-- Empty state when filtered list is empty -->
+    <div id="empty-filtered" class="hidden py-xl text-center">
+      <span class="material-symbols-outlined text-on-surface-variant text-[48px] opacity-60">search_off</span>
+      <p class="text-h3 font-bold mt-2">Không có dữ liệu.</p>
+      <button id="clear-filter" class="mt-3 px-lg py-2 text-primary font-bold hover:underline">Xoá bộ lọc</button>
+    </div>
+
+    <div class="px-lg py-md bg-surface-container-low/30 flex items-center justify-between border-t border-outline-variant" id="page-bar">
+      <span class="text-label-sm text-on-surface-variant" id="page-count">Hiển thị 5 trên 5 bản ghi</span>
+      <div class="flex items-center gap-xs">
+        <button class="w-8 h-8 rounded bg-primary text-on-primary text-label-md">1</button>
+      </div>
+    </div>
   </div>
 
 </main>
@@ -64,5 +128,40 @@
 <script src="../assets/auth.js"></script>
 <script src="../assets/partials.js"></script>
 <script src="../assets/app.js"></script>
+<script>
+(function () {
+  var search = document.getElementById('f-search');
+  var fScheme = document.getElementById('f-scheme');
+  var fStatus = document.getElementById('f-status');
+  var rows = function () { return Array.from(document.querySelectorAll('#reward-tbody tr[data-row]')); };
+
+  function refresh() {
+    var q = (search.value || '').trim().toLowerCase();
+    var st = fStatus.value;
+    var visible = 0;
+    rows().forEach(function (tr) {
+      var name = tr.cells[0].textContent.toLowerCase();
+      var phone = tr.cells[1].textContent.toLowerCase();
+      var match = (!q || name.indexOf(q) >= 0 || phone.indexOf(q) >= 0)
+               && (!st || tr.getAttribute('data-status') === st);
+      tr.classList.toggle('hidden', !match);
+      if (match) visible++;
+    });
+    document.getElementById('page-count').textContent = 'Hiển thị ' + visible + ' bản ghi';
+    var isFiltered = q || st || fScheme.value;
+    document.getElementById('empty-filtered').classList.toggle('hidden', !(visible === 0 && isFiltered));
+    document.getElementById('page-bar').classList.toggle('hidden', visible === 0);
+  }
+
+  [search, fScheme, fStatus].forEach(function (el) { el.addEventListener('input', refresh); el.addEventListener('change', refresh); });
+
+  document.getElementById('clear-filter').addEventListener('click', function () {
+    search.value = ''; fScheme.value = ''; fStatus.value = '';
+    refresh();
+  });
+
+  refresh();
+})();
+</script>
 </body>
 </html>
