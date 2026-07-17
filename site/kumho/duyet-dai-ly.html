@@ -36,38 +36,6 @@
     <p class="text-body-md text-on-surface-variant">Sắp xếp FIFO — đại lý gửi sớm nhất hiển thị trước.</p>
   </div>
 
-  <!-- Stat cards -->
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-xl">
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-tertiary-container">
-      <span class="font-label-sm text-tertiary uppercase tracking-wider">Chờ duyệt</span>
-      <div class="flex items-end justify-between mt-2">
-        <span id="stat-pending" class="text-[36px] font-bold leading-none text-on-surface">10</span>
-        <span class="material-symbols-outlined text-tertiary opacity-40 text-[32px]">pending_actions</span>
-      </div>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-error">
-      <span class="font-label-sm text-error uppercase tracking-wider">Quá hạn (&gt;48h)</span>
-      <div class="flex items-end justify-between mt-2">
-        <span id="stat-overdue" class="text-[36px] font-bold leading-none text-error">2</span>
-        <span class="material-symbols-outlined text-error opacity-40 text-[32px]">timer</span>
-      </div>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary">
-      <span class="font-label-sm text-secondary uppercase tracking-wider">Đã duyệt tháng này</span>
-      <div class="flex items-end justify-between mt-2">
-        <span id="stat-approved" class="text-[36px] font-bold leading-none text-on-surface">32</span>
-        <span class="material-symbols-outlined text-secondary opacity-40 text-[32px]">verified</span>
-      </div>
-    </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-on-surface-variant">
-      <span class="font-label-sm text-on-surface-variant uppercase tracking-wider">Từ chối tháng này</span>
-      <div class="flex items-end justify-between mt-2">
-        <span id="stat-rejected" class="text-[36px] font-bold leading-none text-on-surface">3</span>
-        <span class="material-symbols-outlined text-on-surface-variant opacity-40 text-[32px]">cancel</span>
-      </div>
-    </div>
-  </div>
-
   <!-- Bulk action bar -->
   <div data-bulk-bar hidden class="fade-in mb-md bg-primary/5 border border-primary/20 rounded-xl p-md flex items-center justify-between sticky top-[68px] z-20">
     <div class="flex items-center gap-md">
@@ -410,11 +378,6 @@
   function refreshCounts() {
     var all = rows();
     var pendingCount = all.filter(function (r) { return !State.getDealer(r.dataset.dealerId); }).length;
-    var approvedCount = all.filter(function (r) { var s = State.getDealer(r.dataset.dealerId); return s && s.status === 'approved'; }).length;
-    var overdueCount = all.filter(function (r) { return r.dataset.overdue && !State.getDealer(r.dataset.dealerId); }).length;
-    document.getElementById('stat-pending').textContent = pendingCount;
-    document.getElementById('stat-overdue').textContent = overdueCount;
-    document.getElementById('stat-approved').textContent = 32 + approvedCount;
     document.getElementById('visible-count').textContent = pendingCount;
     var sidebarBadge = document.querySelector('aside nav a[href$="duyet-dai-ly.html"] span.bg-primary');
     if (sidebarBadge) {

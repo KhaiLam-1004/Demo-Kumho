@@ -21,18 +21,19 @@
     <p class="text-body-md text-on-surface-variant mt-xs">Đơn do đại lý nhập từ Miniapp. Đối chiếu hoá đơn thực tế và Duyệt / Từ chối.</p>
   </div>
 
+  <!-- SUMMARY CARDS — spec §4.1 (scope: đơn của đại lý thuộc NPP; cumulative từ đầu) -->
   <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary-container flex items-center justify-between">
-      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p><p id="stat-pending" class="text-[36px] font-bold mt-2 leading-none">3</p></div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary flex items-center justify-between">
+      <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p><p id="stat-pending" class="text-[36px] font-bold mt-2 leading-none text-tertiary">3</p></div>
       <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">pending_actions</span>
     </div>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-error flex items-center justify-between">
-      <div><p class="text-label-sm text-error uppercase tracking-wider">Quá hạn (&gt;24h)</p><p id="stat-overdue" class="text-[36px] font-bold mt-2 leading-none text-error">1</p></div>
-      <span class="material-symbols-outlined text-error text-[40px] opacity-40">timer</span>
-    </div>
     <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
-      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã xác nhận hôm nay</p><p id="stat-confirmed-today" class="text-[36px] font-bold mt-2 leading-none">12</p></div>
-      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">verified</span>
+      <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã xác nhận</p><p id="stat-confirmed" class="text-[36px] font-bold mt-2 leading-none text-secondary">144</p></div>
+      <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">check_circle</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
+      <div><p class="text-label-sm text-primary uppercase tracking-wider">Tổng số lốp</p><p id="stat-tires" class="text-[36px] font-bold mt-2 leading-none">3,842</p></div>
+      <span class="material-symbols-outlined text-primary text-[40px] opacity-40">trip</span>
     </div>
   </div>
 
@@ -135,11 +136,9 @@
     var all = rows();
     var pendingN = all.filter(function (r) { return !State.getOrder(r.dataset.orderId) && !r.classList.contains('hidden'); }).length;
     var approvedN = all.filter(function (r) { var s = State.getOrder(r.dataset.orderId); return s && s.status === 'approved'; }).length;
-    var overdueN = all.filter(function (r) { return r.dataset.overdue && !State.getOrder(r.dataset.orderId); }).length;
 
     document.getElementById('stat-pending').textContent = pendingN;
-    document.getElementById('stat-overdue').textContent = overdueN;
-    document.getElementById('stat-confirmed-today').textContent = 12 + approvedN;
+    document.getElementById('stat-confirmed').textContent = 144 + approvedN;
     document.getElementById('empty-state').toggleAttribute('hidden', pendingN !== 0);
 
     var sidebarBadge = document.querySelector('aside nav a[href$="don-hang-xac-nhan.html"] span.bg-primary');

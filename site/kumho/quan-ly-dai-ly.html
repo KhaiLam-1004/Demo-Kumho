@@ -37,6 +37,37 @@
     </a>
   </div>
 
+  <!-- SUMMARY CARDS — spec §2.1 Kumho (scope: đại lý trong Khu vực Kumho user) -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
+    <a href="?status=all" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-primary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-primary uppercase tracking-wider">Tổng đại lý</p>
+        <p class="text-[32px] font-bold leading-none mt-2">128</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+        <span class="material-symbols-outlined text-primary">groups</span>
+      </span>
+    </a>
+    <a href="duyet-dai-ly.html" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-tertiary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-tertiary uppercase tracking-wider">Chờ Kumho duyệt</p>
+        <p class="text-[32px] font-bold leading-none text-tertiary mt-2">10</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+        <span class="material-symbols-outlined text-tertiary-container">pending_actions</span>
+      </span>
+    </a>
+    <a href="?status=active" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-secondary uppercase tracking-wider">Đang hoạt động</p>
+        <p class="text-[32px] font-bold leading-none text-secondary mt-2">115</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center">
+        <span class="material-symbols-outlined text-secondary">verified</span>
+      </span>
+    </a>
+  </div>
+
   <div class="bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-hidden">
     <div class="p-lg border-b border-outline-variant flex flex-col md:flex-row gap-md items-center justify-between bg-surface-container-low/40">
       <div class="relative w-full md:w-80">

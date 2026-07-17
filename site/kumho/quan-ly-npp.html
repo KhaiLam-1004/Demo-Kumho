@@ -30,6 +30,28 @@
     </nav>
   </div>
 
+  <!-- SUMMARY CARDS — spec §3.1 (scope: NPP trong Khu vực Kumho user; không đổi khi filter bảng) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-lg">
+    <a href="?status=all" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-primary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-primary uppercase tracking-wider">Tổng NPP</p>
+        <p class="text-[32px] font-bold leading-none mt-2">28</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+        <span class="material-symbols-outlined text-primary">corporate_fare</span>
+      </span>
+    </a>
+    <a href="?status=active" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-secondary uppercase tracking-wider">Đang hoạt động</p>
+        <p class="text-[32px] font-bold leading-none text-secondary mt-2">25</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center">
+        <span class="material-symbols-outlined text-secondary">verified</span>
+      </span>
+    </a>
+  </div>
+
   <!-- FILTER CARD -->
   <section class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm mb-lg">
     <header class="flex items-center gap-3 px-lg py-md border-b border-outline-variant">

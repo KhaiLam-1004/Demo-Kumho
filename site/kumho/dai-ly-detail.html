@@ -99,16 +99,12 @@
         <h3 class="font-h3 mb-lg flex items-center gap-2"><span class="material-symbols-outlined text-primary">analytics</span> Tổng quan giao dịch</h3>
         <div class="space-y-md">
           <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
-            <div><p class="text-label-sm text-on-surface-variant">Tổng đơn lifetime</p><p id="stat-orders" class="text-h2 font-bold">—</p></div>
+            <div><p class="text-label-sm text-on-surface-variant">Tổng đơn hàng</p><p id="stat-orders" class="text-h2 font-bold">—</p></div>
             <span class="material-symbols-outlined text-primary text-[28px]">receipt_long</span>
           </div>
           <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
             <div><p class="text-label-sm text-on-surface-variant">Tổng số lốp</p><p id="stat-tires" class="text-h2 font-bold text-secondary">—</p></div>
             <span class="material-symbols-outlined text-secondary text-[28px]">inventory_2</span>
-          </div>
-          <div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
-            <div><p class="text-label-sm text-on-surface-variant">Quà đã nhận</p><p id="stat-gifts" class="text-h2 font-bold text-tertiary">—</p></div>
-            <span class="material-symbols-outlined text-tertiary text-[28px]">redeem</span>
           </div>
         </div>
       </section>
@@ -241,7 +237,6 @@
 
   document.getElementById('stat-orders').textContent = d.totalOrders;
   document.getElementById('stat-tires').textContent = d.totalTires;
-  document.getElementById('stat-gifts').textContent = d.gifts;
 
   // Suspend button: toggle label + behavior based on current status.
   var toggleBtn = document.getElementById('btn-toggle-suspend');

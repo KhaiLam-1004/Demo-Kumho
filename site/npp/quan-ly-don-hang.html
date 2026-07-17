@@ -26,6 +26,37 @@
     </button>
   </div>
 
+  <!-- SUMMARY CARDS — spec §4.1 (scope: đơn của đại lý thuộc NPP; cumulative từ đầu) -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
+    <a href="?tab=pending" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-tertiary flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p>
+        <p class="text-[32px] font-bold leading-none text-tertiary mt-2">3</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center">
+        <span class="material-symbols-outlined text-tertiary-container">pending_actions</span>
+      </span>
+    </a>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary flex items-center justify-between">
+      <div>
+        <p class="font-label-sm text-secondary uppercase tracking-wider">Đã xác nhận</p>
+        <p class="text-[32px] font-bold leading-none text-secondary mt-2">144</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center">
+        <span class="material-symbols-outlined text-secondary">check_circle</span>
+      </span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-primary flex items-center justify-between">
+      <div>
+        <p class="font-label-sm text-primary uppercase tracking-wider">Tổng số lốp</p>
+        <p class="text-[32px] font-bold leading-none mt-2">3,842</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+        <span class="material-symbols-outlined text-primary">trip</span>
+      </span>
+    </div>
+  </div>
+
   <!-- Tab nav (BRD v1.3 — 4 tab, default = Chờ xác nhận) -->
   <div class="border-b border-outline-variant mb-xl flex gap-0 overflow-x-auto" id="order-tabs">
     <button data-tab="all"      class="px-lg py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface flex items-center gap-2 whitespace-nowrap">
