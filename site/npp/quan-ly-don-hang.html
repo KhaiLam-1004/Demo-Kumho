@@ -27,7 +27,7 @@
   </div>
 
   <!-- SUMMARY CARDS — spec §4.1 (scope: đơn của đại lý thuộc NPP; cumulative từ đầu) -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-lg">
     <a href="?tab=pending" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-tertiary flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
         <p class="font-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p>
@@ -37,7 +37,7 @@
         <span class="material-symbols-outlined text-tertiary-container">pending_actions</span>
       </span>
     </a>
-    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary flex items-center justify-between">
+    <a href="?tab=approved" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-secondary flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
         <p class="font-label-sm text-secondary uppercase tracking-wider">Đã xác nhận</p>
         <p class="text-[32px] font-bold leading-none text-secondary mt-2">144</p>
@@ -45,7 +45,16 @@
       <span class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center">
         <span class="material-symbols-outlined text-secondary">check_circle</span>
       </span>
-    </div>
+    </a>
+    <a href="?tab=rejected" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-error flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-error uppercase tracking-wider">Đã từ chối</p>
+        <p class="text-[32px] font-bold leading-none text-error mt-2">8</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center">
+        <span class="material-symbols-outlined text-error">cancel</span>
+      </span>
+    </a>
     <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-primary flex items-center justify-between">
       <div>
         <p class="font-label-sm text-primary uppercase tracking-wider">Tổng số lốp</p>
@@ -60,17 +69,17 @@
   <!-- Tab nav (BRD v1.3 — 4 tab, default = Chờ xác nhận) -->
   <div class="border-b border-outline-variant mb-xl flex gap-0 overflow-x-auto" id="order-tabs">
     <button data-tab="all"      class="px-lg py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface flex items-center gap-2 whitespace-nowrap">
-      Tất cả <span class="ml-1 text-on-surface-variant">(155)</span>
+      Tất cả
     </button>
     <button data-tab="pending"  class="px-lg py-3 font-label-md font-bold text-primary border-b-2 border-primary flex items-center gap-2 whitespace-nowrap">
       <span class="material-symbols-outlined text-[18px]">pending_actions</span>
-      Chờ xác nhận <span class="ml-1 px-2 py-0.5 rounded-full bg-error text-on-error text-[10px] font-bold">3</span>
+      Chờ xác nhận
     </button>
     <button data-tab="approved" class="px-lg py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface flex items-center gap-2 whitespace-nowrap">
-      Đã xác nhận <span class="ml-1 text-on-surface-variant">(144)</span>
+      Đã xác nhận
     </button>
     <button data-tab="rejected" class="px-lg py-3 font-label-md text-on-surface-variant border-b-2 border-transparent hover:text-on-surface flex items-center gap-2 whitespace-nowrap">
-      Đã từ chối <span class="ml-1 text-on-surface-variant">(8)</span>
+      Đã từ chối
     </button>
   </div>
 

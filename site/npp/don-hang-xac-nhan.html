@@ -22,7 +22,7 @@
   </div>
 
   <!-- SUMMARY CARDS — spec §4.1 (scope: đơn của đại lý thuộc NPP; cumulative từ đầu) -->
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-gutter mb-xl">
     <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-tertiary flex items-center justify-between">
       <div><p class="text-label-sm text-tertiary uppercase tracking-wider">Chờ xác nhận</p><p id="stat-pending" class="text-[36px] font-bold mt-2 leading-none text-tertiary">3</p></div>
       <span class="material-symbols-outlined text-tertiary text-[40px] opacity-40">pending_actions</span>
@@ -30,6 +30,10 @@
     <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-secondary flex items-center justify-between">
       <div><p class="text-label-sm text-secondary uppercase tracking-wider">Đã xác nhận</p><p id="stat-confirmed" class="text-[36px] font-bold mt-2 leading-none text-secondary">144</p></div>
       <span class="material-symbols-outlined text-secondary text-[40px] opacity-40">check_circle</span>
+    </div>
+    <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-error flex items-center justify-between">
+      <div><p class="text-label-sm text-error uppercase tracking-wider">Đã từ chối</p><p id="stat-rejected" class="text-[36px] font-bold mt-2 leading-none text-error">8</p></div>
+      <span class="material-symbols-outlined text-error text-[40px] opacity-40">cancel</span>
     </div>
     <div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant border-l-4 border-l-primary flex items-center justify-between">
       <div><p class="text-label-sm text-primary uppercase tracking-wider">Tổng số lốp</p><p id="stat-tires" class="text-[36px] font-bold mt-2 leading-none">3,842</p></div>

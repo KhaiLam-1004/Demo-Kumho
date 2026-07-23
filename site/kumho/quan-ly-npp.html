@@ -31,7 +31,7 @@
   </div>
 
   <!-- SUMMARY CARDS — spec §3.1 (scope: NPP trong Khu vực Kumho user; không đổi khi filter bảng) -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter mb-lg">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-lg">
     <a href="?status=all" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-primary flex items-center justify-between hover:shadow-md transition-shadow">
       <div>
         <p class="font-label-sm text-primary uppercase tracking-wider">Tổng NPP</p>
@@ -48,6 +48,15 @@
       </div>
       <span class="w-12 h-12 rounded-full bg-secondary-container/30 flex items-center justify-center">
         <span class="material-symbols-outlined text-secondary">verified</span>
+      </span>
+    </a>
+    <a href="?status=locked" class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant shadow-sm border-l-4 border-l-outline flex items-center justify-between hover:shadow-md transition-shadow">
+      <div>
+        <p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Đã khoá</p>
+        <p class="text-[32px] font-bold leading-none text-on-surface-variant mt-2">3</p>
+      </div>
+      <span class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center">
+        <span class="material-symbols-outlined text-on-surface-variant">lock</span>
       </span>
     </a>
   </div>
